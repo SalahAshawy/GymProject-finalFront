@@ -103,9 +103,9 @@ class _PlansViewScreenState extends State<PlansViewScreen> {
                             itemCount: plans.data.length,
                             itemBuilder: (ctx, index) {
                               return myListTile(
-                                  plans.data[index].title,
+                                  plans.data[index].title as String,
                                   'Description: ' +
-                                      plans.data[index].description,
+                                      plans.data[index].description! ,
                                   index,
                                   widget.isSelectionTime,
                                   plans.data[index],
@@ -244,7 +244,7 @@ class _PlansViewScreenState extends State<PlansViewScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      deletePlan(context, plan.id, refresh);
+                      deletePlan(context, plan.id!, refresh);
                     },
                     child: Text('Delete',
                         style: TextStyle(

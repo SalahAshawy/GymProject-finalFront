@@ -28,9 +28,9 @@ List<MealPlan> getMealsList({
 }) {
   List<MealPlan> mealsList = [];
   selectedMeals.values.forEach((mealData) {
-    int quantity = mealData['quantity'];
-    Meal meal = mealData['meal'];
-    MealPlan mealPlan = meal.toMealPlan(day: null, type: null);
+    int quantity = mealData['quantity'] as int;
+    Meal meal = mealData['meal'] as Meal;
+    MealPlan mealPlan = meal.toMealPlan(day: '', type: '');
     for (int i = 0; i < quantity; i++) mealsList.add(mealPlan);
   });
   return mealsList;
@@ -41,9 +41,9 @@ List<ItemPlan> getItemsList({
 }) {
   List<ItemPlan> itemsList = [];
   selectedItems.values.forEach((itemData) {
-    int quantity = itemData['quantity'];
-    Item item = itemData['item'];
-    ItemPlan itemPlan = item.toItemPlan(day: null, type: null);
+    int quantity = itemData['quantity'] as int ;
+    Item item = itemData['item'] as Item;
+    ItemPlan itemPlan = item.toItemPlan(day: '', type: '',quantity: 0);
     for (int i = 0; i < quantity; i++) itemsList.add(itemPlan);
   });
   return itemsList;
@@ -85,19 +85,19 @@ class MapScreenState extends State<CreatePlanForm>
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (widget.isEditing && !_argumentsLoaded) {
-      int planId = ModalRoute.of(context).settings.arguments;
+      int planId = ModalRoute.of(context)!.settings.arguments as int;
       Provider.of<PlanViewModel>(context, listen: false)
           .fetchPlan(planId, context)
           .then((plan) {
         setState(() {
-          itemsList = plan.items;
-          mealsList = plan.meals;
+          itemsList = plan.items!;
+          mealsList = plan.meals!;
           selectedItems = getSelectedItems(itemPlanList: itemsList);
           selectedMeals = getSelectedMeals(mealPlanList: mealsList);
         });
         setTextFormFieldsInitialValues(
           [titleController, descriptionController],
-          [plan.title, plan.description],
+          [plan.title!, plan.description!],
         );
       });
       _argumentsLoaded = true;
@@ -105,14 +105,14 @@ class MapScreenState extends State<CreatePlanForm>
   }
 
   Map<int, Map<String, Object>> getSelectedItems({
-    List<ItemPlan> itemPlanList,
+    List<ItemPlan>? itemPlanList,
   }) {
     Map<int, Map<String, Object>> selectedItems = {};
     List<int> uniqueIds =
-        itemPlanList.map((itemPlan) => itemPlan.id).toSet().toList();
+        itemPlanList!.map((itemPlan) => itemPlan.id).toSet().toList();
     uniqueIds.forEach((id) {
       ItemPlan itemPlan =
-          itemPlanList.firstWhere((itemPlan) => itemPlan.id == id);
+          itemPlanList!.firstWhere((itemPlan) => itemPlan.id == id);
       Map<String, Object> itemData = {
         'item': itemPlan.toItem(),
         'quantity': getItemPlanQuantity(itemPlanList, itemPlan),
@@ -134,14 +134,14 @@ class MapScreenState extends State<CreatePlanForm>
   }
 
   Map<int, Map<String, Object>> getSelectedMeals({
-    List<MealPlan> mealPlanList,
+    List<MealPlan>? mealPlanList,
   }) {
     Map<int, Map<String, Object>> selectedMeals = {};
     List<int> uniqueIds =
-        mealPlanList.map((mealPlan) => mealPlan.id).toSet().toList();
+        mealPlanList!.map((mealPlan) => mealPlan.id).toSet().toList();
     uniqueIds.forEach((id) {
       MealPlan mealPlan =
-          mealPlanList.firstWhere((mealPlan) => mealPlan.id == id);
+          mealPlanList!.firstWhere((mealPlan) => mealPlan.id == id);
       Map<String, Object> mealData = {
         'meal': mealPlan.toMeal(),
         'quantity': getMealPlanQuantity(mealPlanList, mealPlan),
@@ -204,14 +204,15 @@ class MapScreenState extends State<CreatePlanForm>
     }
   }
 
-  Plan get inputPlan {
-    int planId = Provider.of<PlanViewModel>(context, listen: false).plan.id;
+   Plan get inputPlan {
+    int planId = Provider.of<PlanViewModel>(context, listen: false).plan.id!;
     return Plan(
-      id: widget.isEditing ? planId : null,
+      id: widget.isEditing ? planId : null as int,
       title: titleController.text,
       description: descriptionController.text,
       items: itemsList,
       meals: mealsList,
+
     );
   }
 
@@ -335,7 +336,7 @@ class MapScreenState extends State<CreatePlanForm>
                             controller: titleController,
                             hintText: 'Enter Title',
                             validator: (value) {
-                              if (value.isEmpty) return 'Title is required';
+                              if (value!.isEmpty) return 'Title is required';
                               return null;
                             },
                           ),
@@ -344,7 +345,7 @@ class MapScreenState extends State<CreatePlanForm>
                             controller: descriptionController,
                             hintText: 'Enter Description',
                             validator: (value) {
-                              if (value.isEmpty)
+                              if (value!.isEmpty)
                                 return 'Description is required';
                               return null;
                             },
@@ -528,7 +529,7 @@ class MapScreenState extends State<CreatePlanForm>
 
 class CustomListTile extends StatefulWidget {
   final dynamic object;
-  final Key key;
+  final Key? key;
   final Function() notifyParent;
 
   CustomListTile({

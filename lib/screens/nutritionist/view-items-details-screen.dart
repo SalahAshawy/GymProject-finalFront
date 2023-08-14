@@ -55,7 +55,7 @@ class _ItemsDetailsScreenState extends State<ItemsDetailsScreen> {
               children: <Widget>[
                 Container(
                   child: Image.network(
-                    widget.item.image,
+                    widget.item!.image!,
                     fit: BoxFit.cover,
                   ),
                   height: MediaQuery.of(context).size.height * 0.6,
@@ -72,7 +72,7 @@ class _ItemsDetailsScreenState extends State<ItemsDetailsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.item.title,
+                          widget.item!.title!,
                           style: TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.w700,
@@ -82,7 +82,7 @@ class _ItemsDetailsScreenState extends State<ItemsDetailsScreen> {
                         ),
                         SizedBox(height: 30),
                         Text(
-                          'Calories: ${widget.item.cal}',
+                          'Calories: ${widget.item!.cal}',
                           style: TextStyle(fontSize: 18),
                         ),
                         SizedBox(height: 10),
@@ -93,16 +93,16 @@ class _ItemsDetailsScreenState extends State<ItemsDetailsScreen> {
                                   TextStyle(fontSize: 18, color: Colors.white),
                               children: [
                                 TextSpan(
-                                  text: '${widget.item.level}',
+                                  text: '${widget.item!.level}',
                                   style: TextStyle(
-                                    color: mapLevelToColor(widget.item.level),
+                                    color: mapLevelToColor(widget.item!.level!),
                                   ),
                                 )
                               ]),
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Description: ${widget.item.description}',
+                          'Description: ${widget.item!.description}',
                           style: TextStyle(fontSize: 18),
                         ),
                         // SizedBox(height: 10),

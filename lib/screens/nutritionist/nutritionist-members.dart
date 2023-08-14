@@ -263,7 +263,7 @@ class _NutritionistMembersScreenState extends State<NutritionistMembersScreen> {
                           builder: (context) => PlansViewScreen(true),
                         ));
 
-                    assignPlan(context, index, result.id, duration); //duration!
+                    assignPlan(context, index, result.id!, duration); //duration!
                     Navigator.pop(context);
                   },
                   child: Text("Choose Plan"),

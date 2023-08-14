@@ -3,12 +3,12 @@ import 'package:gym_project/models/nutritionist/item-plan.dart';
 import 'package:gym_project/models/nutritionist/meal-plan.dart';
 
 class Plan {
-  String title = '';
-  String description = '';
-  int nutritionistID = 0;
+  String? title = '';
+  String? description = '';
+  int? nutritionistID = 0;
   List<ItemPlan>? items = [];
   List<MealPlan>? meals = [];
-  int id = 0;
+  int? id = 0;
   String day = 'saturday';
   String type = 'breakfast';
 
@@ -21,12 +21,12 @@ class Plan {
 
   Plan(
       {
-  required this.title,
-   required this.description,
-    required this.nutritionistID,
+  this.title,
+    this.description,
+   this.nutritionistID,
      this.items,
      this.meals,
-   required this.id,
+    this.id,
   });
 
   factory Plan.fromJson(Map<String, dynamic> json) {
@@ -104,7 +104,7 @@ class Plan {
               'type': itemPlan.type,
             })
         .toList();
-    List<Map<String, Object>> meals = this
+    List<Map<String, Object?>> meals = this
         .meals!
         .map((mealPlan) => {
               'id': mealPlan.id,
@@ -113,8 +113,8 @@ class Plan {
             })
         .toList();
     return {
-      'title': title,
-      'description': description,
+      'title': title!,
+      'description': description!,
       'items': items,
       'meals': meals,
     };

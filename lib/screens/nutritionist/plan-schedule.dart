@@ -104,7 +104,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                       padding: EdgeInsets.only(
                           left: 20.0, right: 20.0, top: 10.0, bottom: 10),
                       child: Text(
-                        plan.title,
+                        plan.title as String,
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w700,
@@ -115,7 +115,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                     Container(
                       padding: EdgeInsets.only(left: 20.0, right: 20.0),
                       child: Text(
-                        plan.description,
+                        plan.description as String,
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           color: Colors.grey.shade500,
@@ -127,9 +127,9 @@ class _PlanScheduleState extends State<PlanSchedule> {
                     SizedBox(
                       height: 30,
                     ),
-                    if (plan.meals
+                    if (plan.meals!
                             .any((element) => element.type == 'breakfast') ||
-                        plan.items
+                        plan.items!
                             .any((element) => element.type == 'breakfast'))
                       Container(
                         padding: EdgeInsets.symmetric(
@@ -143,7 +143,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                           ),
                         ),
                       ),
-                    for (MealPlan meal in plan.meals)
+                    for (MealPlan meal in plan.meals as Iterable)
                       if (meal.type == 'breakfast')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
@@ -152,7 +152,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                             [meal.description],
                           ),
                         ),
-                    for (ItemPlan item in plan.items)
+                    for (ItemPlan item in plan.items as Iterable)
                       if (item.type == 'breakfast')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
@@ -164,8 +164,8 @@ class _PlanScheduleState extends State<PlanSchedule> {
                     SizedBox(
                       height: 30,
                     ),
-                    if (plan.meals.any((element) => element.type == 'lunch') ||
-                        plan.items.any((element) => element.type == 'lunch'))
+                    if (plan.meals!.any((element) => element.type == 'lunch') ||
+                        plan.items!.any((element) => element.type == 'lunch'))
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10.0),
@@ -178,7 +178,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                           ),
                         ),
                       ),
-                    for (MealPlan meal in plan.meals)
+                    for (MealPlan meal in plan.meals as Iterable)
                       if (meal.type == 'lunch')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
@@ -187,7 +187,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                             [meal.description],
                           ),
                         ),
-                    for (ItemPlan item in plan.items)
+                    for (ItemPlan item in plan.items as Iterable)
                       if (item.type == 'lunch')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
@@ -199,8 +199,8 @@ class _PlanScheduleState extends State<PlanSchedule> {
                     SizedBox(
                       height: 30,
                     ),
-                    if (plan.meals.any((element) => element.type == 'dinner') ||
-                        plan.items.any((element) => element.type == 'dinner'))
+                    if (plan.meals!.any((element) => element.type == 'dinner') ||
+                        plan.items!.any((element) => element.type == 'dinner'))
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10.0),
@@ -213,7 +213,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                           ),
                         ),
                       ),
-                    for (MealPlan meal in plan.meals)
+                    for (MealPlan meal in plan.meals as Iterable)
                       if (meal.type == 'dinner')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
@@ -222,7 +222,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                             [meal.description],
                           ),
                         ),
-                    for (ItemPlan item in plan.items)
+                    for (ItemPlan item in plan.items as Iterable)
                       if (item.type == 'dinner')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
@@ -234,8 +234,8 @@ class _PlanScheduleState extends State<PlanSchedule> {
                     SizedBox(
                       height: 30,
                     ),
-                    if (plan.meals.any((element) => element.type == 'snack') ||
-                        plan.items.any((element) => element.type == 'snack'))
+                    if (plan.meals!.any((element) => element.type == 'snack') ||
+                        plan.items!.any((element) => element.type == 'snack'))
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10.0),
@@ -248,7 +248,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                           ),
                         ),
                       ),
-                    for (MealPlan meal in plan.meals)
+                    for (MealPlan meal in plan.meals as Iterable)
                       if (meal.type == 'snack')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
@@ -257,7 +257,7 @@ class _PlanScheduleState extends State<PlanSchedule> {
                             [meal.description],
                           ),
                         ),
-                    for (ItemPlan item in plan.items)
+                    for (ItemPlan item in plan.items as Iterable)
                       if (item.type == 'snack')
                         Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),

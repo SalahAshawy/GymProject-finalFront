@@ -6,8 +6,8 @@ import 'package:gym_project/models/nutritionist/plan.dart';
 import '../../widget/global.dart';
 
 class PlansDetailsScreen extends StatelessWidget {
-  String role = 'nutritionist';
-  Plan selectedPlan;
+  String? role = 'nutritionist';
+  Plan? selectedPlan;
   bool includeAppBar = false;
   PlansDetailsScreen(
       {this.selectedPlan, this.role, this.includeAppBar = false});
@@ -83,7 +83,7 @@ class PlansDetailsScreen extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, top: 10.0, bottom: 10),
                             child: Text(
-                              selectedPlan.title,
+                              selectedPlan!.title!,
                               style: TextStyle(
                                 fontSize: 30.0,
                                 fontWeight: FontWeight.w700,
@@ -94,7 +94,7 @@ class PlansDetailsScreen extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 20.0, right: 20.0),
                             child: Text(
-                              selectedPlan.description,
+                              selectedPlan!.description! ,
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 color: Colors.grey.shade500,
@@ -119,7 +119,7 @@ class PlansDetailsScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          for (ItemPlan item in selectedPlan.items)
+                          for (ItemPlan item in selectedPlan!.items!)
                             Padding(
                               padding: EdgeInsets.only(left: 10, right: 10),
                               child: CustomListTileNoTrailing(
@@ -130,7 +130,7 @@ class PlansDetailsScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                          for (MealPlan meal in selectedPlan.meals)
+                          for (MealPlan meal in selectedPlan!.meals!)
                             Padding(
                               padding: EdgeInsets.only(left: 10, right: 10),
                               child: CustomListTileNoTrailing(
