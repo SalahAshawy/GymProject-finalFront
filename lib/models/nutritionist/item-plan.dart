@@ -6,8 +6,8 @@ class ItemPlan {
   int nutritionistID = 0;
   String? day = '';
   String description = '';
-  String type = '';
-  int quantity = 0;
+  String? type = '';
+  int? quantity = 0;
   String image = '';
   int cal = 0;
   String level = '';
@@ -17,9 +17,9 @@ class ItemPlan {
         required   this.title,
         required  this.nutritionistID,
            this.day,
-        required  this.type,
+         this.type,
         required this.description,
-        required this.quantity,
+         this.quantity,
         required    this.cal,
         required   this.image,
         required  this.level});

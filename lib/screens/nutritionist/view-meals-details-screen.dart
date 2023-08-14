@@ -60,7 +60,7 @@ class MealsDetailsScreen extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, top: 10.0, bottom: 10),
                             child: Text(
-                              selectedMeal.title,
+                              selectedMeal!.title,
                               style: TextStyle(
                                 fontSize: 30.0,
                                 fontWeight: FontWeight.bold,
@@ -86,7 +86,7 @@ class MealsDetailsScreen extends StatelessWidget {
                           SizedBox(
                             height: 30,
                           ),
-                          for (ItemMeal item in selectedMeal.items)
+                          for (ItemMeal item in selectedMeal!.items as Iterable)
                             Padding(
                               padding: EdgeInsets.only(left: 10, right: 10),
                               child: CustomListTileNoTrailing(
@@ -166,13 +166,13 @@ class _CustomListTileNoTrailingState extends State<CustomListTileNoTrailing> {
               MaterialPageRoute(
                   builder: (context) => ItemsDetailsScreen(
                       item: Item(
-                          image: widget.selectedItem.image,
-                          description: widget.selectedItem.description,
-                          title: widget.selectedItem.title,
-                          cal: widget.selectedItem.cal,
-                          level: widget.selectedItem.level,
+                          image: widget.selectedItem!.image,
+                          description: widget.selectedItem!.description,
+                          title: widget.selectedItem!.title,
+                          cal: widget.selectedItem!.cal,
+                          level: widget.selectedItem!.level,
                           nutritionistID: widget.selectedItem
-                              .nutritionistID)))); //supply Item here
+                              !.nutritionistID)))); //supply Item here
         },
         minVerticalPadding: 10,
         leading: CircleAvatar(

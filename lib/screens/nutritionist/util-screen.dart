@@ -5,12 +5,12 @@ import 'package:gym_project/screens/nutritionist/nutritionist-home-screen.dart';
 import 'package:gym_project/screens/nutritionist/nutritionist-members.dart';
 import 'package:gym_project/screens/nutritionist/plans-screen.dart';
 import 'package:gym_project/widget/global.dart';
-import 'package:motion_tab_bar/MotionTabController.dart';
+
 
 import 'others-screen.dart';
 
 class NutritionistUtil extends StatefulWidget {
-  const NutritionistUtil({Key key}) : super(key: key);
+  const NutritionistUtil({Key? key}) : super(key: key);
 
   @override
   _NutritionistUtilState createState() => _NutritionistUtilState();
@@ -18,7 +18,7 @@ class NutritionistUtil extends StatefulWidget {
 
 class _NutritionistUtilState extends State<NutritionistUtil>
     with TickerProviderStateMixin {
-  MotionTabController _tabController;
+
   int _selectedIndex = 0;
 
   final _pages = [
@@ -62,14 +62,14 @@ class _NutritionistUtilState extends State<NutritionistUtil>
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          _pages[_selectedIndex]['title'],
+          _pages[_selectedIndex]['title'] as String,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color(0xff181818),
         iconTheme: IconThemeData(color: Color(0xFFFFCE2B)),
       ),
       drawer: NutritionistDrawer(name, email),
-      body: _pages[_selectedIndex]['page'],
+      body: _pages[_selectedIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color(0xff181818),
         items: const <BottomNavigationBarItem>[

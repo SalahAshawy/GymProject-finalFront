@@ -4,7 +4,7 @@ import 'package:gym_project/models/nutritionist/meal.dart';
 class MealPlan {
   String title = '';
   int nutritionistID = 0;
-  String day = '';
+  String? day = '';
   String description = '';
   String type = '';
   int id = 0;
