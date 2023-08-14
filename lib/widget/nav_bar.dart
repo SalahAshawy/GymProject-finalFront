@@ -3,7 +3,7 @@ import 'package:gym_project/screens/common/login-screen.dart';
 import 'package:motion_tab_bar/MotionTabController.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({Key key}) : super(key: key);
+  const NavBar({Key? key}) : super(key: key);
 
   @override
   _NavBarState createState() => _NavBarState();

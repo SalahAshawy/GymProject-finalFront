@@ -17,7 +17,7 @@ import '../../widget/global.dart';
 import '../answers-webservice.dart';
 
 class BranchService {
-  static Future<void> fetchBranches() async{
+  static Future<void> fetchBranches() async {
     await http.get(Uri.parse('$local/api/branches/getAll'), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -25,21 +25,21 @@ class BranchService {
       var data = jsonDecode(value.body);
       Branches branches = Branches.fromJson(data);
       branches.branches.forEach((element) {
-        Branch branch=Branch.fromJson(element,isFetch: true);
+        Branch branch = Branch.fromJson(element, isFetch: true);
         branchesList.add(branch);
       });
-    }).catchError((error){
+    }).catchError((error) {
       print('fetch branch error = ${error.toString()}');
     });
   }
 
   static void deleteBranch({
-    @required int id,
-    @required int index,
-    @required BuildContext context,
-    @required CreateCubit createCubit,
-    @required AdminCubit adminCubit,
-})  {
+    required int id,
+    required int index,
+    required BuildContext context,
+    required CreateCubit createCubit,
+    required AdminCubit adminCubit,
+  }) {
     createCubit.loading1();
     String token = Global.token;
     http.delete(
@@ -54,40 +54,39 @@ class BranchService {
     ).then((value) {
       String data = value.body;
       var jsonData = jsonDecode(data);
-      if(jsonData['status']==true){
+      if (jsonData['status'] == true) {
         branchesList.removeAt(index);
-        for(int i=0;i<branchesList.length;i++){
-          branchesList[i].index=i;
+        for (int i = 0; i < branchesList.length; i++) {
+          branchesList[i].index = i;
         }
         createCubit.finishLoading();
         adminCubit.updateState();
         Navigator.pop(context);
-        myToast(message: "Deleted Successfully",color:Colors.green);
-      }
-      else{
-        myToast(message: jsonData['msg'],color:Colors.red);
+        myToast(message: "Deleted Successfully", color: Colors.green);
+      } else {
+        myToast(message: jsonData['msg'], color: Colors.red);
         createCubit.finishLoading();
       }
-    }).catchError((error){
+    }).catchError((error) {
       print(error.toString());
-      myToast(message: "Deleted Failed",color:Colors.red);
+      myToast(message: "Deleted Failed", color: Colors.red);
       adminCubit.updateState();
     });
   }
-  static Future<void> addBranch(
-      {
-        @required String title,
-        @required String location,
-        @required String number,
-        @required int crowdMeter,
-        @required File photo,
-        @required String info,
-        @required int membersNumber,
-        @required int coachesNumber,
-        @required BuildContext context,
-        @required CreateCubit createCubit,
-        @required AdminCubit adminCubit,
-      })  async{
+
+  static Future<void> addBranch({
+    required String title,
+    required String location,
+    required String number,
+    required int crowdMeter,
+    required File photo,
+    required String info,
+    required int membersNumber,
+    required int coachesNumber,
+    required BuildContext context,
+    required CreateCubit createCubit,
+    required AdminCubit adminCubit,
+  }) async {
     createCubit.loading1();
     String fileName = photo.path.split('/').last;
     FormData formData = FormData.fromMap({
@@ -104,147 +103,141 @@ class BranchService {
         contentType: new MediaType("image", "jpeg"), //important
       ),
     });
-    DioHelper.postData(
-        url: 'api/branches/store',
-        data: formData
-    ).then((value) {
-      var jsonData =value.data;
-      if(jsonData['status']==true){
+    DioHelper.postData(url: 'api/branches/store', data: formData).then((value) {
+      var jsonData = value.data;
+      if (jsonData['status'] == true) {
         print(jsonData);
-        Branch newBranch=Branch.fromJson(jsonData['Branch']);
+        Branch newBranch = Branch.fromJson(jsonData['Branch']);
         branchesList.add(newBranch);
         adminCubit.updateState();
         createCubit.finishLoading();
         Navigator.pop(context);
-        myToast(message: "Created Successfully",color:Colors.green);
-      }
-      else{
-        myToast(message: jsonData['msg'],color:Colors.red);
+        myToast(message: "Created Successfully", color: Colors.green);
+      } else {
+        myToast(message: jsonData['msg'], color: Colors.red);
         createCubit.finishLoading();
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("body2 = ${error.toString()}");
       print(error.toString());
       createCubit.finishLoading();
-      myToast(message: "Created Failed",color:Colors.red);
+      myToast(message: "Created Failed", color: Colors.red);
       adminCubit.updateState();
       Navigator.pop(context);
     });
   }
 
-
   static void updateBranch({
-    @required int id,
-    @required int index,
-    @required String title,
-    @required String location,
-    @required String number,
-    @required int crowdMeter,
-    //@required File picture,
-    @required String info,
-    @required int membersNumber,
-    @required int coachesNumber,
-    @required BuildContext context,
-    @required BuildContext detailsContext,
-    @required CreateCubit createCubit,
-    @required AdminCubit adminCubit,
-  })  {
+    required int id,
+    required int index,
+    required String title,
+    required String location,
+    required String number,
+    required int crowdMeter,
+    //required File picture,
+    required String info,
+    required int membersNumber,
+    required int coachesNumber,
+    required BuildContext context,
+    required BuildContext detailsContext,
+    required CreateCubit createCubit,
+    required AdminCubit adminCubit,
+  }) {
     String token = Global.token;
     createCubit.loading1();
-    http.put(
-        Uri.parse('$local/api/branches/update/$id'),
-        headers: <String, String>{
-          'Content-Type': 'application/json',
-
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          'Accept': '*/*',
-          'Authorization': 'Bearer $token',
-        },
-        body: jsonEncode({
-          "title": title,
-          "location": location,
-          "phone_number": number,
-          "crowd_meter": crowdMeter,
-          //"picture": picture,
-          "info": info,
-          "members_number": membersNumber,
-          "coaches_number": coachesNumber,
-        })).then((value) {
+    http
+        .put(Uri.parse('$local/api/branches/update/$id'),
+            headers: <String, String>{
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
+              'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+              'Accept': '*/*',
+              'Authorization': 'Bearer $token',
+            },
+            body: jsonEncode({
+              "title": title,
+              "location": location,
+              "phone_number": number,
+              "crowd_meter": crowdMeter,
+              //"picture": picture,
+              "info": info,
+              "members_number": membersNumber,
+              "coaches_number": coachesNumber,
+            }))
+        .then((value) {
       String data = value.body;
       var jsonData = jsonDecode(data);
       print(jsonData);
-      if(jsonData['status']==true){
-        Branch newBranch=Branch.fromJson(jsonData['Branch']);
-        newBranch.index=branchesList[index].index;
-        branchesList[index]=newBranch;
+      if (jsonData['status'] == true) {
+        Branch newBranch = Branch.fromJson(jsonData['Branch']);
+        newBranch.index = branchesList[index].index;
+        branchesList[index] = newBranch;
         adminCubit.updateState();
         createCubit.finishLoading();
         Navigator.pop(context);
         Navigator.pop(detailsContext);
-        myToast(message: "Updated Successfully",color:Colors.green);
-      }
-      else{
-        myToast(message: jsonData['msg'],color:Colors.red);
+        myToast(message: "Updated Successfully", color: Colors.green);
+      } else {
+        myToast(message: jsonData['msg'], color: Colors.red);
         createCubit.finishLoading();
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("body = ${error.toString()}");
       createCubit.finishLoading();
       Navigator.pop(context);
       Navigator.pop(detailsContext);
-      myToast(message: "Updated Failed",color:Colors.red);
+      myToast(message: "Updated Failed", color: Colors.red);
       adminCubit.updateState();
     });
-
   }
 
-
   static Future<void> assignEquipment({
-    @required Branch branch,
-    @required int equipment_id,
-    @required AdminCubit adminCubit,
-  }) async{
+    required Branch branch,
+    required int equipment_id,
+    required AdminCubit adminCubit,
+  }) async {
     String token = Global.token;
-    await http.put(
-      Uri.parse(
-          '$local/api/branches/assignEquipment/${branch.id}'),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Accept': '*/*',
-        'Authorization': 'Bearer $token',
-      },
-        body: jsonEncode({
-          "equipment_id": equipment_id,
-        })).then((value) {
+    await http
+        .put(Uri.parse('$local/api/branches/assignEquipment/${branch.id}'),
+            headers: <String, String>{
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
+              'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+              'Accept': '*/*',
+              'Authorization': 'Bearer $token',
+            },
+            body: jsonEncode({
+              "equipment_id": equipment_id,
+            }))
+        .then((value) {
       String data = value.body;
       var jsonData = jsonDecode(data);
-      if(jsonData['status']==true){
-        branchesList[branch.index].allEquipment.add(Equipment.fromJson(jsonData['assignEquipment']['equipment']));
+      if (jsonData['status'] == true) {
+        branchesList[branch.index]
+            .allEquipment
+            .add(Equipment.fromJson(jsonData['assignEquipment']['equipment']));
         adminCubit.updateState();
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("assign Equipment error = ${error.toString()}");
     });
   }
 
-  static Future<void> assignManyEquipment ({
-    @required Branch branch,
-    @required List<branchEquipment> equipments,
-    @required BuildContext context,
-    @required CreateCubit createCubit,
-    @required AdminCubit adminCubit,
-})async{
+  static Future<void> assignManyEquipment({
+    required Branch branch,
+    required List<branchEquipment> equipments,
+    required BuildContext context,
+    required CreateCubit createCubit,
+    required AdminCubit adminCubit,
+  }) async {
     createCubit.loading1();
     await equipments.forEach((element) {
-      if(element.isSelected){
-         assignEquipment(branch: branch, equipment_id: element.id,adminCubit: adminCubit);
+      if (element.isSelected) {
+        assignEquipment(
+            branch: branch, equipment_id: element.id, adminCubit: adminCubit);
       }
     });
     await createCubit.finishLoading();
     await Navigator.pop(context);
   }
-
 }

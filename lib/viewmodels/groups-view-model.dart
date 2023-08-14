@@ -9,7 +9,7 @@ import 'package:gym_project/viewmodels/set-view-model.dart';
 class GroupViewModel {
   Group group;
 
-  GroupViewModel({@required this.group});
+  GroupViewModel({required this.group});
 
   int get id => group.id;
   String get title => group.title;

@@ -24,7 +24,7 @@ Map<int, Map<String, Object>> selectedMeals = {};
 List<MealPlan> mealsList = [];
 
 List<MealPlan> getMealsList({
-  @required Map<int, Map<String, Object>> selectedMeals,
+  required Map<int, Map<String, Object>> selectedMeals,
 }) {
   List<MealPlan> mealsList = [];
   selectedMeals.values.forEach((mealData) {
@@ -37,7 +37,7 @@ List<MealPlan> getMealsList({
 }
 
 List<ItemPlan> getItemsList({
-  @required Map<int, Map<String, Object>> selectedItems,
+  required Map<int, Map<String, Object>> selectedItems,
 }) {
   List<ItemPlan> itemsList = [];
   selectedItems.values.forEach((itemData) {
@@ -534,7 +534,7 @@ class CustomListTile extends StatefulWidget {
   CustomListTile({
     this.key,
     this.object,
-    @required this.notifyParent,
+    required this.notifyParent,
   }) : super(key: key) {
     assert(
       object.runtimeType == ItemPlan || object.runtimeType == MealPlan,

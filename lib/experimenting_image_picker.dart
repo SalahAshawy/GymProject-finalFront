@@ -22,7 +22,7 @@ class MyImagePicker extends StatefulWidget {
 }
 
 class _MyImagePickerState extends State<MyImagePicker> {
-  List<XFile> _imageFileList;
+   List<XFile>? _imageFileList;
 
   set _imageFile(XFile value) {
     _imageFileList = value == null ? null : [value];
@@ -31,9 +31,9 @@ class _MyImagePickerState extends State<MyImagePicker> {
   dynamic _pickImageError;
   bool isVideo = false;
 
-  VideoPlayerController _controller;
-  VideoPlayerController _toBeDisposed;
-  String _retrieveDataError;
+  VideoPlayerController? _controller;
+  VideoPlayerController? _toBeDisposed;
+  String? _retrieveDataError;
 
   final ImagePicker _picker = ImagePicker();
   final TextEditingController maxWidthController = TextEditingController();
@@ -152,7 +152,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
     }
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: AspectRatioVideo(_controller),
+      child: AspectRatioVideo(_controller!),
     );
   }
 
@@ -175,7 +175,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
                     : Image.file(File(_imageFileList[index].path)),
               );
             },
-            itemCount: _imageFileList.length,
+            itemCount: _imageFileList!.length,
           ),
           label: 'image_picker_example_picked_images');
     } else if (_pickImageError != null) {
@@ -216,7 +216,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
         });
       }
     } else {
-      _retrieveDataError = response.exception.code;
+      _retrieveDataError = response.exception!.code;
     }
   }
 
@@ -381,13 +381,10 @@ class _MyImagePickerState extends State<MyImagePicker> {
                   onPressed: () {
                     double width = maxWidthController.text.isNotEmpty
                         ? double.parse(maxWidthController.text)
-                        : null;
-                    double height = maxHeightController.text.isNotEmpty
-                        ? double.parse(maxHeightController.text)
-                        : null;
-                    int quality = qualityController.text.isNotEmpty
-                        ? int.parse(qualityController.text)
-                        : null;
+                        :0.0;
+                    double height = double.tryParse(maxWidthController.text) ?? 0.0;
+
+                    int quality = int.tryParse(qualityController.text)??0;
                     onPick(width, height, quality);
                     Navigator.of(context).pop();
                   }),

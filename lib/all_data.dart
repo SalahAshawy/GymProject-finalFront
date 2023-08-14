@@ -13,8 +13,8 @@ import 'models/user/coach_model.dart';
 import 'models/user/member_model.dart';
 import 'models/user/nutritionist_model.dart';
 
-Coach userCoach;
-Member userMember;
+Coach? userCoach;
+Member? userMember;
 List<Member> membersUsers = [];
 List<Coach> coachesUsers = [];
 List<Nutritionist> nutritionistsUsers = [];

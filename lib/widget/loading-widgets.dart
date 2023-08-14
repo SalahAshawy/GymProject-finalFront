@@ -3,7 +3,7 @@ import 'package:gym_project/constants.dart';
 
 class Progress extends StatelessWidget {
   const Progress({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -33,7 +33,7 @@ class EmptyListError extends StatelessWidget {
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

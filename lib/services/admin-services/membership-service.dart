@@ -17,10 +17,9 @@ import 'package:http/http.dart' as http;
 import '../../widget/global.dart';
 import '../answers-webservice.dart';
 
-String  token =Global.token;
+String token = Global.token;
 
 class MembershipsWebservice {
-
   static Future<void> fetchMemberships() async {
     await http.get(Uri.parse('$local/api/memberships/getAll'), headers: {
       'Content-Type': 'application/json',
@@ -28,15 +27,14 @@ class MembershipsWebservice {
       'Authorization': 'Bearer ${Global.token}'
     }).then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
-        jsonData['Membership'].forEach((item){
-          allMemberships.add(Membership.fromJson(item,isFetch:true));
+      if (jsonData['status'] == true) {
+        jsonData['Membership'].forEach((item) {
+          allMemberships.add(Membership.fromJson(item, isFetch: true));
         });
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("fetch memberships error = ${error.toString()}");
     });
-
   }
 
   //get Membership by id
@@ -58,23 +56,22 @@ class MembershipsWebservice {
   }
 
   //add Membership
-  static void postMembership(
-  {
-    @required String title,
-    @required int branch_id,
-    @required double duration,
-    @required String description,
-    @required double price,
-    @required int limit_of_frozen_days,
-    int available_classes=0,
-    @required double discount,
-    @required BuildContext context,
-    @required AdminCubit adminCubit,
-    @required CreateCubit createCubit,
-  }
-  ){
+  static void postMembership({
+    required String title,
+    required int branch_id,
+    required double duration,
+    required String description,
+    required double price,
+    required int limit_of_frozen_days,
+    int available_classes = 0,
+    required double discount,
+    required BuildContext context,
+    required AdminCubit adminCubit,
+    required CreateCubit createCubit,
+  }) {
     createCubit.loading1();
-    http.post(
+    http
+        .post(
       Uri.parse('$local/api/memberships/store'),
       headers: <String, String>{
         'Content-Type': 'application/json',
@@ -82,7 +79,7 @@ class MembershipsWebservice {
         'Authorization': 'Bearer ${Global.token}'
       },
       body: jsonEncode(<String, dynamic>{
-        'title':title,
+        'title': title,
         'branch_id': branch_id,
         'duration': duration,
         'description': description,
@@ -91,46 +88,46 @@ class MembershipsWebservice {
         'available_classes': available_classes,
         'discount': discount,
       }),
-    ).then((value) {
+    )
+        .then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
+      if (jsonData['status'] == true) {
         allMemberships.add(Membership.fromJson(jsonData['Membership']));
         createCubit.finishLoading();
         Navigator.pop(context);
-        myToast(message: "Added Successfully",color: Colors.green);
+        myToast(message: "Added Successfully", color: Colors.green);
         adminCubit.addMembershipsSuccess();
-      }
-      else{
-        myToast(message: jsonData['msg'],color: Colors.red);
+      } else {
+        myToast(message: jsonData['msg'], color: Colors.red);
         createCubit.finishLoading();
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("Add memberShips error = ${error.toString()}");
       createCubit.finishLoading();
-      myToast(message: "Added Failed",color: Colors.red);
+      myToast(message: "Added Failed", color: Colors.red);
       Navigator.pop(context);
       adminCubit.addMembershipsError();
     });
   }
 
   //edit Membership
-  static void editMembership(
-  {
-    @required int id,
-    @required int index,
-    @required double duration,
-    @required String title,
-    @required String description,
-    @required double price,
-    @required int limit_of_frozen_days,
-    int available_classes=0,
-    @required double discount,
-    @required BuildContext context,
-    @required AdminCubit adminCubit,
-    @required CreateCubit createCubit,
-})  {
+  static void editMembership({
+    required int id,
+    required int index,
+    required double duration,
+    required String title,
+    required String description,
+    required double price,
+    required int limit_of_frozen_days,
+    int available_classes = 0,
+    required double discount,
+    required BuildContext context,
+    required AdminCubit adminCubit,
+    required CreateCubit createCubit,
+  }) {
     createCubit.loading1();
-     http.post(
+    http
+        .post(
       Uri.parse('$local/api/memberships/update/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json',
@@ -138,7 +135,7 @@ class MembershipsWebservice {
         'Authorization': 'Bearer $token'
       },
       body: jsonEncode(<String, dynamic>{
-        'title':title,
+        'title': title,
         'duration': duration,
         'description': description,
         'price': price,
@@ -146,24 +143,24 @@ class MembershipsWebservice {
         'available_classes': available_classes,
         'discount': discount,
       }),
-    ).then((value){
+    )
+        .then((value) {
       var jsonData = jsonDecode(value.body);
       print(jsonData);
-      if(jsonData['status']==true){
-        allMemberships[index]=Membership.fromJson(jsonData['Membership']);
+      if (jsonData['status'] == true) {
+        allMemberships[index] = Membership.fromJson(jsonData['Membership']);
         createCubit.finishLoading();
         Navigator.pop(context);
         adminCubit.editMembershipsSuccess();
-        myToast(message: "Edit Successfully",color: Colors.green);
-      }
-      else{
+        myToast(message: "Edit Successfully", color: Colors.green);
+      } else {
         createCubit.finishLoading();
-        myToast(message:jsonData['msg'],color: Colors.red);
+        myToast(message: jsonData['msg'], color: Colors.red);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("Update MemberShips error = ${error.toString()}");
       createCubit.finishLoading();
-      myToast(message: "Update Failed",color: Colors.red);
+      myToast(message: "Update Failed", color: Colors.red);
       Navigator.pop(context);
       adminCubit.editMembershipsError();
     });
@@ -171,12 +168,12 @@ class MembershipsWebservice {
 
   //delete Membership
   static Future<void> deleteMembership({
-    @required int id,
-    @required int index,
-    @required BuildContext context,
-    @required CreateCubit createCubit,
-    @required AdminCubit adminCubit,
-}) async {
+    required int id,
+    required int index,
+    required BuildContext context,
+    required CreateCubit createCubit,
+    required AdminCubit adminCubit,
+  }) async {
     createCubit.loading2();
     await http.delete(
       Uri.parse('$local/api/memberships/delete/$id'),
@@ -188,23 +185,22 @@ class MembershipsWebservice {
     ).then((value) {
       String data = value.body;
       var jsonData = jsonDecode(data);
-      if(jsonData['status']==true){
+      if (jsonData['status'] == true) {
         allMemberships.removeAt(index);
         createCubit.finishLoading();
         Navigator.pop(context);
         adminCubit.deleteMembershipsSuccess();
-        myToast(message: "Deleted Successfully",color:Colors.green);
-      }
-      else{
+        myToast(message: "Deleted Successfully", color: Colors.green);
+      } else {
         Navigator.pop(context);
         createCubit.finishLoading();
-        myToast(message: "Deleted Failed",color:Colors.red);
+        myToast(message: "Deleted Failed", color: Colors.red);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("delete Memberships error = ${error.toString()}");
       Navigator.pop(context);
       createCubit.finishLoading();
-      myToast(message: "Deleted Failed",color:Colors.red);
+      myToast(message: "Deleted Failed", color: Colors.red);
     });
   }
 }

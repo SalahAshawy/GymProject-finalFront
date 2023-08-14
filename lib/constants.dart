@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class Constants {
   // static String defaultUrl = 'http://159.122.172.202';
   //static String defaultUrl = 'https://itwinnow.com/';
@@ -12,19 +13,20 @@ class Constants {
   //static String defaultUrl = 'https://asdwxz.herokuapp.com/';
   // static String defaultUrl = 'http://10.0.2.2:8000';
 }
-Color myYellow=Color(0xFFFFCE2B);
-Color myYellow2=HexColor("F8B400");
-Color myBlack=Color(0xff181818);
-Color myGrey=HexColor("E2DCC8");
-Color myBlue=HexColor("100720");
-Color myPurple=HexColor("2A0944");
-Color myPurple2=HexColor("4C3A51");
-Color myPurple3=HexColor("774360");
-Color myGreen=HexColor("1B2430");
-Color myTealLight=HexColor("5FD068");
-Color myTealDark=HexColor("05595B");
 
-Widget backButton({@required BuildContext context}){
+Color myYellow = Color(0xFFFFCE2B);
+Color myYellow2 = HexColor("F8B400");
+Color myBlack = Color(0xff181818);
+Color myGrey = HexColor("E2DCC8");
+Color myBlue = HexColor("100720");
+Color myPurple = HexColor("2A0944");
+Color myPurple2 = HexColor("4C3A51");
+Color myPurple3 = HexColor("774360");
+Color myGreen = HexColor("1B2430");
+Color myTealLight = HexColor("5FD068");
+Color myTealDark = HexColor("05595B");
+
+Widget backButton({required BuildContext context}) {
   return InkWell(
     onTap: () {
       Navigator.pop(context);
@@ -37,22 +39,23 @@ Widget backButton({@required BuildContext context}){
   );
 }
 
-Future<Object> goToAnotherScreenRemove(context,anotherScreen){
-  return Navigator.pushAndRemoveUntil(context,
+Future<Object> goToAnotherScreenRemove(context, anotherScreen) {
+  return Navigator.pushAndRemoveUntil(
+      context,
       PageTransition(
           type: PageTransitionType.rightToLeft,
           child: anotherScreen,
           inheritTheme: true,
           ctx: context),
-          (route) => false
-  );
+      (route) => false);
 }
 
-Widget myText({@required String text,
-  double fontSize=20,
-  Color color=Colors.black,
-  FontWeight fontWeight=FontWeight.normal,
-}){
+Widget myText({
+  required String text,
+  double fontSize = 20,
+  Color color = Colors.black,
+  FontWeight fontWeight = FontWeight.normal,
+}) {
   return Text(
     text,
     style: GoogleFonts.poppins(
@@ -63,20 +66,18 @@ Widget myText({@required String text,
   );
 }
 
-
-Future<Object> goToAnotherScreenPush(context,anotherScreen,{PageTransitionType type=PageTransitionType.rightToLeft}){
-  return Navigator.push(context,
+Future<Object> goToAnotherScreenPush(context, anotherScreen,
+    {PageTransitionType type = PageTransitionType.rightToLeft}) {
+  return Navigator.push(
+    context,
     PageTransition(
-        type: type,
-        child: anotherScreen,
-        inheritTheme: true,
-        ctx: context),
+        type: type, child: anotherScreen, inheritTheme: true, ctx: context),
   );
 }
 
-
-Future<Object> goToAnotherScreenPushReplacement(context,anotherScreen){
-  return Navigator.pushReplacement(context,
+Future<Object> goToAnotherScreenPushReplacement(context, anotherScreen) {
+  return Navigator.pushReplacement(
+    context,
     PageTransition(
         type: PageTransitionType.rightToLeft,
         child: anotherScreen,
@@ -85,30 +86,29 @@ Future<Object> goToAnotherScreenPushReplacement(context,anotherScreen){
   );
 }
 
-
-void  myToast({String message,Color color}){
-   Fluttertoast.showToast(
-      msg: message,
-      fontSize: 16.sp,
-       gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      toastLength: Toast.LENGTH_LONG,
-      backgroundColor: color,
-      textColor: Colors.white,
+void myToast({required String message, required Color color}) {
+  Fluttertoast.showToast(
+    msg: message,
+    fontSize: 16.sp,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    toastLength: Toast.LENGTH_LONG,
+    backgroundColor: color,
+    textColor: Colors.white,
   );
 }
 
 Widget myListTitle({
-  @required String title,
-  Color titleColor=Colors.white,
-  @required double titleFontSize,
-  int titleMaxLine=1,
-  String subtitle='',
-  double subtitleFontSize=14,
-  int subtitleMaxLine=1,
-  Widget leading=const SizedBox(),
-  Widget trailing=const SizedBox(),
-}){
+  required String title,
+  Color titleColor = Colors.white,
+  required double titleFontSize,
+  int titleMaxLine = 1,
+  String subtitle = '',
+  double subtitleFontSize = 14,
+  int subtitleMaxLine = 1,
+  Widget leading = const SizedBox(),
+  Widget trailing = const SizedBox(),
+}) {
   return ListTile(
     leading: Container(
       height: double.infinity,
@@ -125,26 +125,27 @@ Widget myListTitle({
         fontFamily: 'assets/fonts/Changa-Bold.ttf',
       ),
     ),
-    subtitle: subtitle!=''?Text(
-      subtitle,
-      maxLines: subtitleMaxLine,
-      style: TextStyle(
-        fontSize: subtitleFontSize,
-        fontWeight: FontWeight.w600,
-        color: Colors.grey,
-        fontFamily: 'assets/fonts/Changa-Bold.ttf',
-      ),
-    ):const SizedBox(),
+    subtitle: subtitle != ''
+        ? Text(
+            subtitle,
+            maxLines: subtitleMaxLine,
+            style: TextStyle(
+              fontSize: subtitleFontSize,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey,
+              fontFamily: 'assets/fonts/Changa-Bold.ttf',
+            ),
+          )
+        : const SizedBox(),
     trailing: trailing,
     contentPadding: EdgeInsets.zero,
   );
 }
 
-
 void myAlertDialog({
-  @required BuildContext context,
-  @required Widget Body,
-}){
+  required BuildContext context,
+  required Widget Body,
+}) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -173,26 +174,25 @@ void myAlertDialog({
   );
 }
 
-int handleApi(item){
-  return item is String?int.parse(item):item;
+int handleApi(item) {
+  return item is String ? int.parse(item) : item;
 }
 
 Widget myDropDownList({
-  @required List<String>items,
-  @required dynamic onChanged,
-  @required String selectedItem,
-  @required String labelText,
-  bool showClearButton=false,
-
-}){
+  required List<String> items,
+  required dynamic onChanged,
+  required String selectedItem,
+  required String labelText,
+  bool showClearButton = false,
+}) {
   return DropdownSearch<String>(
       mode: Mode.MENU,
       showSelectedItems: true,
-      items:items,
+      items: items,
       showClearButton: showClearButton,
       popupItemDisabled: (String s) => s.startsWith('I'),
       onChanged: onChanged,
-      validator: (String item) {
+      validator: (String? item) {
         if (item == null)
           return "Required field";
         else
@@ -207,8 +207,6 @@ Widget myDropDownList({
           labelStyle: TextStyle(
               color: Colors.black,
               fontSize: 16.0.sp,
-              fontWeight: FontWeight.bold
-          )
-      ),
-      selectedItem: selectedItem??'');
+              fontWeight: FontWeight.bold)),
+      selectedItem: selectedItem ?? '');
 }

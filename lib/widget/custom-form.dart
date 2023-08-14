@@ -15,13 +15,13 @@ class CustomForm extends StatefulWidget {
   AdminCubit cubit;
 
   CustomForm({
-    this.titleController,
-    this.bodyController,
-    this.form_type,
-    this.post_type,
-    this.enable,
-    this.id,
-    this.cubit
+    required this.titleController,
+    required this.bodyController,
+    required this.form_type,
+    required this.post_type,
+    required this.enable,
+    required this.id,
+    required this.cubit
   });
 
   @override

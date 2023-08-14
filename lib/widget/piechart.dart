@@ -4,8 +4,8 @@ import 'package:pie_chart/pie_chart.dart';
 
 class FinancesPieChart extends StatelessWidget {
   const FinancesPieChart({
-    Key key,
-    @required this.dataMap,
+    Key? key,
+    required this.dataMap,
   }) : super(key: key);
 
   final Map<String, double> dataMap;

@@ -283,13 +283,13 @@ class MyChoosingGridViewCard extends StatefulWidget {
     this.subTitle3,
     this.subTitle4, {
     Key key,
-    @required this.index,
-    @required this.selectionMode,
-    @required this.setSelectionMode,
-    @required this.incrementItem,
-    @required this.decrementItem,
-    @required this.selectedItemsNumber,
-    @required this.isSelected,
+    required this.index,
+    required this.selectionMode,
+    required this.setSelectionMode,
+    required this.incrementItem,
+    required this.decrementItem,
+    required this.selectedItemsNumber,
+    required this.isSelected,
   }) : super(key: key);
 
   final image;
