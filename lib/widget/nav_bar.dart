@@ -10,7 +10,7 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  MotionTabController _tabController;
+  // MotionTabController _tabController;
   int _selectedIndex = 0;
 
   final _pages = [

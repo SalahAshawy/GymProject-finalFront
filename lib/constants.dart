@@ -39,7 +39,7 @@ Widget backButton({required BuildContext context}) {
   );
 }
 
-Future<Object> goToAnotherScreenRemove(context, anotherScreen) {
+Future<dynamic> goToAnotherScreenRemove(context, anotherScreen) {
   return Navigator.pushAndRemoveUntil(
       context,
       PageTransition(
@@ -66,7 +66,7 @@ Widget myText({
   );
 }
 
-Future<Object> goToAnotherScreenPush(context, anotherScreen,
+Future<dynamic> goToAnotherScreenPush(context, anotherScreen,
     {PageTransitionType type = PageTransitionType.rightToLeft}) {
   return Navigator.push(
     context,
@@ -75,7 +75,7 @@ Future<Object> goToAnotherScreenPush(context, anotherScreen,
   );
 }
 
-Future<Object> goToAnotherScreenPushReplacement(context, anotherScreen) {
+Future<dynamic> goToAnotherScreenPushReplacement(context, anotherScreen) {
   return Navigator.pushReplacement(
     context,
     PageTransition(

@@ -65,16 +65,16 @@ class _MyImagePickerState extends State<MyImagePicker> {
   }
 
   void _onImageButtonPressed(ImageSource source,
-      {BuildContext context, bool isMultiImage = false}) async {
+      {BuildContext? context, bool isMultiImage = false}) async {
     if (_controller != null) {
-      await _controller.setVolume(0.0);
+      await _controller!.setVolume(0.0);
     }
     if (isVideo) {
-      final XFile file = await _picker.pickVideo(
+      final XFile? file = await _picker.pickVideo(
           source: source, maxDuration: const Duration(seconds: 10));
-      await _playVideo(file);
+      await _playVideo(file!);
     } else if (isMultiImage) {
-      await _displayPickImageDialog(context,
+      await _displayPickImageDialog(context!,
           (double maxWidth, double maxHeight, int quality) async {
         try {
           final pickedFileList = await _picker.pickMultiImage(
@@ -92,7 +92,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
         }
       });
     } else {
-      await _displayPickImageDialog(context,
+      await _displayPickImageDialog(context!,
           (double maxWidth, double maxHeight, int quality) async {
         try {
           final pickedFile = await _picker.pickImage(
@@ -102,7 +102,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
             imageQuality: quality,
           );
           setState(() {
-            _imageFile = pickedFile;
+            _imageFile = pickedFile!;
           });
         } catch (e) {
           setState(() {
@@ -116,8 +116,8 @@ class _MyImagePickerState extends State<MyImagePicker> {
   @override
   void deactivate() {
     if (_controller != null) {
-      _controller.setVolume(0.0);
-      _controller.pause();
+      _controller!.setVolume(0.0);
+      _controller!.pause();
     }
     super.deactivate();
   }
@@ -133,14 +133,14 @@ class _MyImagePickerState extends State<MyImagePicker> {
 
   Future<void> _disposeVideoController() async {
     if (_toBeDisposed != null) {
-      await _toBeDisposed.dispose();
+      await _toBeDisposed!.dispose();
     }
     _toBeDisposed = _controller;
     _controller = null;
   }
 
   Widget _previewVideo() {
-    final Text retrieveError = _getRetrieveErrorWidget();
+    final Text? retrieveError = _getRetrieveErrorWidget();
     if (retrieveError != null) {
       return retrieveError;
     }
@@ -157,7 +157,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
   }
 
   Widget _previewImages() {
-    final Text retrieveError = _getRetrieveErrorWidget();
+    final Text? retrieveError = _getRetrieveErrorWidget();
     if (retrieveError != null) {
       return retrieveError;
     }
@@ -171,8 +171,8 @@ class _MyImagePickerState extends State<MyImagePicker> {
               return Semantics(
                 label: 'image_picker_example_picked_image',
                 child: kIsWeb
-                    ? Image.network(_imageFileList[index].path)
-                    : Image.file(File(_imageFileList[index].path)),
+                    ? Image.network(_imageFileList![index].path)
+                    : Image.file(File(_imageFileList![index].path)),
               );
             },
             itemCount: _imageFileList!.length,
@@ -207,11 +207,11 @@ class _MyImagePickerState extends State<MyImagePicker> {
     if (response.file != null) {
       if (response.type == RetrieveType.video) {
         isVideo = true;
-        await _playVideo(response.file);
+        await _playVideo(response.file!);
       } else {
         isVideo = false;
         setState(() {
-          _imageFile = response.file;
+          _imageFile = response.file!;
           _imageFileList = response.files;
         });
       }
@@ -331,9 +331,9 @@ class _MyImagePickerState extends State<MyImagePicker> {
     );
   }
 
-  Text _getRetrieveErrorWidget() {
+  Text? _getRetrieveErrorWidget() {
     if (_retrieveDataError != null) {
-      final Text result = Text(_retrieveDataError);
+      final Text result = Text(_retrieveDataError!);
       _retrieveDataError = null;
       return result;
     }

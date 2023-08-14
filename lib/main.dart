@@ -98,8 +98,7 @@ import 'helper/dio_helper.dart';
 import 'helper/shared_preferrnce_helper.dart';
 import 'screens/coach/schedule/coach-schedule.dart';
 
-
-Future<void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedCache.init();
   await DioHelper.init();
@@ -122,12 +121,12 @@ Future<void> main() async{
       ),
     );
   };
-  Global.set_token(SharedCache.getData(key: 'token') ??" ");
-  Global.setRole(SharedCache.getData(key: 'role')??" ");
-  Global.set_userId(SharedCache.getData(key:'id')??-1);
-  Global.setEmail(SharedCache.getData(key: 'email')??" ");
-  Global.setUserName(SharedCache.getData(key: 'name')??" ");
-  Global.setRoleId(SharedCache.getData(key: 'roleID')??0);
+  Global.set_token(SharedCache.getData(key: 'token') ?? " ");
+  Global.setRole(SharedCache.getData(key: 'role') ?? " ");
+  Global.set_userId(SharedCache.getData(key: 'id') ?? -1);
+  Global.setEmail(SharedCache.getData(key: 'email') ?? " ");
+  Global.setUserName(SharedCache.getData(key: 'name') ?? " ");
+  Global.setRoleId(SharedCache.getData(key: 'roleID') ?? 0);
   runApp(
     MultiProvider(
       providers: [
@@ -135,10 +134,18 @@ Future<void> main() async{
         ChangeNotifierProvider(create: (_) => ExerciseListViewModel()),
         ChangeNotifierProvider(create: (_) => GroupListViewModel()),
         ChangeNotifierProvider(create: (_) => SetListViewModel()),
-        ChangeNotifierProvider(create: (_) => CoachViewModel(),),
-        ChangeNotifierProvider(create: (_) => PrivateSessionListViewModel(),),
-        ChangeNotifierProvider(create: (_) => FitnessSummaryListViewModel(),),
-        ChangeNotifierProvider(create: (_) => ImageUploadViewModel(),),
+        ChangeNotifierProvider(
+          create: (_) => CoachViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PrivateSessionListViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => FitnessSummaryListViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ImageUploadViewModel(),
+        ),
         ChangeNotifierProvider(create: (_) => EventViewModel()),
         ChangeNotifierProvider(create: (_) => ComplaintViewModel()),
         ChangeNotifierProvider(create: (_) => InvitationViewModel()),
@@ -159,19 +166,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>AdminCubit()),
-        BlocProvider(create: (context)=>CoachCubit()),
-        BlocProvider(create: (context)=>MemberCubit()),
+        BlocProvider(create: (context) => AdminCubit()),
+        BlocProvider(create: (context) => CoachCubit()),
+        BlocProvider(create: (context) => MemberCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-        builder: (BuildContext context, Widget ) =>MaterialApp(
+        builder: (BuildContext context, Widget) => MaterialApp(
           home: ConditionalBuilder(
-            condition: Global.token==" ",
-            builder: (context)=>Login(),
-            fallback: (context){
+            condition: Global.token == " ",
+            builder: (context) => Login(),
+            fallback: (context) {
               return SplachScreen();
             },
           ),
@@ -198,7 +205,8 @@ class MyApp extends StatelessWidget {
             '/create-class': (context) => CreateClassForm(),
             '/edit-class': (context) => EditClass(),
             //nutritionist-session routes
-            '/nutritionist-session-list': (context) => NutritionistSessionsList(),
+            '/nutritionist-session-list': (context) =>
+                NutritionistSessionsList(),
             //Equipment routes
             '/equipment-list': (context) => EquipmentList(),
             '/equipment-details': (context) => EquipmentDetails(),
@@ -207,14 +215,18 @@ class MyApp extends StatelessWidget {
 
             //workout summery
             '/workout-summeries': (context) => WorkoutSummaries(),
-            '/nutritionist-sessions-list': (context) => NutritionistSessionsList(),
+            '/nutritionist-sessions-list': (context) =>
+                NutritionistSessionsList(),
 
             //Meals
-            MealsViewScreen.viewingRouteName: (context) => MealsViewScreen(false),
-            MealsViewScreen.choosingRouteName: (context) => MealsViewScreen(true),
+            MealsViewScreen.viewingRouteName: (context) =>
+                MealsViewScreen(false),
+            MealsViewScreen.choosingRouteName: (context) =>
+                MealsViewScreen(true),
             '/meal-details': (context) => MealsDetailsScreen(null),
             '/meal-create': (context) => CreateMealForm(),
-            CreateMealForm.editingRouteName: (context) => CreateMealForm(isEditing: true),
+            CreateMealForm.editingRouteName: (context) =>
+                CreateMealForm(isEditing: true),
 
             //Items
             ItemsScreen.viewingRouteName: (context) => ItemsScreen(false),
@@ -227,7 +239,8 @@ class MyApp extends StatelessWidget {
             '/plans': (context) => PlansViewScreen(false),
             '/plan-details': (context) => PlansDetailsScreen(),
             CreatePlanForm.creatingRouteName: (context) => CreatePlanForm(),
-            CreatePlanForm.editingRouteName: (context) => CreatePlanForm(isEditing: true),
+            CreatePlanForm.editingRouteName: (context) =>
+                CreatePlanForm(isEditing: true),
             '/plan-schedule': (context) => PlanSchedule(),
 
             //Fitness Summaries
@@ -274,8 +287,10 @@ class MyApp extends StatelessWidget {
             '/coach/profile': (context) => CoachProfile(),
             '/coach/schedule': (context) => CoachSchedule(),
             // exercises
-            ExercisesScreen.viewingRouteName: (context) => ExercisesScreen(false),
-            ExercisesScreen.choosingRouteName: (context) => ExercisesScreen(true),
+            ExercisesScreen.viewingRouteName: (context) =>
+                ExercisesScreen(false),
+            ExercisesScreen.choosingRouteName: (context) =>
+                ExercisesScreen(true),
             //exercises routes
             '/exercises/view': (context) => ExercisesScreen(false),
             '/exercises/create': (context) => CreateExerciseForm(),
@@ -296,7 +311,8 @@ class MyApp extends StatelessWidget {
             //private session routes
             '/sessions': (context) => MemberSessionsScreen(),
             '/sessions/select': (context) => ViewPrivateSessionsScreen(),
-            '/sessions/requests': (context) => ViewPrivateSessionRequestsScreen(),
+            '/sessions/requests': (context) =>
+                ViewPrivateSessionRequestsScreen(),
             '/my-sessions/view': (context) => ViewMyPrivateSessionsScreen(),
             '/booked-sessions/view': (context) => ViewBookedSessionsScreen(),
             // '/session-details': (context) => PrivateSessionDetailsScreen(),
@@ -325,7 +341,6 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Gym',
           theme: ThemeData(
-            backgroundColor: myBlack,
               primaryColor: Color(0xFFFFCE2B),
               //primaryColor: Color(0xff0082CD),
               //primaryColorDark: Color(0xff0082CD),
@@ -333,8 +348,8 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: Colors.black,
               //canvasColor: Colors.white,
               fontFamily: "ProximaNova",
-              textTheme: TextTheme(
-              )),
+              textTheme: TextTheme(),
+              colorScheme: ColorScheme(background: myBlack)),
         ),
       ),
     );
