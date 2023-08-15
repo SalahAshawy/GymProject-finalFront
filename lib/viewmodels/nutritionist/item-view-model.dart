@@ -7,30 +7,30 @@ class ItemViewModel with ChangeNotifier {
   Item item = Item(title: "Nice");
 
   String get title {
-    return item.title;
+    return item.title!;
   }
 
-  String get level {
+  String? get level {
     return item.level;
   }
 
-  int get calories {
+  int? get calories {
     return item.cal;
   }
 
-  String get description {
+  String? get description {
     return item.description;
   }
 
-  String get image {
+  String? get image {
     return item.image;
   }
 
-  int get nutritionistID {
+  int? get nutritionistID {
     return item.nutritionistID;
   }
 
-  int get id {
+  int? get id {
     return item.id;
   }
 

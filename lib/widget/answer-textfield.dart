@@ -15,15 +15,15 @@ class AnswerTextField extends StatefulWidget {
   final AdminCubit adminCubit;
 
   AnswerTextField(
-      {this.controller, this.onEdit, this.id, this.question, this.type,this.adminCubit});
+      {required this.controller, required this.onEdit, required this.id, required this.question, required this.type,required this.adminCubit});
 
   @override
   _AnswerTextFieldState createState() => _AnswerTextFieldState();
 }
 
 class _AnswerTextFieldState extends State<AnswerTextField> {
-  Color iconColor;
-  bool edit;
+  late Color iconColor;
+  late bool edit;
 
   @override
   void initState() {
@@ -78,7 +78,7 @@ class _AnswerTextFieldState extends State<AnswerTextField> {
                     widget.onEdit();
                   } else {
                     await AnswersWebservice.postAnswer(
-                        question:questionsList[widget.question.index],
+                        question:questionsList[widget.question.index!],
                         body:  widget.controller.text,
                       adminCubit: widget.adminCubit
                     );

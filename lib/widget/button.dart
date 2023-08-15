@@ -3,18 +3,18 @@ import '../style/styling.dart';
 
 class Button extends StatelessWidget {
   final String btnTxt;
-  final Function onTap;
+  final  Function() onTap;
   final bool border;
   final Color borderColor;
   final bool roundedBorder;
 
   const Button(
-      {Key key,
-      this.roundedBorder = false,
-      this.btnTxt,
-      this.onTap,
-      this.border = false,
-      this.borderColor})
+      {required Key key,
+       this.roundedBorder = false,
+      required this.btnTxt,
+      required this.onTap,
+       this.border = false,
+      required this.borderColor})
       : super(key: key);
 
   @override

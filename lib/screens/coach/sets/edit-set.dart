@@ -18,7 +18,7 @@ int getExerciseQuantity(ExerciseViewModel exercise) {
 }
 
 void setSelectedExercises({
-  @required List<ExerciseViewModel>? orderedExercises,
+  required List<ExerciseViewModel>? orderedExercises,
 }) {
   selectedExercises.clear();
   List<int> uniqueIds =
@@ -95,7 +95,6 @@ class MapScreenState extends State<EditSetForm>
     SetListViewModel setListVM,
     SetViewModel setVM,
   ) async {
-
     //   FocusScope.of(context).requestFocus(new FocusNode());
     // });
     try {
@@ -211,8 +210,7 @@ class MapScreenState extends State<EditSetForm>
                   hintText: hintText,
                 ),
                 controller: controller,
-                validator: validator
-            ),
+                validator: validator),
           ),
         ],
       ),
@@ -313,7 +311,7 @@ class MapScreenState extends State<EditSetForm>
           SizedBox(height: 10),
           if (orderedExercises.isNotEmpty) buildReorderableList(),
           SizedBox(height: 10),
-          buildEditButton(onPressed: submitForm as void Function()? ),
+          buildEditButton(onPressed: submitForm as void Function()?),
         ],
       ),
     );

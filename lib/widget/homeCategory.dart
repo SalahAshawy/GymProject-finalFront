@@ -4,7 +4,7 @@ import '../../style/styling.dart';
 class HomeCategory extends StatelessWidget {
   final String categoryName;
   final bool isSelected;
-  const HomeCategory({Key key, this.categoryName, this.isSelected = false})
+  const HomeCategory({ Key? key, required this.categoryName, this.isSelected = false})
       : super(key: key);
 
   @override

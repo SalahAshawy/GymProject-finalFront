@@ -3,7 +3,7 @@ import 'package:gym_project/models/event.dart';
 import 'package:gym_project/services/event-webservice.dart';
 
 class EventViewModel extends ChangeNotifier {
-  Event event;
+  Event? event;
   List<Event> AllEvents =[];
   List<Event> UpcomingEvents =[];
   List<Event> PreviousEvents =[];
@@ -11,27 +11,27 @@ class EventViewModel extends ChangeNotifier {
 
 
   String get title {
-    return event.title;
+    return event!.title;
   }
   
   String get description {
-    return event.description;
+    return event!.description;
   }
 
   String get price {
-    return event.price;
+    return event!.price;
   }
 
   String get starttime {
-    return event.startTime;
+    return event!.startTime;
   }
 
   String get endTime {
-    return event.endTime;
+    return event!.endTime;
   }
 
   int get tickets {
-    return event.ticketsAvailable;
+    return event!.ticketsAvailable;
   }
 
   Future<void> getAllEvents(token) async

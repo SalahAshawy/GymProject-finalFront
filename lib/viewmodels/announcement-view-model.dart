@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 class AnnouncementViewModel {
   Announcement _announcement;
-  AnnouncementViewModel({Announcement announcement})
+  AnnouncementViewModel({required Announcement announcement})
       : _announcement = announcement;
 
   int get id => _announcement.id;

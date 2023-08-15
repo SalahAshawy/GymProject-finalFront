@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
 class Global with ChangeNotifier {
-  static String _token;
-  static String _adminToken;
-  static String _userName;
-  static String _email;
-  static String _role;
-  static int _id;
-  static int _role_id;
+  static String? _token;
+  static String? _adminToken;
+  static String? _userName;
+  static String? _email;
+  static String? _role;
+  static int? _id;
+  static int? _role_id;
   static void set_token(String s) {
     _token = s;
   }
@@ -24,13 +24,13 @@ class Global with ChangeNotifier {
   }
 
 
-  static int get roleID => _role_id;
+  static int? get roleID => _role_id;
 
 
-  static String get token => _token;
-  static String get adminToken => _adminToken;
-  static String get username => _userName;
-  static String get email => _email;
-  static int get id => _id;
-  static String get role => _role;
+  static String? get token => _token;
+  static String? get adminToken => _adminToken;
+  static String? get username => _userName;
+  static String? get email => _email;
+  static int? get id => _id;
+  static String? get role => _role;
 }

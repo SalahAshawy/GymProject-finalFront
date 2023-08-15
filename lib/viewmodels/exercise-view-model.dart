@@ -5,7 +5,7 @@ import '../models/admin-models/equipments/equipment-model.dart';
 class ExerciseViewModel {
   Exercise exercise = Exercise();
 
-  ExerciseViewModel({Exercise e}) : exercise = e;
+  ExerciseViewModel({Exercise? e}) : exercise = e!;
 
   Map<String, Object> toMap() {
     return exercise.toMap();
@@ -16,7 +16,7 @@ class ExerciseViewModel {
   }
 
   String get title {
-    return exercise.title;
+    return exercise.title!;
   }
 
   set title(title) {
@@ -24,7 +24,7 @@ class ExerciseViewModel {
   }
 
   String get gif {
-    return exercise.gif;
+    return exercise.gif!;
   }
 
   set gif(gif) {
@@ -32,7 +32,7 @@ class ExerciseViewModel {
   }
 
   int get id {
-    return exercise.id;
+    return exercise.id!;
   }
 
   set id(id) {
@@ -40,7 +40,7 @@ class ExerciseViewModel {
   }
 
   String get description {
-    return exercise.description;
+    return exercise.description!;
   }
 
   set description(description) {
@@ -48,7 +48,7 @@ class ExerciseViewModel {
   }
 
   int get reps {
-    return exercise.reps;
+    return exercise.reps!;
   }
 
   set reps(reps) {
@@ -56,7 +56,7 @@ class ExerciseViewModel {
   }
 
   String get duration {
-    return exercise.duration;
+    return exercise.duration!;
   }
 
   set duration(duration) {
@@ -64,7 +64,7 @@ class ExerciseViewModel {
   }
 
   double get calBurnt {
-    return exercise.calBurnt;
+    return exercise.calBurnt!;
   }
 
   set calBurnt(calBurnt) {
@@ -72,7 +72,7 @@ class ExerciseViewModel {
   }
 
   String get image {
-    return exercise.image;
+    return exercise.image!;
   }
 
   set image(image) {
@@ -80,7 +80,7 @@ class ExerciseViewModel {
   }
 
   int get coachId {
-    return exercise.coachId;
+    return exercise.coachId!;
   }
 
   set coachId(coachId) {
@@ -88,7 +88,7 @@ class ExerciseViewModel {
   }
 
   Equipment get equipment {
-    return exercise.equipment;
+    return exercise.equipment!;
   }
 
   set equipment(equipment) {
@@ -96,7 +96,7 @@ class ExerciseViewModel {
   }
 
   String get coachName {
-    return exercise.coachName;
+    return exercise.coachName!;
   }
 
   set coachName(coachName) {
@@ -104,7 +104,7 @@ class ExerciseViewModel {
   }
 
   int get order {
-    return exercise.order;
+    return exercise.order!;
   }
 
   set order(order) {

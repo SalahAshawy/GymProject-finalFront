@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomMaterialButton extends StatefulWidget {
   //const CustomMaterialButton({ Key key }) : super(key: key);
-  final Function onPressed;
+  final Function() onPressed;
   final String text;
   final bool formButton;
   bool enable;
 
   CustomMaterialButton(
-      {this.text, this.onPressed, this.formButton, this.enable = true});
+      {required this.text,required  this.onPressed,required  this.formButton, this.enable = true});
 
   @override
   _CustomMaterialButtonState createState() => _CustomMaterialButtonState();
