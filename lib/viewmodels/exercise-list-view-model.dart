@@ -19,9 +19,9 @@ class ExerciseListViewModel with ChangeNotifier {
   ExerciseWebService webService = ExerciseWebService();
 
   // ignore: deprecated_member_use
-  List<ExerciseViewModel> exercises = List<ExerciseViewModel>();
+  List<ExerciseViewModel> exercises =[];
   ExerciseViewModel exercise = ExerciseViewModel();
-  int lastPage;
+  int? lastPage;
   Future<void> fetchListExercises(int page, String searchText) async {
     // print('welcome token! $');
     // print('currently here!');

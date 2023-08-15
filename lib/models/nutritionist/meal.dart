@@ -39,7 +39,7 @@ class Meal {
   Meal({
      this.id,
     required this.title,
-    required this.description,
+     this.description="",
     this.nutritionistID,
     this.items,
   });

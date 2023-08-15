@@ -3,7 +3,7 @@ import 'package:gym_project/models/fitness-summary.dart';
 class FitnessSummaryViewModel {
   FitnessSummary fitnessSummary = FitnessSummary();
 
-  FitnessSummaryViewModel({FitnessSummary f}) : fitnessSummary = f;
+  FitnessSummaryViewModel({FitnessSummary? f}) : fitnessSummary = f!;
 
   // double BMI;
   // double weight;
@@ -18,7 +18,7 @@ class FitnessSummaryViewModel {
   // double protein;
 
   int get id {
-    return fitnessSummary.id;
+    return fitnessSummary.id!;
   }
 
   set id(id) {
@@ -26,7 +26,7 @@ class FitnessSummaryViewModel {
   }
 
   int get memberId {
-    return fitnessSummary.memberId;
+    return fitnessSummary.memberId!;
   }
 
   set memberId(memberId) {
@@ -34,7 +34,7 @@ class FitnessSummaryViewModel {
   }
 
   double get BMI {
-    return fitnessSummary.BMI;
+    return fitnessSummary.BMI!;
   }
 
   set BMI(BMI) {
@@ -42,7 +42,7 @@ class FitnessSummaryViewModel {
   }
 
   double get SMM {
-    return fitnessSummary.SMM;
+    return fitnessSummary.SMM!;
   }
 
   set SMM(SMM) {
@@ -50,7 +50,7 @@ class FitnessSummaryViewModel {
   }
 
   double get weight {
-    return fitnessSummary.weight;
+    return fitnessSummary.weight!;
   }
 
   set weight(weight) {
@@ -58,7 +58,7 @@ class FitnessSummaryViewModel {
   }
 
   double get muscleRatio {
-    return fitnessSummary.muscleRatio;
+    return fitnessSummary.muscleRatio!;
   }
 
   set muscleRatio(muscleRatio) {
@@ -66,7 +66,7 @@ class FitnessSummaryViewModel {
   }
 
   double get height {
-    return fitnessSummary.height;
+    return fitnessSummary.height!;
   }
 
   set height(height) {
@@ -74,7 +74,7 @@ class FitnessSummaryViewModel {
   }
 
   double get fatRatio {
-    return fitnessSummary.fatRatio;
+    return fitnessSummary.fatRatio!;
   }
 
   set fatRatio(fatRatio) {
@@ -82,7 +82,7 @@ class FitnessSummaryViewModel {
   }
 
   double get fitnessRatio {
-    return fitnessSummary.fitnessRatio;
+    return fitnessSummary.fitnessRatio!;
   }
 
   set fitnessRatio(fitnessRatio) {
@@ -90,7 +90,7 @@ class FitnessSummaryViewModel {
   }
 
   double get totalBodyWater {
-    return fitnessSummary.totalBodyWater;
+    return fitnessSummary.totalBodyWater!;
   }
 
   set totalBodyWater(totalBodyWater) {
@@ -98,7 +98,7 @@ class FitnessSummaryViewModel {
   }
 
   double get dryLeanBath {
-    return fitnessSummary.dryLeanBath;
+    return fitnessSummary.dryLeanBath!;
   }
 
   set dryLeanBath(dryLeanBath) {
@@ -106,7 +106,7 @@ class FitnessSummaryViewModel {
   }
 
   double get bodyFatMass {
-    return fitnessSummary.bodyFatMass;
+    return fitnessSummary.bodyFatMass!;
   }
 
   set bodyFatMass(bodyFatMass) {
@@ -114,7 +114,7 @@ class FitnessSummaryViewModel {
   }
 
   double get opacityRatio {
-    return fitnessSummary.opacityRatio;
+    return fitnessSummary.opacityRatio!;
   }
 
   set opacityRatio(opacityRatio) {
@@ -122,7 +122,7 @@ class FitnessSummaryViewModel {
   }
 
   double get protein {
-    return fitnessSummary.protein;
+    return fitnessSummary.protein!;
   }
 
   set protein(protein) {
@@ -130,7 +130,7 @@ class FitnessSummaryViewModel {
   }
 
   String get updatedAt {
-    return fitnessSummary.updatedAt;
+    return fitnessSummary.updatedAt!;
   }
 
   set updatedAt(updatedAt) {
@@ -138,7 +138,7 @@ class FitnessSummaryViewModel {
   }
 
   String get memberName {
-    return fitnessSummary.memberName;
+    return fitnessSummary.memberName!;
   }
 
   set memberName(memberName) {

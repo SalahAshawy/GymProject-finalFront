@@ -18,8 +18,8 @@ class Set {
       {
       this.coachName,
         this.id,
-       required this.title,
-       required this.description,
+       this.title,
+       this.description,
         this.breakDuration,
         this.coachId,
        this.exercises,

@@ -3,7 +3,7 @@ import 'package:gym_project/models/complaint.dart';
 import 'package:gym_project/services/complaint-webservice.dart';
 
 class ComplaintViewModel extends ChangeNotifier {
-  Complaint complaint;
+  Complaint? complaint;
   List<Complaint> _allComplaints =[];
 
   Future<void> getAllComplaints(token) async

@@ -10,17 +10,17 @@ enum LoadingStatus {
   Empty,
   Error,
 }
+
 var generalToken;
 
 class PrivateSessionListViewModel with ChangeNotifier {
   LoadingStatus loadingStatus = LoadingStatus.Empty;
 
-  int lastPage;
+  int? lastPage;
 
   // ignore: deprecated_member_use
-  List<PrivateSessionViewModel> privateSessions =
-      // ignore: deprecated_member_use
-      List<PrivateSessionViewModel>();
+  List<PrivateSessionViewModel> privateSessions = [];
+
   PrivateSessionViewModel privateSession = PrivateSessionViewModel();
   // methods to fetch news
   Future<void> fetchListMyPrivateSessions(int page, String searchText) async {
@@ -46,8 +46,7 @@ class PrivateSessionListViewModel with ChangeNotifier {
 
   Future<void> fetchListBookedPrivateSessions(
       String role, int page, String searchText) async {
-    Tuple<int, List<PrivateSession>> result =
-        await PrivateSessionWebService()
+    Tuple<int, List<PrivateSession>> result = await PrivateSessionWebService()
         .getBookedPrivateSessions(role, page, searchText);
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
@@ -86,8 +85,7 @@ class PrivateSessionListViewModel with ChangeNotifier {
 
   Future<void> fetchListRequestedPrivateSessions(
       int page, String searchText) async {
-    Tuple<int, List<PrivateSession>> result =
-        await PrivateSessionWebService()
+    Tuple<int, List<PrivateSession>> result = await PrivateSessionWebService()
         .getRequestedPrivateSessions(page, searchText);
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();

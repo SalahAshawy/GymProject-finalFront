@@ -4,13 +4,13 @@ import 'package:gym_project/models/set.dart';
 class SetViewModel {
   Set set = Set();
 
-  SetViewModel({Set set}) : this.set = set;
+  SetViewModel({Set? set}) : this.set = set!;
 
   String get title {
     return set.title;
   }
 
-  int get id {
+  int? get id {
     return set.id;
   }
 
@@ -18,22 +18,22 @@ class SetViewModel {
     return set.description;
   }
 
-  String get breakDuration => set.breakDuration;
+  String get breakDuration => set.breakDuration!;
   set breakDuration(String breakDuration) => set.breakDuration = breakDuration;
 
-  int get coachId {
+  int? get coachId {
     return set.coachId;
   }
 
-  String get coachName {
+  String? get coachName {
     return set.coachName;
   }
 
-  List<Exercise> get exercises {
+  List<Exercise>? get exercises {
     return set.exercises;
   }
 
-  int get order {
+  int? get order {
     return set.order;
   }
 

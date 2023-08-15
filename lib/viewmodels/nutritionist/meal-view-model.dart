@@ -20,7 +20,7 @@ class MealViewModel with ChangeNotifier {
     return meal.description;
   }
 
-  int get nutritionistID {
+  int? get nutritionistID {
     return meal.nutritionistID;
   }
 

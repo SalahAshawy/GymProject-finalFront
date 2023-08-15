@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 class PrivateSessionViewModel {
   PrivateSession privateSession = PrivateSession();
 
-  PrivateSessionViewModel({PrivateSession privateS})
-      : privateSession = privateS;
-  String get title {
+  PrivateSessionViewModel({PrivateSession? privateS})
+      : privateSession = privateS!;
+  String? get title {
     return privateSession.title;
   }
 
@@ -14,7 +14,7 @@ class PrivateSessionViewModel {
     privateSession.title = title;
   }
 
-  int get id {
+  int? get id {
     return privateSession.id;
   }
 
@@ -22,7 +22,7 @@ class PrivateSessionViewModel {
     privateSession.id = id;
   }
 
-  String get description {
+  String? get description {
     return privateSession.description;
   }
 
@@ -30,7 +30,7 @@ class PrivateSessionViewModel {
     privateSession.description = description;
   }
 
-  String get duration {
+  String? get duration {
     return privateSession.duration;
   }
 
@@ -38,7 +38,7 @@ class PrivateSessionViewModel {
     privateSession.duration = duration;
   }
 
-  int get coachId {
+  int? get coachId {
     return privateSession.coachId;
   }
 
@@ -46,7 +46,7 @@ class PrivateSessionViewModel {
     privateSession.coachId = coachId;
   }
 
-  String get coachName {
+  String? get coachName {
     return privateSession.coachName;
   }
 
@@ -54,7 +54,7 @@ class PrivateSessionViewModel {
     privateSession.coachName = coachName;
   }
 
-  String get memberName {
+  String? get memberName {
     return privateSession.memberName;
   }
 
@@ -62,7 +62,7 @@ class PrivateSessionViewModel {
     privateSession.memberName = memberName;
   }
 
-  String get name {
+  String? get name {
     return privateSession.name;
   }
 
@@ -70,7 +70,7 @@ class PrivateSessionViewModel {
     privateSession.name = name;
   }
 
-  String get link {
+  String? get link {
     return privateSession.link;
   }
 
@@ -78,7 +78,7 @@ class PrivateSessionViewModel {
     privateSession.link = link;
   }
 
-  String get status {
+  String? get status {
     return privateSession.status;
   }
 
@@ -86,7 +86,7 @@ class PrivateSessionViewModel {
     privateSession.status = status;
   }
 
-  double get price {
+  double? get price {
     return privateSession.price;
   }
 
@@ -94,7 +94,7 @@ class PrivateSessionViewModel {
     privateSession.price = price;
   }
 
-  String get dateTime {
+  String? get dateTime {
     return privateSession.dateTime;
   }
 
