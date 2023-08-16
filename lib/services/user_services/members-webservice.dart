@@ -177,7 +177,7 @@ class MembersWebService {
     required AdminCubit adminCubit,
   }) {
     createCubit.loading1();
-    String token = Global.token;
+    String? token = Global.token;
     http.delete(
       Uri.parse('$local/api/members/delete/$id'),
       headers: <String, String>{
@@ -211,7 +211,7 @@ class MembersWebService {
   }
 
   Future<List<Member>> fetchCoachMembers() async {
-    String token = Global.token;
+    String? token = Global.token;
     print("Fetching members..");
     final response =
         await http.get(Uri.parse('$local/api/coaches/members/self'), headers: {
@@ -223,8 +223,8 @@ class MembersWebService {
     if (response.statusCode == 200) {
       String data = response.body;
       Iterable jsonData = jsonDecode(data)['members'];
-      List<Member>
-          allMembers; //= jsonData.map<Member>((e) => Member.myMembersfromJson(e)).toList();
+      List<Member> allMembers =
+          []; //= jsonData.map<Member>((e) => Member.myMembersfromJson(e)).toList();
       List<Member> finalMembers = allMembers.cast<Member>().toList();
       print("Members Fetched");
       return finalMembers;
@@ -234,7 +234,7 @@ class MembersWebService {
   }
 
   Future<List<Member>> fetchNutritionistMembers() async {
-    String token = Global.token;
+    String? token = Global.token;
     print("Fetching members..");
     final response = await http
         .get(Uri.parse('$local/api/nutritionists/members/self'), headers: {
@@ -247,7 +247,7 @@ class MembersWebService {
       String data = response.body;
       Iterable jsonData = jsonDecode(data)['members'];
       List<Member>
-          allMembers; //= jsonData.map<Member>((e) => Member.myMembersfromJson(e)).toList();
+          allMembers=[]; //= jsonData.map<Member>((e) => Member.myMembersfromJson(e)).toList();
       List<Member> finalMembers = allMembers.cast<Member>().toList();
       print("Members Fetched");
       return finalMembers;
@@ -257,7 +257,7 @@ class MembersWebService {
   }
 
   Future<Member> fetchUserById(int id) async {
-    String token = Global.token;
+    String? token = Global.token;
     final response =
         await http.get(Uri.parse('$local/api/members/show/$id'), headers: {
       'Content-Type': 'application/json',
@@ -267,7 +267,7 @@ class MembersWebService {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      Member member; //= Member.fromJson(jsonData);
+      Member member= Member.fromJson(jsonData);
       return member;
     } else {
       throw Exception('Failed to download Member');

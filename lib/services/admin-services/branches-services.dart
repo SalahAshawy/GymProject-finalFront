@@ -41,7 +41,7 @@ class BranchService {
     required AdminCubit adminCubit,
   }) {
     createCubit.loading1();
-    String token = Global.token;
+    String? token = Global.token;
     http.delete(
       Uri.parse('$local/api/branches/delete/$id'),
       headers: <String, String>{
@@ -143,7 +143,7 @@ class BranchService {
     required CreateCubit createCubit,
     required AdminCubit adminCubit,
   }) {
-    String token = Global.token;
+    String? token = Global.token;
     createCubit.loading1();
     http
         .put(Uri.parse('$local/api/branches/update/$id'),
@@ -196,7 +196,7 @@ class BranchService {
     required int equipment_id,
     required AdminCubit adminCubit,
   }) async {
-    String token = Global.token;
+    String? token = Global.token;
     await http
         .put(Uri.parse('$local/api/branches/assignEquipment/${branch.id}'),
             headers: <String, String>{
@@ -231,13 +231,13 @@ class BranchService {
     required AdminCubit adminCubit,
   }) async {
     createCubit.loading1();
-    await equipments.forEach((element) {
+     equipments.forEach((element) {
       if (element.isSelected) {
         assignEquipment(
             branch: branch, equipment_id: element.id, adminCubit: adminCubit);
       }
     });
-    await createCubit.finishLoading();
-    await Navigator.pop(context);
+     createCubit.finishLoading();
+     Navigator.pop(context);
   }
 }

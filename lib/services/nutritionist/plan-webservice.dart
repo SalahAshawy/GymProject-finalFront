@@ -33,7 +33,7 @@ class PlanWebService {
     }
   }
 
-  Future<Plan> getActivePlan(int memberID, BuildContext context) async {
+  Future<Plan?> getActivePlan(int memberID, BuildContext context) async {
     final response = await http.get(
       Uri.parse('$local/api/members/$memberID/getActivePlan'),
       headers: <String, String>{

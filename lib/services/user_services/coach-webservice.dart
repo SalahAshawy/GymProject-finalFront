@@ -159,7 +159,7 @@ class CoachWebService {
     required AdminCubit adminCubit,
   }) {
     createCubit.loading1();
-    String token = Global.token;
+    String? token = Global.token;
     http.delete(
       Uri.parse('$local/api/coaches/delete/$id'),
       headers: <String, String>{
@@ -201,7 +201,7 @@ class CoachWebService {
     required CreateCubit createCubit,
     required AdminCubit adminCubit,
   }) {
-    String token = Global.token;
+    String? token = Global.token;
     createCubit.loading1();
     http
         .post(
@@ -221,8 +221,8 @@ class CoachWebService {
       String data = value.body;
       var jsonData = jsonDecode(data);
       if (jsonData['status'] == true) {
-        coachesUsers[coach.index].allMembers.add(member);
-        membersUsers[member.index].coach = coach;
+        coachesUsers[coach.index!].allMembers.add(member);
+        membersUsers[member.index!].coach = coach;
         myToast(message: "Assigned Successfully", color: Colors.green);
         createCubit.finishLoading();
         adminCubit.assignMemberSuccess();

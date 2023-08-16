@@ -130,7 +130,7 @@ class MapScreenState extends State<CreateMealForm>
   }
 
   void submitMeal(bool isEditing) {
-    String token = getToken(context);
+    String? token = getToken(context);
     Meal meal = getInputMeal();
     MealViewModel mealsVM = Provider.of<MealViewModel>(context, listen: false);
     if (!isEditing)
@@ -421,7 +421,7 @@ class CustomListTile extends StatefulWidget {
   CustomListTile({
     this.key,
     required this.item,
-   required this.quantity,
+    required this.quantity,
     required this.notifyParent,
   }) : super(key: key);
   @override
@@ -446,7 +446,7 @@ class _CustomListTileState extends State<CustomListTile> {
           child: FlutterLogo(),
         ),
         title: Text(
-           widget.item.title as String,
+          widget.item.title as String,
           style: TextStyle(color: Colors.white),
         ),
         subtitle: Column(

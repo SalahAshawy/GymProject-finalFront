@@ -27,7 +27,7 @@ class NutritionistSessionsServices {
     });
   }
 
-  NutritionistSession fetchNutritionistSessionById(int id) {
+  NutritionistSession? fetchNutritionistSessionById(int id) {
     http.get(Uri.parse('$local/api/nutSessions/show/$id'), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

@@ -5,12 +5,11 @@ import 'package:gym_project/widget/global.dart';
 import 'package:gym_project/models/exercise.dart';
 import 'package:gym_project/viewmodels/exercise-view-model.dart';
 
-
 import 'package:http/http.dart' as http;
 
 class ExerciseWebService {
   final String local = Constants.defaultUrl;
-  String token = Global.token;
+  String? token = Global.token;
   // ExerciseWebService({this.token});
   Future<Tuple<int, List<Exercise>>> getExercises(
       int page, String searchText) async {
@@ -103,11 +102,11 @@ class ExerciseWebService {
           'title': exercise.title,
           'description': exercise.description,
           'gif': exercise.gif,
-          'cal_burnt': exercise.calBurnt.toDouble(),
+          'cal_burnt': exercise.calBurnt!.toDouble(),
           'image': exercise.image,
           'duration': exercise.duration,
-          'equipment_id': exercise.equipment.id,
-          'reps': exercise.reps.toInt(),
+          'equipment_id': exercise.equipment!.id,
+          'reps': exercise.reps!.toInt(),
         }));
     print('response obtained!');
     print(response.statusCode);
@@ -124,7 +123,7 @@ class ExerciseWebService {
   Future<bool> editExercise(
     ExerciseViewModel exercise,
   ) async {
-    String token = Global.token;
+    String? token = Global.token;
     // print('Am i here??');
     final response =
         await http.put(Uri.parse('$local/api/exercises/${exercise.id}'),
@@ -159,7 +158,7 @@ class ExerciseWebService {
     int exerciseId,
   ) async {
     // print('Am i here??');
-    String token = Global.token;
+    String? token = Global.token;
     final response = await http.delete(
       Uri.parse('$local/api/exercises/${exerciseId}'),
       headers: {

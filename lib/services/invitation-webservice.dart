@@ -51,7 +51,7 @@ class InvitationWebService {
       print(response.body);
       final result = json.decode(response.body);
       if (result['msg'] != 'invitation Added correctly')
-        return 'invitation Added correctly';
+        print('invitation Added correctly');
     } else {
       throw Exception('Failed to add invitation.');
     }
@@ -72,7 +72,7 @@ class InvitationWebService {
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       if (result['msg'] != 'invitation deleted correctly')
-        return 'invitation Deleted correctly';
+        print('invitation Deleted correctly');
     } else {
       throw Exception('Failed to delete invitation.');
     }

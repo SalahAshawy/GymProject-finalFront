@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class FitnessSummaryWebService {
   final String local = Constants.defaultUrl;
-  String token = Global.token;
+  String? token = Global.token;
   Future<Tuple<int, List<FitnessSummary>>> getFitnessSummaries(
       int page, String startDate, String endDate) async {
     Tuple<int, List<FitnessSummary>> res = Tuple();
@@ -79,19 +79,19 @@ class FitnessSummaryWebService {
               'Authorization': 'Bearer $token',
             },
             body: jsonEncode({
-              'BMI': fitSum.BMI.toDouble(),
-              'weight': fitSum.weight.toDouble(),
-              'muscle_ratio': fitSum.muscleRatio.toDouble(),
-              'height': fitSum.height.toDouble(),
-              'fat_ratio': fitSum.fatRatio.toDouble(),
-              'fitness_ratio': fitSum.fitnessRatio.toDouble(),
-              'total_body_water': fitSum.totalBodyWater.toDouble(),
-              'dry_lean_bath': fitSum.dryLeanBath.toDouble(),
-              'body_fat_mass': fitSum.bodyFatMass.toDouble(),
-              'opacity_ratio': fitSum.opacityRatio.toDouble(),
-              'protein': fitSum.protein.toDouble(),
-              'SMM': fitSum.SMM.toDouble(),
-              'member_id': fitSum.memberId.toDouble(),
+              'BMI': fitSum.BMI!.toDouble(),
+              'weight': fitSum.weight!.toDouble(),
+              'muscle_ratio': fitSum.muscleRatio!.toDouble(),
+              'height': fitSum.height!.toDouble(),
+              'fat_ratio': fitSum.fatRatio!.toDouble(),
+              'fitness_ratio': fitSum.fitnessRatio!.toDouble(),
+              'total_body_water': fitSum.totalBodyWater!.toDouble(),
+              'dry_lean_bath': fitSum.dryLeanBath!.toDouble(),
+              'body_fat_mass': fitSum.bodyFatMass!.toDouble(),
+              'opacity_ratio': fitSum.opacityRatio!.toDouble(),
+              'protein': fitSum.protein!.toDouble(),
+              'SMM': fitSum.SMM!.toDouble(),
+              'member_id': fitSum.memberId!.toDouble(),
             }));
     print('response obtained!');
     print(response.body);

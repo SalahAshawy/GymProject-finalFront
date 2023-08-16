@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 import '../models/answer.dart';
 import 'answers-webservice.dart';
 
-String token = Global.token;
+String? token = Global.token;
 final local = Constants.defaultUrl;
 
 class QuestionsWebservice {
@@ -28,9 +28,9 @@ class QuestionsWebservice {
         jsonData['questions'].forEach((item) async {
           Question question = Question.fromJson(item);
           questionsList.add(question);
-          await AnswersWebservice.fetchAnswers(question.id, question.index);
+          await AnswersWebservice.fetchAnswers(question.id!, question.index!);
           print(
-              "length = ${questionsList[question.index].allAnswers.length}  and ${question.user.name} ");
+              "length = ${questionsList[question.index!].allAnswers.length}  and ${question.user!.name} ");
         });
       }
     }).catchError((error) {

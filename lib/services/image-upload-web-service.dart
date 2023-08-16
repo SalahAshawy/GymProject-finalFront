@@ -8,11 +8,11 @@ import 'package:gym_project/models/tuple.dart';
 import 'dart:async';
 import 'package:gym_project/widget/global.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class ImageUploadWebService {
   final String local = Constants.defaultUrl;
-  String token = Global.token;
+  String? token = Global.token;
   Future<Tuple<bool, String>> uploadImage(File image, String imageName) async {
     // var formData = FormData.fromMap({
     //   "image": await MultipartFile.fromFile(

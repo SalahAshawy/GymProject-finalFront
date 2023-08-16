@@ -17,7 +17,7 @@ import 'package:http/http.dart' as http;
 import '../../widget/global.dart';
 import '../answers-webservice.dart';
 
-String token = Global.token;
+String? token = Global.token;
 
 class MembershipsWebservice {
   static Future<void> fetchMemberships() async {

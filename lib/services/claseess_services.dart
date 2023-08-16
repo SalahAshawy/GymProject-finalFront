@@ -213,7 +213,7 @@ class ClassesServices {
         .then((value) {
       var data = jsonDecode(value.body);
       if (data['status'] == true) {
-        allClasses[classes.index].allMembers.add(membersUsers[member.index]);
+        allClasses[classes.index!].allMembers!.add(membersUsers[member.index!]);
         Navigator.pop(context);
         createCubit.finishLoading();
         adminCubit.updateState();
@@ -254,7 +254,7 @@ class ClassesServices {
         .then((value) {
       var data = jsonDecode(value.body);
       if (data['status'] == true) {
-        allClasses[classes.index].allCoaches.add(coachesUsers[coach.index]);
+        allClasses[classes.index!].allCoaches!.add(coachesUsers[coach.index!]);
         Navigator.pop(context);
         createCubit.finishLoading();
         adminCubit.updateState();
