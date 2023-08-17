@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class PrivateSessionWebService {
   final String local = Constants.defaultUrl;
-  String token = Global.token;
+  String? token = Global.token;
   // PrivateSessionWebService({this.token});
   Future<Tuple<int, List<PrivateSession>>> getMyPrivateSessions(
       int page, String searchText) async {

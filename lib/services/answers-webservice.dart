@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import '../all_data.dart';
 import '../bloc/Admin_cubit/admin_cubit.dart';
 
-String token = Global.token;
+String? token = Global.token;
 final local = Constants.defaultUrl;
 
 class AnswersWebservice {
@@ -93,7 +93,7 @@ class AnswersWebservice {
         .then((value) {
       var jsonData = jsonDecode(value.body);
       if (jsonData['status'] == true) {
-        questionsList[question.index]
+        questionsList[question.index!]
             .allAnswers
             .add(Answer.fromJson(jsonData['newAnswer']));
         adminCubit.updateState();

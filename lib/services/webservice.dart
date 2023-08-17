@@ -6,8 +6,7 @@ import 'package:http/http.dart' as http;
 import '../models/admin-models/equipments/equipment-model.dart';
 import '../widget/global.dart';
 
-String token =Global.token;
-
+String? token = Global.token;
 
 class WebService {
   final String local = Constants.defaultUrl;
@@ -21,8 +20,6 @@ class WebService {
       throw Exception('response failed');
     }
   }
-
-
 
   Future<List<Exercise>> getExercises() async {
     print('Am i here??');

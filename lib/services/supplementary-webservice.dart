@@ -37,7 +37,7 @@ class SupplementaryWebService {
   }
 
   //get supplementary by id
-  Future<Supplementary> getSupplementaryById(int id) async {
+  Future<Supplementary?> getSupplementaryById(int id) async {
     final response = await http.get(
       Uri.parse('$local/api/supplementaries/$id'),
       headers: <String, String>{
@@ -106,7 +106,7 @@ class SupplementaryWebService {
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       if (result['msg'] == 'Supplementary Added correctly')
-        return 'Supplementary Added correctly';
+       print('Supplementary Added correctly') ;
     } else {
       throw Exception('Failed to add supplementary.');
     }
@@ -133,7 +133,7 @@ class SupplementaryWebService {
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       if (result['msg'] == 'Supplementary added correctly to branch')
-        return 'Supplementary added correctly to branch';
+       print('Supplementary added correctly to branch') ;
     } else {
       throw Exception('Failed to add supplementary.');
     }
@@ -163,7 +163,7 @@ class SupplementaryWebService {
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       if (result['msg'] == 'Supplementary updated correctly')
-        return 'Supplementary updated correctly';
+        print('Supplementary updated correctly');
     } else {
       throw Exception('Failed to update supplementary.');
     }
@@ -187,7 +187,7 @@ class SupplementaryWebService {
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       if (result['msg'] == 'Supplementary removed correctly from branch')
-        return 'Supplementary removed correctly from branch';
+        print('Supplementary removed correctly from branch');
     } else {
       throw Exception('Failed to remove supplementary from branch.');
     }
@@ -210,7 +210,7 @@ class SupplementaryWebService {
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       if (result['msg'] == 'Supplementary deleted correctly')
-        return 'Supplementary deleted correctly';
+        print('Supplementary deleted correctly');
     } else {
       throw Exception('Failed to delete supplementary.');
     }

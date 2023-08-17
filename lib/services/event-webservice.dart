@@ -17,7 +17,6 @@ class EventWebService {
       Uri.parse('$local/api/events'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',
@@ -38,7 +37,6 @@ class EventWebService {
       Uri.parse('$local/api/users/upcomingevents'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',
@@ -61,7 +59,6 @@ class EventWebService {
       Uri.parse('$local/api/users/pastevents'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',
@@ -84,7 +81,6 @@ class EventWebService {
       Uri.parse('$local/api/events/create'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',
@@ -103,7 +99,7 @@ class EventWebService {
     if (response.statusCode == 200) {
       final result = json.decode(response.body);
       if (result['msg'] != 'Event Added correctly')
-        return 'Event Added correctly';
+        print('Event Added correctly');
     } else {
       throw Exception('Failed to add event.');
     }
@@ -122,7 +118,6 @@ class EventWebService {
       Uri.parse('$local/api/events/edit/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',
@@ -142,7 +137,7 @@ class EventWebService {
       print(response.body);
       final result = json.decode(response.body);
       if (result['msg'] != 'Event Updated correctly')
-        return 'Event Updated correctly';
+        print('Event Updated correctly');
     } else {
       throw Exception('Failed to update event.');
     }
@@ -153,7 +148,6 @@ class EventWebService {
       Uri.parse('$local/api/events/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',
@@ -164,7 +158,7 @@ class EventWebService {
       print(response.body);
       final result = json.decode(response.body);
       if (result['msg'] != 'Event deleted correctly')
-        return 'Event Deleted correctly';
+        print('Event Deleted correctly');
     } else {
       throw Exception('Failed to delete event.');
     }
@@ -175,7 +169,6 @@ class EventWebService {
       Uri.parse('$local/api/events/$id/register'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',
@@ -189,18 +182,17 @@ class EventWebService {
       print(response.body);
       final result = json.decode(response.body);
       if (result['msg'] != 'Congratulation you are registered !!')
-        return 'Congratulation you are registered !!';
+        'Congratulation you are registered !!';
     } else {
-      return ('User already registered in the event!');
+      print('User already registered in the event!');
     }
   }
 
-  Future<Event> getEventByID(int id) async {
+  Future<Event?> getEventByID(int id) async {
     final response = await http.get(
       Uri.parse('$local/api/events/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json',
-        
         'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Accept': '*/*',

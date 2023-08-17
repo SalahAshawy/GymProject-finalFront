@@ -29,7 +29,7 @@ class DioHelper{
 
   static Future<Response> postData({
     required String url,
-    required Map<String ,dynamic> query,
+     Map<String ,dynamic>? query,
     required  data,
   }) async{
     dio.options.headers = {

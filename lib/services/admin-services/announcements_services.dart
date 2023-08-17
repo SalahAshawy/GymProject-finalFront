@@ -12,7 +12,7 @@ import '../answers-webservice.dart';
 
 class AnnouncementsServices {
   static Future<void> fetchAnnouncements() async {
-    final String token = Global.token;
+    final String? token = Global.token;
     final String local = Constants.defaultUrl;
     await http.get(Uri.parse('$local/api/announcements'), headers: {
       'Content-Type': 'application/json',

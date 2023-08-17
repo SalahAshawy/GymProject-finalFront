@@ -162,7 +162,7 @@ class NutritionistWebservice {
     required AdminCubit adminCubit,
   }) {
     createCubit.loading1();
-    String token = Global.token;
+    String? token = Global.token;
     http.delete(
       Uri.parse('$local/api/nutritionists/delete/$id'),
       headers: <String, String>{
@@ -204,7 +204,7 @@ class NutritionistWebservice {
     required CreateCubit createCubit,
     required AdminCubit adminCubit,
   }) {
-    String token = Global.token;
+    String? token = Global.token;
     createCubit.loading1();
     http
         .post(
@@ -224,8 +224,8 @@ class NutritionistWebservice {
       String data = value.body;
       var jsonData = jsonDecode(data);
       if (jsonData['status'] == true) {
-        nutritionistsUsers[nutritionist.index].allMembers.add(member);
-        membersUsers[member.index].nutritionist = nutritionist;
+        nutritionistsUsers[nutritionist.index!].allMembers.add(member);
+        membersUsers[member.index!].nutritionist = nutritionist;
         myToast(message: "Assigned Successfully", color: Colors.green);
         createCubit.finishLoading();
         adminCubit.assignMemberSuccess();
