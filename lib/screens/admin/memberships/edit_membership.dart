@@ -16,7 +16,7 @@ class EditMembership extends StatelessWidget {
   final int? membershipIndex;
   final AdminCubit? adminCubit;
   final bool isAdd;
-  EditMembership({ this.membershipIndex,required this.adminCubit,this.isAdd=true});
+  EditMembership({ this.membershipIndex, this.adminCubit,this.isAdd=true});
   bool edit = false;
   final FocusNode myFocusNode = FocusNode();
   final TextEditingController titleController = TextEditingController();

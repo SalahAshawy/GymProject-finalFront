@@ -21,7 +21,7 @@ class ViewPrivateSessionRequestsScreen extends StatefulWidget {
 
 
 class _ViewPrivateSessionRequestsScreenState extends State<ViewPrivateSessionRequestsScreen> {
-  String token=Global.token;
+  String token=Global.token!;
   int? lastPage;
 
   void initState() {
@@ -201,7 +201,7 @@ class _ViewPrivateSessionRequestsScreenState extends State<ViewPrivateSessionReq
           child: FlutterLogo(),
         ),
         title: Text(
-          privateSession.title,
+          privateSession.title!,
           style: TextStyle(color: Colors.white),
         ),
         subtitle: Column(

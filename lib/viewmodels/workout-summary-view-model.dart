@@ -9,7 +9,7 @@ class WorkoutSummaryViewModel extends ChangeNotifier {
   List<WorkoutSummary> _summariesList = [];
 
   Future<List<WorkoutSummary>> fetchSummaries() async {
-    _summariesList = await WorkoutSummaryServices().fetchSummaries();
+    _summariesList = await WorkoutSummaryServices().fetchSummaries() as List<WorkoutSummary>;
     notifyListeners();
     return _summariesList;
   }

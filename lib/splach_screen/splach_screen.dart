@@ -18,7 +18,7 @@ import '../widget/global.dart';
 bool isEnter=false;
 class SplachScreen extends StatefulWidget {
   static bool fetchAllFunction=false;
-  const SplachScreen({Key key}) : super(key: key);
+  const SplachScreen({Key? key}) : super(key: key);
 
   @override
   State<SplachScreen> createState() => _SplachScreenState();
@@ -26,7 +26,7 @@ class SplachScreen extends StatefulWidget {
 
 class _SplachScreenState extends State<SplachScreen> {
   Future<void> getAllSupplementaries() async {
-    supplementariesList = await SupplementaryWebService(Global.token).getAllSupplementaries();
+    supplementariesList = await SupplementaryWebService(Global.token!).getAllSupplementaries();
   }
 
   void fetchMembersFunction()async{

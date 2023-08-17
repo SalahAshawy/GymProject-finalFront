@@ -6,12 +6,12 @@ import 'package:gym_project/viewmodels/supplementary-view-model.dart';
 import 'package:provider/provider.dart';
 
 class SupplementForm extends StatefulWidget {
-  final String type;
-  final int id;
-  final String title;
-  final String description;
-  final int price;
-  final String picture;
+  final String? type;
+  final int? id;
+  final String? title;
+  final String? description;
+  final int? price;
+  final String? picture;
   SupplementForm({
     this.id,
     this.title,
@@ -49,8 +49,8 @@ class MapScreenState extends State<SupplementForm>
       _priceController.text = "";
     }*/
     if (widget.type == 'edit') {
-      _titleController.text = widget.title;
-      _descriptionController.text = widget.description;
+      _titleController.text = widget!.title!;
+      _descriptionController.text = widget.description!;
       _priceController.text = widget.price.toString();
     }
   }
@@ -367,7 +367,7 @@ class MapScreenState extends State<SupplementForm>
                                                   context,
                                                   listen: false)
                                               .editSupplementary(
-                                                  widget.id,
+                                                  widget.id!,
                                                   _titleController.text,
                                                   _descriptionController.text,
                                                   int.parse(
@@ -379,7 +379,7 @@ class MapScreenState extends State<SupplementForm>
                                                   context,
                                                   listen: false)
                                               .getSupplementaryById(
-                                                  widget.id, token);
+                                                  widget.id!, token);
                                           /*await Provider.of<
                                                       SupplementaryViewModel>(
                                                   context,

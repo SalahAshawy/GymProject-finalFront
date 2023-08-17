@@ -72,9 +72,9 @@ class MapScreenState extends State<EditSetForm>
     super.initState();
     SetListViewModel setListVM =
         Provider.of<SetListViewModel>(context, listen: false);
-    setListVM.fetchSetDetails(widget.setVM.id).then((_) {
+    setListVM.fetchSetDetails(widget.setVM.id!).then((_) {
       orderedExercises =
-          setListVM.set.exercises.map((e) => ExerciseViewModel(e: e)).toList();
+          setListVM.set!.exercises!.map((e) => ExerciseViewModel(e: e)).toList();
       setSelectedExercises(orderedExercises: orderedExercises);
     }).catchError((error) {
       viewErrorDialogBox(context, error.toString()).then((_) {
@@ -361,7 +361,7 @@ class MapScreenState extends State<EditSetForm>
     final isWideScreen = MediaQuery.of(context).size.width > 900;
 
     SetListViewModel setListVM = Provider.of<SetListViewModel>(context);
-    SetViewModel setVM = setListVM.set;
+    SetViewModel setVM = setListVM.set!;
     if (setVM != null) {
       titleController.text = setVM.title;
       descriptionController.text = setVM.description;

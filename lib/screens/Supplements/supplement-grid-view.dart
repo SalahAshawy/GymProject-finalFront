@@ -88,11 +88,11 @@ class _SupplementListState extends State<SupplementList> {
                       index++)
                         SupplementCard(
                           dumbbell,
-                          supplementariesList[index].title,
-                          supplementariesList[index].price,
+                          supplementariesList[index].title!,
+                          supplementariesList[index].price!,
                           context,
-                          supplementariesList[index].id,
-                          supplementariesList[index].description,
+                          supplementariesList[index].id!,
+                          supplementariesList[index].description!,
                         )
                     ],
                   ),

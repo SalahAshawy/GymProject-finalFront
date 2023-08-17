@@ -37,7 +37,7 @@ class PrivateSessionDetailsScreen extends StatelessWidget {
                       padding: EdgeInsets.only(
                           left: 20.0, right: 20.0, top: 10.0, bottom: 10),
                       child: Text(
-                        _privateSession.title,
+                        _privateSession.title!,
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w700,
@@ -60,7 +60,7 @@ class PrivateSessionDetailsScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(left: 20),
                   child: Text(
-                    "${formatDuration(_privateSession.duration)}",
+                    "${formatDuration(_privateSession.duration!)}",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w500,
@@ -95,7 +95,7 @@ class PrivateSessionDetailsScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   child: Text(
-                    _privateSession.description,
+                    _privateSession.description!,
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       color: Colors.grey.shade500,
@@ -124,7 +124,7 @@ class PrivateSessionDetailsScreen extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   child: Text(
-                    _privateSession.link,
+                    _privateSession.link!,
                     style: TextStyle(
                       fontSize: 15,
                     ),

@@ -2,26 +2,25 @@ import 'package:flutter/material.dart';
 import '../style/styling.dart';
 
 class Button extends StatelessWidget {
-  final String btnTxt;
-  final  Function() onTap;
-  final bool border;
-  final Color borderColor;
-  final bool roundedBorder;
+  final String? btnTxt;
+  final  Function()? onTap;
+  final bool? border;
+  final Color? borderColor;
+  final bool? roundedBorder;
 
   const Button(
-      {required Key key,
-       this.roundedBorder = false,
-      required this.btnTxt,
-      required this.onTap,
+      {Key? key,
+       this.roundedBorder = false, this.btnTxt,
+       this.onTap,
        this.border = false,
-      required this.borderColor})
+      this.borderColor})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: border ? Colors.transparent : Color(0xFFFFCE2B),
-      borderRadius: roundedBorder
+      color: border! ? Colors.transparent : Color(0xFFFFCE2B),
+      borderRadius: roundedBorder!
           ? BorderRadius.circular(PadRadius.radius)
           : BorderRadius.circular(5),
       child: InkWell(
@@ -29,21 +28,21 @@ class Button extends StatelessWidget {
         //  splashColor: border ? AppColor.pColor : null,
         onTap: onTap,
         customBorder: RoundedRectangleBorder(
-          borderRadius: roundedBorder
+          borderRadius: roundedBorder!
               ? BorderRadius.circular(PadRadius.radius)
               : BorderRadius.circular(5),
         ),
         child: Container(
           height: 53,
           decoration: BoxDecoration(
-              border: border ? Border.all(color: borderColor) : null,
-              borderRadius: roundedBorder
+              border: border! ? Border.all(color: borderColor!) : null,
+              borderRadius: roundedBorder!
                   ? BorderRadius.circular(PadRadius.radius)
                   : BorderRadius.circular(5)),
           width: double.infinity,
           child: Center(
             child: Text(
-              btnTxt,
+              btnTxt!,
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

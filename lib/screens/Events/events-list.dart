@@ -184,7 +184,7 @@ class _EventListViewState extends State<EventListView>
                         itemBuilder: (ctx, index) {
                           // print( formatDateTime(widget.allEvents[index].startTime));
                           return EventListTile(
-                              allEvents[index].id,
+                              allEvents[index].id!,
                               allEvents[index].title,
                               allEvents[index].price,
                               formatDateTime(allEvents[index].startTime),
@@ -208,7 +208,7 @@ class _EventListViewState extends State<EventListView>
                         itemCount: widget.upcomingEvents.length,
                         itemBuilder: (ctx, index) {
                           return EventListTile(
-                              allEvents[index].id,
+                              allEvents[index].id!,
                               widget.upcomingEvents[index].title,
                               widget.upcomingEvents[index].price,
                               formatDateTime(
@@ -234,7 +234,7 @@ class _EventListViewState extends State<EventListView>
                         itemCount: widget.previousEvents.length,
                         itemBuilder: (ctx, index) {
                           return EventListTile(
-                              allEvents[index].id,
+                              allEvents[index].id!,
                               widget.previousEvents[index].title,
                               widget.previousEvents[index].price,
                               formatDateTime(

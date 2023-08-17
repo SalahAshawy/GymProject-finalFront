@@ -25,7 +25,7 @@ import 'own_members.dart';
 class UserProfile extends StatelessWidget {
   var user;
   final AdminCubit? adminCubit;
-  UserProfile({required this.user, this.adminCubit});
+  UserProfile({ this.user, this.adminCubit});
   bool editUser=false;
   final FocusNode myFocusNode = FocusNode();
   TextEditingController nameController = TextEditingController();

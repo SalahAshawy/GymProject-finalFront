@@ -16,9 +16,9 @@ import '../equipment/show_branch_equipments.dart';
 import 'create_branch.dart';
 
 class BranchDetails extends StatelessWidget {
-  final AdminCubit adminCubit;
-  final int index;
-  BranchDetails({required this.adminCubit,required this.index});
+  final AdminCubit? adminCubit;
+  final int? index;
+  BranchDetails({this.adminCubit, this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class BranchDetails extends StatelessWidget {
                   mini: true,
                   heroTag: 'btn1',
                   onPressed: () {
-                    goToAnotherScreenPush(context, BranchForm(adminCubit:adminCubit,branch: branchesList[index],isAdd: false,detailsContext:context));
+                    goToAnotherScreenPush(context, BranchForm(adminCubit:adminCubit!,branch: branchesList[index!],isAdd: false,detailsContext:context));
                   },
                   isExtended: false,
                   child: Icon(
@@ -73,10 +73,10 @@ class BranchDetails extends StatelessWidget {
                     heroTag: 'btn2',
                     onPressed: () {
                       BranchService.deleteBranch(
-                          id: branchesList[index].id,
+                          id: branchesList[index!].id,
                           context: context,createCubit: myCubit,
-                          adminCubit: adminCubit,
-                        index: index,
+                          adminCubit: adminCubit!,
+                        index: index!,
                       );
                     },
                     isExtended: false,
@@ -116,7 +116,7 @@ class BranchDetails extends StatelessWidget {
                             child: Icon(Icons.title,color: Colors.yellow,size: 25.sp,),
                           ),
                           title: Text(
-                            branchesList[index].title,
+                            branchesList[index!].title,
                             maxLines: 1,
                             style: TextStyle(
                               fontSize: 20.0.sp,
@@ -127,7 +127,7 @@ class BranchDetails extends StatelessWidget {
                             ),
                           ),
                           subtitle: Text(
-                            branchesList[index].info,
+                            branchesList[index!].info,
                             style: TextStyle(
                               fontSize: 16.0.sp,
                               fontWeight: FontWeight.w600,
@@ -140,9 +140,9 @@ class BranchDetails extends StatelessWidget {
                         ListTile(
                           leading:  Icon(Icons.phone,color: Colors.yellow,size: 25.sp,),
                           title:  InkWell(
-                            onTap: ()=>launchUrl(Uri.parse("tel://${branchesList[index].number}")),
+                            onTap: ()=>launchUrl(Uri.parse("tel://${branchesList[index!].number}")),
                             child: Text(
-                              branchesList[index].number,
+                              branchesList[index!].number,
                               maxLines: 1,
                               style: TextStyle(
                                 fontSize: 20.0.sp,
@@ -159,7 +159,7 @@ class BranchDetails extends StatelessWidget {
                         ListTile(
                           leading:  Icon(Icons.location_on,color: Colors.yellow,size: 25.sp,),
                           title:  Text(
-                            branchesList[index].location,
+                            branchesList[index!].location,
                             maxLines: 1,
                             style: TextStyle(
                               fontSize: 20.0.sp,
@@ -175,7 +175,7 @@ class BranchDetails extends StatelessWidget {
                         ListTile(
                           leading:  Icon(Icons.event_seat,color: Colors.yellow,size: 25.sp,),
                           title:  Text(
-                            branchesList[index].crowdMeter.toString() +
+                            branchesList[index!].crowdMeter.toString() +
                                 " seats",
                             maxLines: 1,
                             style: TextStyle(
@@ -207,7 +207,7 @@ class BranchDetails extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                     ),
                                     subtitle: Text(
-                                      branchesList[index].coachesNumber.toString(),
+                                      branchesList[index!].coachesNumber.toString(),
                                       style: TextStyle(
                                         color: Colors.amber,
                                         fontSize: 12.sp,
@@ -259,7 +259,7 @@ class BranchDetails extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                     ),
                                     subtitle: Text(
-                                      branchesList[index].membersNumber.toString(),
+                                      branchesList[index!].membersNumber.toString(),
                                       style: TextStyle(
                                         color: Colors.amber,
                                         fontSize: 12.0.sp,
@@ -288,7 +288,7 @@ class BranchDetails extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                              goToAnotherScreenPush(context, ShowBranchEquipment(branch:branchesList[index]),type: PageTransitionType.leftToRightWithFade);
+                              goToAnotherScreenPush(context, ShowBranchEquipment(branch:branchesList[index!]),type: PageTransitionType.leftToRightWithFade);
                             },
                             child: Text('View Equipment',),
                           ),
@@ -297,7 +297,7 @@ class BranchDetails extends StatelessWidget {
                           alignment: Alignment.center,
                           child: CrowdMeter(
                             checkedInMembers: 300,
-                            totalMembers: branchesList[index].crowdMeter
+                            totalMembers: branchesList[index!].crowdMeter
                           ),
                         ),
                       ],

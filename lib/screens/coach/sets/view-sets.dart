@@ -372,7 +372,7 @@ class SetsListTile extends StatefulWidget {
 
 class _SetsListTileState extends State<SetsListTile> {
   int number = 0;
-  String username = Global.username;
+  String username = Global.username!;
   Future<void> deleteSet(Set set) async {
     try {
       await Provider.of<SetListViewModel>(context, listen: false)
@@ -409,7 +409,7 @@ class _SetsListTileState extends State<SetsListTile> {
                                 create: (_) => SetListViewModel(),
                               ),
                             ],
-                            child: SetDetailsScreen(widget.setVM.id),
+                            child: SetDetailsScreen(widget.setVM.id!),
                           )));
             } else if (widget.selectionTime && !widget.selectionMode) {
               widget.setSelectionMode(true);
@@ -462,7 +462,7 @@ class _SetsListTileState extends State<SetsListTile> {
                                       create: (_) => SetListViewModel(),
                                     ),
                                   ],
-                                  child: SetDetailsScreen(widget.setVM.id),
+                                  child: SetDetailsScreen(widget.setVM.id!),
                                 )));
                   },
                 ),

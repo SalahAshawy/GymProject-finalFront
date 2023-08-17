@@ -17,7 +17,7 @@ class SupplementaryViewModel extends ChangeNotifier {
 
   Future<void> getSupplementaryById(int id, String token) async {
     this.singleSupplementary =
-        await SupplementaryWebService(token).getSupplementaryById(id);
+        await SupplementaryWebService(token).getSupplementaryById(id) as Supplementary;
     notifyListeners();
   }
 

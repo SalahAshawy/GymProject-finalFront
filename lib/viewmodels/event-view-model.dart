@@ -80,7 +80,7 @@ class EventViewModel extends ChangeNotifier {
 
   Future<void> getEventById(int id, String token) async {
     this.singleEvent =
-        await EventWebService(token).getEventByID(id);
+        await EventWebService(token).getEventByID(id) as Event;
     // print(singleEvent.title);    
     notifyListeners();
   }

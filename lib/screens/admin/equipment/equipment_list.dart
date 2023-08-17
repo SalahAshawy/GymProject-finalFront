@@ -12,8 +12,8 @@ import '../../../widget/global.dart';
 import 'create_equipment.dart';
 
 class EquipmentList extends StatelessWidget {
-  final List<Equipment>allEquipment;
-  EquipmentList({required this.allEquipment});
+  final List<Equipment>?allEquipment;
+  EquipmentList({ this.allEquipment});
 
   @override
   Widget build(BuildContext context) {
@@ -59,24 +59,24 @@ class EquipmentList extends StatelessWidget {
           ):SizedBox(),
           floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
           body: ConditionalBuilder(
-            condition: allEquipment.isNotEmpty,
+            condition: allEquipment!.isNotEmpty,
             builder: (context)=>Container(
               color: Colors.black,
               padding: EdgeInsetsDirectional.all(10),
               child: ListView.builder(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
-                  itemCount:allEquipment.length,
+                  itemCount:allEquipment!.length,
                   itemBuilder: (ctx, index) {
                     return InkWell(
                       onTap: () {
-                        goToAnotherScreenPush(context, EquipmentDetails(equipment:allEquipment[index],adminCubit: myCubit,));
+                        goToAnotherScreenPush(context, EquipmentDetails(equipment:allEquipment![index],adminCubit: myCubit,));
                       },
                       child: CustomListTileWithoutCounter(
-                          allEquipment[index].picture,
-                          allEquipment[index].name,
+                          allEquipment![index].picture,
+                          allEquipment![index].name,
                           '',
-                          allEquipment[index].description,
+                          allEquipment![index].description,
                           ''),
                     );
                   }),

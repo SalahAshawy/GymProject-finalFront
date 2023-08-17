@@ -169,7 +169,7 @@ class _ViewBookedSessionsScreenState extends State<ViewBookedSessionsScreen> {
           child: FlutterLogo(),
         ),
         title: Text(
-          privateSession.title,
+          privateSession.title!,
           style: TextStyle(color: Colors.white),
         ),
         subtitle: Column(
@@ -178,13 +178,13 @@ class _ViewBookedSessionsScreenState extends State<ViewBookedSessionsScreen> {
           children: [
             if (privateSession.status == 'booked')
               Text(
-                'Date:${formatDateTime(privateSession.dateTime)}',
+                'Date:${formatDateTime(privateSession.dateTime!)}',
                 style: TextStyle(
                   color: Colors.white,
                 ),
               ),
             Text(
-              formatDuration(privateSession.duration),
+              formatDuration(privateSession.duration!),
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -220,7 +220,7 @@ class _ViewBookedSessionsScreenState extends State<ViewBookedSessionsScreen> {
 
                     Provider.of<PrivateSessionListViewModel>(context,
                             listen: false)
-                        .cancelPrivateSession(privateSession.id)
+                        .cancelPrivateSession(privateSession.id!)
                         .then((value) {
                       setState(() {
                         showSuccessMessage(

@@ -30,7 +30,7 @@ class _SupplementDetailsScreenState extends State<SupplementDetailsScreen> {
 
     Provider.of<SupplementaryViewModel>(context, listen: false)
         .getSupplementaryById(widget.id,
-            Global.token);
+            Global.token!);
   }
 
   @override
@@ -49,11 +49,11 @@ class _SupplementDetailsScreenState extends State<SupplementDetailsScreen> {
                       MaterialPageRoute(
                           builder: (_) => SupplementForm(
                                 type: 'edit',
-                                title: supplement.supplementary.title,
-                                id: supplement.supplementary.id,
+                                title: supplement.supplementary.title!,
+                                id: supplement.supplementary.id!,
                                 description:
-                                    supplement.supplementary.description,
-                                price: supplement.supplementary.price,
+                                    supplement.supplementary.description!,
+                                price: supplement.supplementary.price!,
                                 picture: widget.image,
                               )));
                 },
@@ -164,7 +164,7 @@ class _SupplementDetailsScreenState extends State<SupplementDetailsScreen> {
                             onTap: () async {
                               await Provider.of<SupplementaryViewModel>(context,
                                       listen: false)
-                                  .deleteSupplementary(this.widget.id, Global.token);
+                                  .deleteSupplementary(this.widget.id, Global.token!);
                               final snackbar = SnackBar(
                                 content: Text(
                                   'Supplement Deleted correctly',
@@ -208,7 +208,7 @@ class _SupplementDetailsScreenState extends State<SupplementDetailsScreen> {
                             padding: EdgeInsets.only(
                                 left: 20.0.w, right: 20.0.w, top: 10.0.h, bottom: 10.h),
                             child: Text(
-                              supplement.supplementary.title,
+                              supplement.supplementary.title!,
                               style: TextStyle(
                                 fontSize: 24.0.sp,
                                 color: myYellow2,
@@ -242,7 +242,7 @@ class _SupplementDetailsScreenState extends State<SupplementDetailsScreen> {
                     Container(
                       padding: EdgeInsets.only(left: 20.0, right: 20.0),
                       child: Text(
-                        supplement.supplementary.description,
+                        supplement.supplementary.description!,
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           color: Colors.grey.shade500,

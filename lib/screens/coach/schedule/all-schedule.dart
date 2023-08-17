@@ -41,11 +41,11 @@ class _AllScheduleState extends State<AllSchedule> {
       setState(() {
         done = true;
         privateSessions =
-            Provider.of<CoachViewModel>(context, listen: false).schedule.item1;
+            Provider.of<CoachViewModel>(context, listen: false).schedule.item1!;
         events =
-            Provider.of<CoachViewModel>(context, listen: false).schedule.item3;
+            Provider.of<CoachViewModel>(context, listen: false).schedule.item3!;
         classes =
-            Provider.of<CoachViewModel>(context, listen: false).schedule.item2;
+            Provider.of<CoachViewModel>(context, listen: false).schedule.item2!;
       });
     }).catchError((err) {
       setState(() {

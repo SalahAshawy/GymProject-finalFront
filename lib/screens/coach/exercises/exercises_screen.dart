@@ -403,7 +403,7 @@ class MyChoosingGridViewCard extends StatefulWidget {
 }
 
 class _MyChoosingGridViewCardState extends State<MyChoosingGridViewCard> {
-  String username = Global.username;
+  String username = Global.username!;
 
   @override
   Widget build(BuildContext context) {

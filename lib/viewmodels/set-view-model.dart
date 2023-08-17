@@ -7,7 +7,7 @@ class SetViewModel {
   SetViewModel({Set? set}) : this.set = set!;
 
   String get title {
-    return set.title;
+    return set.title!;
   }
 
   int? get id {
@@ -15,7 +15,7 @@ class SetViewModel {
   }
 
   String get description {
-    return set.description;
+    return set.description!;
   }
 
   String get breakDuration => set.breakDuration!;

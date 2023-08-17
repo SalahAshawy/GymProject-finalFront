@@ -33,7 +33,7 @@ class _MemberUtilState extends State<MemberUtil> with TickerProviderStateMixin {
   //MotionTabController _tabController;
   int _selectedIndex = 0;
   Future<void> getAllSupplementaries() async {
-    supplementariesList = await SupplementaryWebService(Global.token).getAllSupplementaries();
+    supplementariesList = await SupplementaryWebService(Global.token!).getAllSupplementaries();
   }
 
   void fetchAllFunction()async{
@@ -84,8 +84,8 @@ class _MemberUtilState extends State<MemberUtil> with TickerProviderStateMixin {
     });
   }
 
-  String name = Global.username;
-  String email = Global.email;
+  String name = Global.username!;
+  String email = Global.email!;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   @override

@@ -8,14 +8,14 @@ import '../services/answers-webservice.dart';
 class AnswerTextField extends StatefulWidget {
   //const AnswerTextField({ Key key }) : super(key: key);
   final TextEditingController controller;
-  final Function onEdit;
-  final int id;
+  final Function? onEdit;
+  final int? id;
   final Question question;
   final String type;
-  final AdminCubit adminCubit;
+  final AdminCubit? adminCubit;
 
   AnswerTextField(
-      {required this.controller, required this.onEdit, required this.id, required this.question, required this.type,required this.adminCubit});
+      {required this.controller, this.onEdit,  this.id, required this.question, required this.type, this.adminCubit});
 
   @override
   _AnswerTextFieldState createState() => _AnswerTextFieldState();
@@ -74,13 +74,13 @@ class _AnswerTextFieldState extends State<AnswerTextField> {
               ? null
               : () async {
                   if (widget.type == 'edit') {
-                    await AnswersWebservice.editAnswer(widget.id, widget.controller.text);
-                    widget.onEdit();
+                    await AnswersWebservice.editAnswer(widget.id!, widget.controller.text);
+                    widget.onEdit!();
                   } else {
                     await AnswersWebservice.postAnswer(
                         question:questionsList[widget.question.index!],
                         body:  widget.controller.text,
-                      adminCubit: widget.adminCubit
+                      adminCubit: widget.adminCubit!
                     );
                     setState(() {
                       widget.controller.text = "";

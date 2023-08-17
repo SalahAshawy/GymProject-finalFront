@@ -166,7 +166,7 @@ class _ViewMyPrivateSessionsScreenState
           child: FlutterLogo(),
         ),
         title: Text(
-          privateSession.title,
+          privateSession.title!,
           style: TextStyle(color: Colors.white),
         ),
         subtitle: Column(
@@ -174,13 +174,13 @@ class _ViewMyPrivateSessionsScreenState
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              privateSession.coachName,
+              privateSession.coachName!,
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
             Text(
-              formatDuration(privateSession.duration),
+              formatDuration(privateSession.duration!),
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -202,7 +202,7 @@ class _ViewMyPrivateSessionsScreenState
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            EditPrivateSessionForm(privateSession.id)));
+                            EditPrivateSessionForm(privateSession.id!)));
               },
               child: Text(
                 'Edit',
@@ -215,7 +215,7 @@ class _ViewMyPrivateSessionsScreenState
         TextButton(
               onPressed: () {
                 Provider.of<PrivateSessionListViewModel>(context, listen: false)
-                    .deletePrivateSession(privateSession.id)
+                    .deletePrivateSession(privateSession.id!)
                     .then((value) {
                   setState(() {
                     privateSessions.remove(privateSession);

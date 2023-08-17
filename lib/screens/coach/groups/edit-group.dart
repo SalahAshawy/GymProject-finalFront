@@ -51,14 +51,14 @@ int getExerciseQuantity(
 }
 
 void setSelectedSets(List<SetViewModel> sets) {
-  List<int> uniqueIds = sets.map((set) => set.id).toSet().toList();
+  List<int?> uniqueIds = sets.map((set) => set.id).toSet().toList();
   uniqueIds.forEach((id) {
     SetViewModel set = sets.firstWhere((set) => set.id == id);
     Map<String, Object> setData = {
       'set': set,
       'quantity': getSetQuantity(sets, set),
     };
-    MapEntry<int, Map<String, Object>> selectedSet = MapEntry(set.id, setData);
+    MapEntry<int, Map<String, Object>> selectedSet = MapEntry(set.id!, setData);
     selectedSets.addEntries([selectedSet]);
   });
 }
@@ -134,7 +134,7 @@ class MapScreenState extends State<EditGroupForm>
     GroupListViewModel groupListVM =
         Provider.of<GroupListViewModel>(context, listen: false);
     groupListVM.fetchGroupDetails(widget.groupVM.id).then((_) {
-      GroupViewModel groupVM = groupListVM.group;
+      GroupViewModel groupVM = groupListVM.group!;
       setTextFormFieldsValues(groupVM);
       orderedObjects.clear();
       orderedObjects.addAll(groupVM.exercisesViewModels);
@@ -519,7 +519,7 @@ class MapScreenState extends State<EditGroupForm>
                                         return;
                                       }
                                       Group inputGroup = Group(
-                                        id: groupListVM.group.id,
+                                        id: groupListVM.group!.id,
                                         title: titleController.text,
                                         description: descriptionController.text,
                                         breakDuration:

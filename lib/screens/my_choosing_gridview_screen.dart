@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_project/core/presentation/res/assets.dart';
 
 class MyChoosingGridViewScreen extends StatefulWidget {
-  const MyChoosingGridViewScreen({Key key}) : super(key: key);
+  const MyChoosingGridViewScreen({Key? key}) : super(key: key);
   static final String path = "lib/src/pages/ecommerce/ecommerce5.dart";
 
   @override
@@ -26,7 +26,7 @@ class _MyChoosingGridViewScreenState extends State<MyChoosingGridViewScreen> {
           .indexWhere((map) => map.containsKey(index));
       if (i != -1) {
         _numberOfSelectedInstances[i][index] =
-            _numberOfSelectedInstances[i][index] + 1;
+            _numberOfSelectedInstances[i][index]! + 1;
       } else {
         _numberOfSelectedInstances.add({index: 1});
       }
@@ -42,7 +42,7 @@ class _MyChoosingGridViewScreenState extends State<MyChoosingGridViewScreen> {
         _numberOfSelectedInstances.removeWhere((map) => map.containsKey(index));
       } else {
         _numberOfSelectedInstances[i][index] =
-            _numberOfSelectedInstances[i][index] - 1;
+            _numberOfSelectedInstances[i][index]! - 1;
       }
     });
   }
@@ -52,7 +52,7 @@ class _MyChoosingGridViewScreenState extends State<MyChoosingGridViewScreen> {
       return 0;
     } else {
       return _numberOfSelectedInstances
-          .firstWhere((map) => map.containsKey(index))[index];
+          .firstWhere((map) => map.containsKey(index))[index]!;
     }
   }
 
@@ -282,7 +282,7 @@ class MyChoosingGridViewCard extends StatefulWidget {
     this.subTitle2,
     this.subTitle3,
     this.subTitle4, {
-    Key key,
+    Key? key,
     required this.index,
     required this.selectionMode,
     required this.setSelectionMode,

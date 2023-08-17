@@ -24,7 +24,7 @@ class SetListViewModel with ChangeNotifier {
         await SetWebService().getSets(page, searchText);
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
-    this.sets = result.item2.map((set) => SetViewModel(set: set)).toList();
+    this.sets = result.item2!.map((set) => SetViewModel(set: set)).toList();
     lastPage = result.item1;
     if (this.sets.isEmpty) {
       loadingStatus = LoadingStatus.Empty;

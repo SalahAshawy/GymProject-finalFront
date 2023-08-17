@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // import 'my_list_view.dart';
 
 class TestPopUp extends StatefulWidget {
-  const TestPopUp({Key key}) : super(key: key);
+  const TestPopUp({Key? key}) : super(key: key);
 
   @override
   _TestPopUpState createState() => _TestPopUpState();
@@ -17,8 +17,8 @@ class _TestPopUpState extends State<TestPopUp> {
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.amber)),
         child: Text('Create'),
-        onPressed: () {
-          return showDialog(
+        onPressed: () async{
+          return await showDialog(
               context: context,
               builder: (context) {
                 return AlertDialog(

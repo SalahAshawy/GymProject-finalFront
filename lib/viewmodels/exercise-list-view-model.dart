@@ -30,7 +30,7 @@ class ExerciseListViewModel with ChangeNotifier {
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
     this.exercises =
-        result.item2.map((exercise) => ExerciseViewModel(e: exercise)).toList();
+        result.item2!.map((exercise) => ExerciseViewModel(e: exercise)).toList();
     this.lastPage = result.item1;
     if (this.exercises.isEmpty) {
       loadingStatus = LoadingStatus.Empty;

@@ -6,8 +6,8 @@ import 'exercise.dart';
 
 class Set {
   int? id;
-  String title;
-  String description;
+  String? title;
+  String? description;
   String? breakDuration;
   int? coachId;
   String? coachName;
@@ -32,8 +32,8 @@ class Set {
   Map<String, Object> toMap() {
     return {
       'id': id!,
-      'title': title,
-      'description': description,
+      'title': title!,
+      'description': description!,
       'coachId': coachId!,
       'break_duration': breakDuration!,
       'order': order!,
@@ -44,8 +44,8 @@ class Set {
 
   String toJsonForCreation() {
     Map<String, Object> mappedSet = {
-      'title': title,
-      'description': description,
+      'title': title!,
+      'description': description!,
       'coachId': coachId!,
       'exercises': exercises!
           .map((Exercise exercise) => {

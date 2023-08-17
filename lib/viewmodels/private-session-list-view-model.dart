@@ -31,7 +31,7 @@ class PrivateSessionListViewModel with ChangeNotifier {
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
     this.privateSessions = result.item2
-        .map((privateSession) =>
+        !.map((privateSession) =>
             PrivateSessionViewModel(privateS: privateSession))
         .toList();
     this.lastPage = result.item1;
@@ -51,7 +51,7 @@ class PrivateSessionListViewModel with ChangeNotifier {
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
     this.privateSessions = result.item2
-        .map((privateSession) =>
+        !.map((privateSession) =>
             PrivateSessionViewModel(privateS: privateSession))
         .toList();
     this.lastPage = result.item1;
@@ -70,7 +70,7 @@ class PrivateSessionListViewModel with ChangeNotifier {
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
     this.privateSessions = result.item2
-        .map((privateSession) =>
+        !.map((privateSession) =>
             PrivateSessionViewModel(privateS: privateSession))
         .toList();
     this.lastPage = result.item1;
@@ -90,7 +90,7 @@ class PrivateSessionListViewModel with ChangeNotifier {
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
     this.privateSessions = result.item2
-        .map((privateSession) =>
+        !.map((privateSession) =>
             PrivateSessionViewModel(privateS: privateSession))
         .toList();
     this.lastPage = result.item1;

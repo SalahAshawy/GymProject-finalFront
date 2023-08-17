@@ -28,7 +28,7 @@ class _GroupDetailsScreenState extends State<GroupDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     GroupListViewModel groupListVM = Provider.of<GroupListViewModel>(context);
-    GroupViewModel groupVM = groupListVM.group;
+    GroupViewModel groupVM = groupListVM.group!;
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(

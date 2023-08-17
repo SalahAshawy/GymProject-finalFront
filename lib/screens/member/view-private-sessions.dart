@@ -186,7 +186,7 @@ class _ViewPrivateSessionsScreenState extends State<ViewPrivateSessionsScreen> {
           child: FlutterLogo(),
         ),
         title: Text(
-          privateSession.title,
+          privateSession.title!,
           style: TextStyle(color: Colors.white),
         ),
         subtitle: Column(
@@ -200,7 +200,7 @@ class _ViewPrivateSessionsScreenState extends State<ViewPrivateSessionsScreen> {
               ),
             ),
             Text(
-              formatDuration(privateSession.duration),
+              formatDuration(privateSession.duration!),
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -219,7 +219,7 @@ class _ViewPrivateSessionsScreenState extends State<ViewPrivateSessionsScreen> {
             Expanded(
               child: TextButton(
                 onPressed: () {
-                  requestSession(privateSession.id);
+                  requestSession(privateSession.id!);
                 },
                 child: Text(
                   'Request',

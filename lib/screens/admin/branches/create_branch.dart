@@ -14,11 +14,11 @@ import '../../../services/admin-services/branches-services.dart';
 import '../helping-widgets/create-form-widgets.dart';
 
 class BranchForm extends StatelessWidget {
-  final AdminCubit adminCubit;
+  final AdminCubit? adminCubit;
   final bool isAdd;
   final Branch? branch;
   final BuildContext? detailsContext;
-  BranchForm({required this.adminCubit,this.isAdd=true, this.branch,this.detailsContext});
+  BranchForm({ this.adminCubit,this.isAdd=true, this.branch,this.detailsContext});
   final TextEditingController titleController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
@@ -181,7 +181,7 @@ class BranchForm extends StatelessWidget {
                                               membersNumber: int.parse(membersNumberController.text),
                                               coachesNumber: int.parse(coachesNumberController.text),
                                               context: context,
-                                              adminCubit: adminCubit,
+                                              adminCubit: adminCubit!,
                                               createCubit:myCubit
                                           );
                                         }
@@ -199,7 +199,7 @@ class BranchForm extends StatelessWidget {
                                               coachesNumber: int.parse(coachesNumberController.text),
                                               context: context,
                                               createCubit:myCubit,
-                                              adminCubit: adminCubit,
+                                              adminCubit: adminCubit!,
                                               id: branch!.id,
                                               index: branch!.index,
                                               detailsContext: detailsContext!,

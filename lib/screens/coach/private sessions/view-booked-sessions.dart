@@ -170,7 +170,7 @@ class _ViewBookedSessionsScreenState extends State<ViewBookedSessionsScreen> {
           child: FlutterLogo(),
         ),
         title: Text(
-          privateSession.title,
+          privateSession.title!,
           style: TextStyle(color: Colors.white),
         ),
         subtitle: Column(
@@ -182,7 +182,7 @@ class _ViewBookedSessionsScreenState extends State<ViewBookedSessionsScreen> {
               style: TextStyle(color: Colors.amber),
             ),
             Text(
-              formatDuration(privateSession.duration),
+              formatDuration(privateSession.duration!),
               style: TextStyle(
                 color: Colors.white,
               ),

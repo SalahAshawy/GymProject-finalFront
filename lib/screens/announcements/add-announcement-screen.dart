@@ -6,9 +6,9 @@ class AddAnnouncementScreen extends StatefulWidget {
   final String? title;
   final String? body;
   final int? id;
-  final String post_type;
-  AdminCubit myCubit;
-  AddAnnouncementScreen({ this.id,  this.title,  this.body,required this.post_type,required this.myCubit});
+  final String? post_type;
+  AdminCubit? myCubit;
+  AddAnnouncementScreen({ this.id,  this.title,  this.body, this.post_type, this.myCubit});
 
   @override
   _AddAnnouncementScreenState createState() => _AddAnnouncementScreenState();
@@ -64,7 +64,7 @@ class _AddAnnouncementScreenState extends State<AddAnnouncementScreen> {
               CustomForm(
                 titleController: _titleController,
                 bodyController: _bodyController,
-                form_type: widget.post_type,
+                form_type: widget.post_type!,
                 post_type: 'announcement',
                 id: widget.id!,
                 enable: btn_enabled!,

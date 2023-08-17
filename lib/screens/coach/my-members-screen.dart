@@ -25,7 +25,7 @@ class MyMembersScreen extends StatelessWidget{
           color: myBlack,
             padding: EdgeInsets.only(left: 10.w, right: 10.w, top: 5.h, bottom: 5.h),
             child: ConditionalBuilder(
-                condition: userCoach.allMembers.isNotEmpty,
+                condition: userCoach!.allMembers.isNotEmpty,
                 builder: (context)=>loadMembersList(context),
               fallback: (context)=>ConditionalBuilder(
                 condition: coachCubit.isLoadingCoach,
@@ -59,10 +59,10 @@ class MyMembersScreen extends StatelessWidget{
   ListView loadMembersList(BuildContext context) {
     return ListView.builder(
         physics: BouncingScrollPhysics(),
-        itemCount: userCoach.allMembers.length,
+        itemCount: userCoach!.allMembers.length,
         itemBuilder: (ctx, index) {
           return myListTile(
-            userCoach.allMembers[index],
+            userCoach!.allMembers[index],
             index,
             context,
           );

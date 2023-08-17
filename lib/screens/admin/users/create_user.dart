@@ -19,8 +19,8 @@ import '../../../constants.dart';
 import '../../../services/user_services/members-webservice.dart';
 
 class UserCreate extends StatelessWidget {
-  final AdminCubit adminCubit;
-  UserCreate({required this.adminCubit});
+  final AdminCubit? adminCubit;
+  UserCreate({ this.adminCubit});
   final FocusNode myFocusNode = FocusNode();
   int genderVal = -1;
   int roleVal = -1;
@@ -409,7 +409,7 @@ class UserCreate extends StatelessWidget {
                                                     age: int.parse(ageController.text),
                                                     context: context,
                                                     createCubit: myCubit,
-                                                    adminCubit: adminCubit
+                                                    adminCubit: adminCubit!
                                                 );
                                               }
                                               else if(roleController.text=="nutritionist"){
@@ -426,7 +426,7 @@ class UserCreate extends StatelessWidget {
                                                     age: int.parse(ageController.text),
                                                     context: context,
                                                     createCubit: myCubit,
-                                                    adminCubit: adminCubit
+                                                    adminCubit: adminCubit!
                                                 );
                                               }
                                               else if(roleController.text=="member"){
@@ -453,7 +453,7 @@ class UserCreate extends StatelessWidget {
                                                     available_frozen_days: int.parse(frozenController.text)??0,
                                                     available_membership_days: int.parse(availableMembershipController.text)??0,
                                                     membership_id: membership!.id,
-                                                    adminCubit:adminCubit,
+                                                    adminCubit:adminCubit!,
                                                   age: int.parse(ageController.text),
                                                 );
                                               }

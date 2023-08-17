@@ -48,8 +48,8 @@ class _NutritionistUtilState extends State<NutritionistUtil>
     super.initState();
   }
 
-  String name = Global.username;
-  String email = Global.email;
+  String name = Global.username!;
+  String email = Global.email!;
 
   void _onItemTapped(int index) {
     setState(() {

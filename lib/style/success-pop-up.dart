@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/global.dart';
 
 Future<dynamic> showSuccessMessage(BuildContext context, String message) {
-  String role = Global.role;
+  String role = Global.role!;
   return showDialog(
       context: context,
       builder: (context) {

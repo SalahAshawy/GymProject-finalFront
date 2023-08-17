@@ -15,8 +15,8 @@ class ImageUploadViewModel with ChangeNotifier {
       Tuple<bool, String> result =
           await ImageUploadWebService().uploadImage(image, imageName);
 
-      status = result.item1;
-      imagePath = result.item2;
+      status = result.item1!;
+      imagePath = result.item2!;
     } else {
       imagePath = imageName;
     }

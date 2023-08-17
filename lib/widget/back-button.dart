@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
-   required Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

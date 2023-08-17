@@ -37,7 +37,7 @@ class Question {
         height: 0,
         bio: "admin",
         email: Global.email,
-        name: Global.username,
+        name: Global.username!,
         user_id: user_id,
       );
       isFound=true;

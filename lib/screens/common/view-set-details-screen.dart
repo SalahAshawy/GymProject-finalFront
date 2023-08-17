@@ -87,7 +87,7 @@ class _SetDetailsScreenState extends State<SetDetailsScreen> {
                       SizedBox(
                         height: 30,
                       ),
-                      if (_set!.exercises.isNotEmpty)
+                      if (_set!.exercises!.isNotEmpty)
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 10.0),
@@ -110,7 +110,7 @@ class _SetDetailsScreenState extends State<SetDetailsScreen> {
                               mainAxisSpacing: 10,
                               crossAxisSpacing: 10,
                               children: <Widget>[
-                                for (Exercise exercise in _set!.exercises)
+                                for (Exercise exercise in _set!.exercises!)
                                   GridViewCard(
                                       exercise.image,
                                       exercise.title,

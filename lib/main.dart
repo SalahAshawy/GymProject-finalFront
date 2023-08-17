@@ -349,9 +349,9 @@ class MyApp extends StatelessWidget {
               //canvasColor: Colors.white,
               fontFamily: "ProximaNova",
               textTheme: TextTheme(),
-              colorScheme: ColorScheme(background: myBlack)),
+              backgroundColor: myBlack,
         ),
       ),
-    );
+    ));
   }
 }

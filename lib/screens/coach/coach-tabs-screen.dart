@@ -33,7 +33,7 @@ class _CoachTabsScreenState extends State<CoachTabsScreen> with TickerProviderSt
   TabController? _tabController;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   Future<void> getAllSupplementaries() async {
-    supplementariesList = await SupplementaryWebService(Global.token).getAllSupplementaries();
+    supplementariesList = await SupplementaryWebService(Global.token!).getAllSupplementaries();
   }
 
   void fetchAllFunction()async{
@@ -78,8 +78,8 @@ class _CoachTabsScreenState extends State<CoachTabsScreen> with TickerProviderSt
     super.initState();
   }
 
-  String name = Global.username;
-  String email = Global.email;
+  String name = Global.username!;
+  String email = Global.email!;
   var _pages = [];
 
   void _onItemTapped(int index) {

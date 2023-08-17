@@ -29,15 +29,15 @@ class _PlanScheduleState extends State<PlanSchedule> {
   }
 
   void fetchPlan() {
-    new Future<Plan>.sync(() =>
+    new Future<Plan?>.sync(() =>
         Provider.of<PlanViewModel>(context, listen: false).fetchActivePlan(
             widget.id == -1
                 ? Provider.of<LoginViewModel>(context, listen: false).roleID
                 : widget.id,
-            context)).then((Plan value) {
+            context)).then((Plan? value) {
       setState(() {
         if (!finishedLoading) {
-          plan = value; //check if it doesn't exist
+          plan = value!; //check if it doesn't exist
           finishedLoading = true;
         }
       });

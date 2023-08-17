@@ -17,7 +17,7 @@ class GroupListViewModel with ChangeNotifier {
     Tuple<int, List<Group>> result =
         await GroupWebService().getGroups(page, searchText);
     List<GroupViewModel> groupVMs =
-        result.item2.map((group) => GroupViewModel(group: group)).toList();
+        result.item2!.map((group) => GroupViewModel(group: group)).toList();
     groups = groupVMs;
     lastPage = result.item1;
     if (groups.isEmpty) {

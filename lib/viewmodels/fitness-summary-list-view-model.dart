@@ -25,7 +25,7 @@ class FitnessSummaryListViewModel with ChangeNotifier {
         .getFitnessSummaries(page, startDate, endDate);
     loadingStatus = LoadingStatus.Searching;
     notifyListeners();
-    this.fitnessSummaries = result.item2
+    this.fitnessSummaries = result.item2!
         .map((fitnessSummary) => FitnessSummaryViewModel(f: fitnessSummary))
         .toList();
     this.lastPage = result.item1;

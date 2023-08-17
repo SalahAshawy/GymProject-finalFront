@@ -45,8 +45,8 @@ class AdminUtil extends StatelessWidget  {
     },
   ];
 
-  final String name = Global.username;
-  final String email = Global.email;
+  final String name = Global.username!;
+  final String email = Global.email!;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   Future<void> checkInternetConnection(BuildContext context)async{
     try {

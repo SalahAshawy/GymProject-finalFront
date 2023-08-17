@@ -27,7 +27,7 @@ class MemberHomeScreen extends StatefulWidget {
 }
 
 class _MemberHomeScreenState extends State<MemberHomeScreen> {
-  final String name = Global.username;
+  final String name = Global.username!;
   @override
   void initState() {
     getEvents();
@@ -294,7 +294,7 @@ class _MemberHomeScreenState extends State<MemberHomeScreen> {
                 onTap: () async {
                   await Provider.of<EventViewModel>(context, listen: false)
                       .getEventById(
-                          eventsList[i].id,
+                          eventsList[i].id!,
                           Provider.of<LoginViewModel>(context, listen: false)
                               .token);
                   Event currentEvent =

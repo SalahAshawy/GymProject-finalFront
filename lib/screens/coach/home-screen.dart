@@ -17,7 +17,7 @@ import '../../widget/popularCard.dart';
 import '../admin/classes/class_arguments.dart';
 
 class CoachHomeScreen extends StatelessWidget {
-  final String name = Global.username;
+  final String name = Global.username!;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CoachCubit,CoachStates>(

@@ -12,7 +12,7 @@ class CustomForm extends StatefulWidget {
   final String post_type;
   final int id;
   bool enable;
-  AdminCubit cubit;
+  AdminCubit? cubit;
 
   CustomForm({
     required this.titleController,
@@ -21,7 +21,7 @@ class CustomForm extends StatefulWidget {
     required this.post_type,
     required this.enable,
     required this.id,
-    required this.cubit
+     this.cubit
   });
 
   @override
@@ -190,7 +190,7 @@ class _CustomFormState extends State<CustomForm> {
                         widget.titleController.text,
                         widget.bodyController.text,
                         DateTime.now().toString(),
-                      adminCubit: widget.cubit,
+                      adminCubit: widget.cubit!,
                       context:context
                     );
                   } else {
@@ -200,7 +200,7 @@ class _CustomFormState extends State<CustomForm> {
                       widget.bodyController.text,
                       DateTime.now().toString(),
                       context,
-                        adminCubit: widget.cubit
+                        adminCubit: widget.cubit!
                     );
                   }
                 }

@@ -14,8 +14,8 @@ import '../../../services/admin-services/membership-service.dart';
 import '../../../widget/global.dart';
 
 class MembershipDetails extends StatelessWidget {
-  final int membershipsIndex;
-  MembershipDetails({required this.membershipsIndex});
+  final int? membershipsIndex;
+  MembershipDetails({ this.membershipsIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +58,8 @@ class MembershipDetails extends StatelessWidget {
                           ),
                           onTap: () {
                             MembershipsWebservice.deleteMembership(
-                                id: allMemberships[membershipsIndex].id,
-                                index: membershipsIndex,
+                                id: allMemberships[membershipsIndex!].id,
+                                index: membershipsIndex!,
                                 context: context,
                                 createCubit: createCubit,
                                 adminCubit: adminCubit
@@ -114,7 +114,7 @@ class MembershipDetails extends StatelessWidget {
                                 padding: EdgeInsets.only(
                                     left: 20.0.w, right: 20.0.w, top: 10.0.h, bottom: 10.h),
                                 child: Text(
-                                  allMemberships[membershipsIndex].title,
+                                  allMemberships[membershipsIndex!].title,
                                   style: TextStyle(
                                     fontSize: 20.0.sp,
                                     color: Colors.white,
@@ -127,8 +127,8 @@ class MembershipDetails extends StatelessWidget {
                                 child: Row(
                                   children: <Widget>[
                                     Container(
-                                    child:allMemberships[membershipsIndex].discount != null
-                                        ? Text("\$${allMemberships[membershipsIndex].discount}",
+                                    child:allMemberships[membershipsIndex!].discount != null
+                                        ? Text("\$${allMemberships[membershipsIndex!].discount}",
                                         style: TextStyle(
                                           color: Colors.amber,
                                           fontSize: 18.0.sp,
@@ -143,9 +143,9 @@ class MembershipDetails extends StatelessWidget {
                                           fontSize: 10.0.sp,
                                           fontFamily: 'assets/fonts/Changa-Bold.ttf',
                                         )),
-                                    Text("\$${allMemberships[membershipsIndex].price}",
+                                    Text("\$${allMemberships[membershipsIndex!].price}",
                                         style: TextStyle(
-                                          decoration: allMemberships[membershipsIndex].discount != null
+                                          decoration: allMemberships[membershipsIndex!].discount != null
                                               ? TextDecoration.lineThrough
                                               : null,
                                           decorationThickness: 2,
@@ -163,7 +163,7 @@ class MembershipDetails extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 20.0.w, bottom: 10.0.h),
                             child: Text(
-                              "Branch : ${allMemberships[membershipsIndex].branch.title}",
+                              "Branch : ${allMemberships[membershipsIndex!].branch.title}",
                               style: TextStyle(
                                 color: Colors.white60,
                               ),
@@ -185,7 +185,7 @@ class MembershipDetails extends StatelessWidget {
                                         textAlign: TextAlign.center,
                                       ),
                                       subtitle: Text(
-                                        "${allMemberships[membershipsIndex].available_classes}",
+                                        "${allMemberships[membershipsIndex!].available_classes}",
                                         style: TextStyle(
                                           color: Colors.amber,
                                           fontSize: 10.0.sp,
@@ -209,7 +209,7 @@ class MembershipDetails extends StatelessWidget {
                                         textAlign: TextAlign.center,
                                       ),
                                       subtitle: Text(
-                                        "${allMemberships[membershipsIndex].limit_of_frozen_days} days",
+                                        "${allMemberships[membershipsIndex!].limit_of_frozen_days} days",
                                         style: TextStyle(
                                           color: Colors.amber,
                                           fontSize: 10.0.sp,
@@ -233,7 +233,7 @@ class MembershipDetails extends StatelessWidget {
                                         textAlign: TextAlign.center,
                                       ),
                                       subtitle: Text(
-                                        "${allMemberships[membershipsIndex].duration} months",
+                                        "${allMemberships[membershipsIndex!].duration} months",
                                         style: TextStyle(
                                           color: Colors.amber,
                                           fontSize: 10.0.sp,
@@ -258,7 +258,7 @@ class MembershipDetails extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
                             child: Text(
-                              allMemberships[membershipsIndex].description,
+                              allMemberships[membershipsIndex!].description,
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 color: Colors.grey.shade500,

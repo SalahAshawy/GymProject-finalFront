@@ -72,7 +72,7 @@ class _SupplementCardState extends State<SupplementCard> {
                     Provider.of<SupplementaryViewModel>(context, listen: false)
                         .deleteSupplementary(
                             widget.id,
-                            Global.token);
+                            Global.token!);
                     setState(() {
                       isVisible = false;
                     });
@@ -92,7 +92,7 @@ class _SupplementCardState extends State<SupplementCard> {
         onTap: () async {
           await Provider.of<SupplementaryViewModel>(context, listen: false)
               .getSupplementaryById(widget.id,
-                  Global.token);
+                  Global.token!);
           Navigator.push(
               context,
               MaterialPageRoute(

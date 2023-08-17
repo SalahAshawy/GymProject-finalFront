@@ -10,7 +10,7 @@ import '../../bloc/Admin_cubit/admin_states.dart';
 import '../../constants.dart';
 
 class MyQuestions extends StatelessWidget {
-  String user_role=Global.role;
+  String user_role=Global.role!;
 
   @override
   Widget build(BuildContext context) {

@@ -34,8 +34,8 @@ class PlanViewModel with ChangeNotifier {
     return plan;
   }
 
-  Future<Plan> fetchActivePlan(int memberID, context) async {
-    plan = await PlanWebService().getActivePlan(memberID, context);
+  Future<Plan?> fetchActivePlan(int memberID, context) async {
+    plan = await PlanWebService().getActivePlan(memberID, context) as Plan;
 
     notifyListeners();
 

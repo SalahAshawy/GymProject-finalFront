@@ -111,7 +111,8 @@ class _SingleQuestionScreenState extends State<SingleQuestionScreen> {
                           controller: _textController,
                           question:  questionsList[widget.questionIndex!],
                           type: 'add',
-                          adminCubit:adminCubit
+                          adminCubit:adminCubit,
+
                         ),
                       ),
                     ],

@@ -347,7 +347,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
   void updateSingle() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
       await Provider.of<EventViewModel>(context, listen: false).getEventById(
-          widget.id!, Global.token);
+          widget.id!, Global.token!);
 
       setState(() {
         widget.currentEvent =

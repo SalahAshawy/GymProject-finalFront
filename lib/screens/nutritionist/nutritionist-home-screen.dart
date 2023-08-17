@@ -29,10 +29,10 @@ class NutritionistHomeScreenState extends State<NutritionistHomeScreen> {
 
   List<Event> events = [];
   List<Classes> classes = [];
-  String name = Global.username;
+  String name = Global.username!;
 
-  bool done = false;
-  bool error = false;
+  bool? done = false;
+  bool? error = false;
 
   getEventsList() {
     String? token = Global.token;
@@ -127,9 +127,9 @@ class NutritionistHomeScreenState extends State<NutritionistHomeScreen> {
                             ),
                           ),
                         ),
-                        error
+                        error!
                             ? CustomErrorWidget()
-                            : done && events.isEmpty && classes.isEmpty
+                            : done! && events.isEmpty && classes.isEmpty
                                 ? EmptyListError('Nothing new to display.')
                                 : events.isEmpty && classes.isEmpty
                                     ? Progress()

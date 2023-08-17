@@ -371,7 +371,7 @@ class GroupsListTile extends StatefulWidget {
 
 class _GroupsListTileState extends State<GroupsListTile> {
   int number = 0;
-  String username = Global.username;
+  String username = Global.username!;
   @override
   Widget build(BuildContext context) {
     return Container(

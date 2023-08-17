@@ -12,7 +12,7 @@ import '../../widget/global.dart';
 
 
 class AnnouncementsScreen extends StatelessWidget {
-  final String user_role=Global.role;
+  final String user_role=Global.role!;
   final bool showAppBar;
   AnnouncementsScreen({this.showAppBar=true});
 

@@ -21,9 +21,9 @@ class _NutritionistMembersScreenState extends State<NutritionistMembersScreen> {
   bool loading = false;
 
   void fetchPlan(int id) {
-    new Future<Plan>.sync(() =>
+    new Future<Plan?>.sync(() =>
         Provider.of<PlanViewModel>(context, listen: false)
-            .fetchActivePlan(id, context)).then((Plan value) {
+            .fetchActivePlan(id, context)).then((Plan? value) {
       setState(() {
         loading = false;
 
