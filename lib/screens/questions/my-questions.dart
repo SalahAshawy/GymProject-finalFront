@@ -1,4 +1,4 @@
-import 'package:conditional_builder/conditional_builder.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,11 +24,11 @@ class MyQuestions extends StatelessWidget {
             condition: questionsList.isNotEmpty,
             builder: (context)=>ListView.builder(
               itemBuilder: (context, index) {
-                return questionsList[index].user.user_id == Global.id
+                return questionsList[index].user!.user_id == Global.id
                     ? QuestionsListTile(
                   role: 'question_owner',
                   num_of_answers: 3,
-                  index: questionsList[index].index,
+                  index: questionsList[index].index!,
                   adminCubit: adminCubit,
                   viewAnswersButton: true,
                 )

@@ -1,4 +1,4 @@
-import 'package:conditional_builder/conditional_builder.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,11 +30,11 @@ class AllQuestions extends StatelessWidget{
                       itemBuilder: (context, index) {
                         print(questionsList.length);
                         return QuestionsListTile(
-                            role: questionsList[index].user.user_id == Global.id
+                            role: questionsList[index].user!.user_id == Global.id
                                 ? 'question_owner'
                                 : Global.role,
                             num_of_answers: questionsList[index].allAnswers.length,
-                            index:questionsList[index].index,
+                            index:questionsList[index].index!,
                             adminCubit:adminCubit
                         );
                       },

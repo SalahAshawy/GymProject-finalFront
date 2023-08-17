@@ -16,8 +16,8 @@ import '../../bloc/Admin_cubit/admin_states.dart';
 import '../../constants.dart';
 
 class SingleQuestionScreen extends StatefulWidget {
-  final int questionIndex;
-  final String role;
+  final int? questionIndex;
+  final String? role;
 
   SingleQuestionScreen({this.questionIndex, this.role});
 
@@ -27,7 +27,7 @@ class SingleQuestionScreen extends StatefulWidget {
 
 class _SingleQuestionScreenState extends State<SingleQuestionScreen> {
   final TextEditingController _textController = TextEditingController();
-  Color iconColor;
+  Color? iconColor;
 
   @override
   void initState() {
@@ -61,13 +61,13 @@ class _SingleQuestionScreenState extends State<SingleQuestionScreen> {
               color: myBlack,
               height: MediaQuery.of(context).size.height,
               padding: EdgeInsets.all(10),
-              child: questionsList[widget.questionIndex].id != null
+              child: questionsList[widget.questionIndex!].id != null
                   ? Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   QuestionsListTile(
-                    num_of_answers: questionsList[widget.questionIndex].allAnswers.length,
-                    index: questionsList[widget.questionIndex].index,
+                    num_of_answers: questionsList[widget.questionIndex!].allAnswers.length,
+                    index: questionsList[widget.questionIndex!].index,
                     role: widget.role,
                     viewAnswersButton: false,
                   ),
@@ -82,17 +82,17 @@ class _SingleQuestionScreenState extends State<SingleQuestionScreen> {
                       itemBuilder: (context, index) {
                         return Column(children: [
                           AnswersListTile(
-                            username: questionsList[widget.questionIndex].allAnswers[index].user.name,
-                            body: questionsList[widget.questionIndex].allAnswers[index].body,
-                            date: questionsList[widget.questionIndex].allAnswers[index].date,
-                            role: questionsList[widget.questionIndex].allAnswers[index].user.user_id ==
-                                Global.id
+                            username: questionsList[widget.questionIndex!].allAnswers[index].user.name,
+                            body: questionsList[widget.questionIndex!].allAnswers[index].body,
+                            date: questionsList[widget.questionIndex!].allAnswers[index].date,
+                            role: questionsList[widget.questionIndex!].allAnswers[index!]!.user!.user_id! ==
+                                Global.id!
                                 ? 'answer_owner'
-                                : widget.role,
-                            id: questionsList[widget.questionIndex].allAnswers[index].id,
-                            question:  questionsList[widget.questionIndex],
+                                : widget.role!,
+                            id: questionsList[widget.questionIndex!].allAnswers[index].id,
+                            question:  questionsList[widget.questionIndex!],
                           ),
-                          index < questionsList[widget.questionIndex].allAnswers.length - 1
+                          index < questionsList[widget.questionIndex!].allAnswers.length - 1
                               ? Divider(
                             color: Colors.grey,
                             thickness: 0.5,
@@ -100,7 +100,7 @@ class _SingleQuestionScreenState extends State<SingleQuestionScreen> {
                               : Container(),
                         ]);
                       },
-                      itemCount: questionsList[widget.questionIndex].allAnswers.length,
+                      itemCount: questionsList[widget.questionIndex!].allAnswers.length,
                     ),
                   ),
 
@@ -109,7 +109,7 @@ class _SingleQuestionScreenState extends State<SingleQuestionScreen> {
                       Expanded(
                         child: AnswerTextField(
                           controller: _textController,
-                          question:  questionsList[widget.questionIndex],
+                          question:  questionsList[widget.questionIndex!],
                           type: 'add',
                           adminCubit:adminCubit
                         ),

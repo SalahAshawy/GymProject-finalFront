@@ -3,10 +3,10 @@ import 'package:gym_project/widget/custom-form.dart';
 
 class AddQuestionScreen extends StatefulWidget {
   //const AddQuestionScreen({Key key}) : super(key: key);
-  final int id;
-  final String title;
-  final String body;
-  final String form_type;
+  final int? id;
+  final String? title;
+  final String? body;
+  final String? form_type;
 
   AddQuestionScreen({this.title, this.body, this.form_type, this.id});
 
@@ -17,13 +17,13 @@ class AddQuestionScreen extends StatefulWidget {
 class _AddQuestionScreenState extends State<AddQuestionScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _bodyController = TextEditingController();
-  bool btn_enabled;
+  bool? btn_enabled;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _titleController.text = widget.title;
-    _bodyController.text = widget.body;
+    _titleController.text = widget.title!;
+    _bodyController.text = widget.body!;
     if (_titleController.text.isEmpty && _bodyController.text.isEmpty) {
       btn_enabled = false;
     } else {
@@ -69,10 +69,10 @@ class _AddQuestionScreenState extends State<AddQuestionScreen> {
               CustomForm(
                 titleController: _titleController,
                 bodyController: _bodyController,
-                form_type: widget.form_type,
+                form_type: widget.form_type!,
                 post_type: 'question',
-                enable: btn_enabled,
-                id: widget.id,
+                enable: btn_enabled!,
+                id: widget.id!,
               ),
             ],
           ),

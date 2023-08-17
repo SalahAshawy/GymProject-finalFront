@@ -1,4 +1,4 @@
-import 'package:conditional_builder/conditional_builder.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,11 +17,11 @@ import '../admin/helping-widgets/create-form-widgets.dart';
 
 
 class QuestionsListTile extends StatelessWidget {
-  final int num_of_answers;
-  final String role;
-  final int index;
-  final AdminCubit adminCubit;
-  final bool viewAnswersButton;
+  final int? num_of_answers;
+  final String? role;
+  final int? index;
+  final AdminCubit? adminCubit;
+  final bool? viewAnswersButton;
 
   QuestionsListTile({
     this.num_of_answers,
@@ -52,7 +52,7 @@ class QuestionsListTile extends StatelessWidget {
             ),
             child: ListTile(
               isThreeLine: true,
-              onTap: () => goToAnotherScreenPush(context, SingleQuestionScreen(questionIndex:index,role:role)),
+              onTap: () => goToAnotherScreenPush(context, SingleQuestionScreen(questionIndex:index!,role:role!)),
               minVerticalPadding: 10,
               title: Padding(
                 padding:  EdgeInsets.only(right: 0.0, top: 8.0.h, bottom: 8.0.h),
@@ -73,7 +73,7 @@ class QuestionsListTile extends StatelessWidget {
                         children: [
                           FittedBox(
                             child: Text(
-                              questionsList[index].user.name,
+                              questionsList[index!].user!.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -87,7 +87,7 @@ class QuestionsListTile extends StatelessWidget {
                           Container(
                             child: FittedBox(
                               child: Text(
-                                questionsList[index].date,
+                                questionsList[index!].date!,
                                 style: TextStyle(
                                   color: myYellow,
                                   fontSize: 11.sp,
@@ -118,8 +118,8 @@ class QuestionsListTile extends StatelessWidget {
                                   text: 'Would you like to delete this question ?',
                                   onDelete: () {
                                     QuestionsWebservice.deleteQuestion(
-                                        id: questionsList[index].id,
-                                        index: index,
+                                        id: questionsList[index!].id!,
+                                        index: index!,
                                         adminCubit: adminCubit,
                                         createCubit: createCubit,
                                         context:context
@@ -136,9 +136,9 @@ class QuestionsListTile extends StatelessWidget {
                               onPressed: () {
                                 var formKey=GlobalKey<FormState>();
                                 TextEditingController titleController=TextEditingController();
-                                titleController.text=questionsList[index].title;
+                                titleController.text=questionsList[index!].title!;
                                 TextEditingController BodyController=TextEditingController();
-                                BodyController.text=questionsList[index].body;
+                                BodyController.text=questionsList[index!].body!;
                                 myAlertDialog(context: context, Body: Center(
                                   child: Padding(
                                     padding:EdgeInsets.fromLTRB(22.w, 0, 22.w, 0),
@@ -191,10 +191,10 @@ class QuestionsListTile extends StatelessWidget {
                                                                 )),
                                                             onPressed: () {
                                                               FocusScope.of(context).requestFocus(new FocusNode());
-                                                              if(formKey.currentState.validate()){
+                                                              if(formKey.currentState!.validate()){
                                                                 QuestionsWebservice.editQuestion(
-                                                                  id: questionsList[index].id,
-                                                                    index: questionsList[index].index,
+                                                                  id: questionsList[index!].id!,
+                                                                    index: questionsList[index!].index!,
                                                                     title: titleController.text,
                                                                     body: BodyController.text,
                                                                     adminCubit: adminCubit,
@@ -237,19 +237,19 @@ class QuestionsListTile extends StatelessWidget {
                         text: "Question :-  ",
                         style: TextStyle(color: Colors.blue, fontSize: 20,fontWeight: FontWeight.bold),
                         children: [
-                          TextSpan(text: "${questionsList[index].body}", style: TextStyle(fontFamily: 'assets/fonts/Changa-Bold.ttf',color: Colors.grey,fontSize: 15.sp)),
+                          TextSpan(text: "${questionsList[index!].body}", style: TextStyle(fontFamily: 'assets/fonts/Changa-Bold.ttf',color: Colors.grey,fontSize: 15.sp)),
                         ]
                       )
                   ),
 
-                  if (viewAnswersButton)
+                  if (viewAnswersButton!)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4, right: 8),
                           child: TextButton(
-                            onPressed: () => goToAnotherScreenPush(context,SingleQuestionScreen(questionIndex:index,role:role)),
+                            onPressed: () => goToAnotherScreenPush(context,SingleQuestionScreen(questionIndex:index!,role:role!)),
                             child: FittedBox(
                               child: Text(
                                 //questionsList[index].num_of_answers.toString() +

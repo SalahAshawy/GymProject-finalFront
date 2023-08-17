@@ -1,4 +1,4 @@
-import 'package:conditional_builder/conditional_builder.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -102,7 +102,7 @@ class QuestionsScreen extends StatelessWidget {
                                                   )),
                                               onPressed: () {
                                                 FocusScope.of(context).requestFocus(new FocusNode());
-                                                if(formKey.currentState.validate()){
+                                                if(formKey.currentState!.validate()){
                                                   QuestionsWebservice.postQuestion(
                                                       title: titleController.text,
                                                       body: BodyController.text,
