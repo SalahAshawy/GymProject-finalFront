@@ -7,9 +7,9 @@ import 'package:gym_project/viewmodels/groups-view-model.dart';
 
 class GroupListViewModel with ChangeNotifier {
   List<GroupViewModel> groups = [];
-  GroupViewModel group;
+  GroupViewModel? group;
   LoadingStatus loadingStatus = LoadingStatus.Completed;
-  int lastPage;
+  int? lastPage;
   List<GroupViewModel> weekGroups = [];
 
   Future<void> fetchGroups(int page, String searchText) async {

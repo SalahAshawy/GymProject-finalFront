@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class EditIconButton extends StatefulWidget {
   //const EditIconButton({Key key}) : super(key: key);
-  final Function onPressed;
+  final Function() onPressed;
 
-  EditIconButton({this.onPressed});
+  EditIconButton({required this.onPressed});
 
   @override
   _EditIconButtonState createState() => _EditIconButtonState();

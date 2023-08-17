@@ -6,14 +6,14 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MyImagePicker2 extends StatefulWidget {
-  const MyImagePicker2({Key key}) : super(key: key);
+  const MyImagePicker2({required Key key}) : super(key: key);
 
   @override
   _MyImagePicker2State createState() => _MyImagePicker2State();
 }
 
 class _MyImagePicker2State extends State<MyImagePicker2> {
-  File image;
+  late File image;
 
   Future pickImage() async {
     try {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MemberDrawer extends StatefulWidget {
-  const MemberDrawer({Key key}) : super(key: key);
+  const MemberDrawer({Key? key}) : super(key: key);
 
   @override
   _MemberDrawerState createState() => _MemberDrawerState();

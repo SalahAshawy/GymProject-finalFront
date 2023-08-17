@@ -14,18 +14,17 @@ class WorkoutSummaryServices {
   getStringValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
-    String token = prefs.getString('token');
+    String? token = prefs.getString('token');
     return token;
   }
 
-  Future<List<WorkoutSummary>> fetchSummaries() async {
-    String token = Global.token;
+  Future<List<WorkoutSummary>?> fetchSummaries() async {
+    String? token = Global.token;
     print('I am fetching summaries');
     try {
       final response = await http.get(Uri.parse('$local/$request'), headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        
         'Authorization': 'Bearer $token'
       });
       if (response.statusCode == 200) {
@@ -45,6 +44,7 @@ class WorkoutSummaryServices {
       print('exception is $e');
       return null;
     }
+    return null;
   }
 
   Future<WorkoutSummary> postWorkoutSummary(

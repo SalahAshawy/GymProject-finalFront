@@ -5,7 +5,7 @@ class CustomAlertDialog extends StatefulWidget {
   final String text;
   final List<Widget> actions;
 
-  CustomAlertDialog({this.text, this.actions});
+  CustomAlertDialog({required this.text,required  this.actions});
 
   @override
   _CustomAlertDialogState createState() => _CustomAlertDialogState();

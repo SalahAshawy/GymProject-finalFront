@@ -124,7 +124,7 @@ class CustomTextFieldWidget extends StatelessWidget {
             new Flexible(
               child: new TextFormField(
                 validator: (value) {
-                  if (value.isEmpty || value == null) {
+                  if (value!.isEmpty) {
                     return 'Value cannot be empty!';
                   }
                   return null;
@@ -142,8 +142,8 @@ class CustomTextFieldWidget extends StatelessWidget {
 
 class CustomNumericalTextField extends StatelessWidget {
   CustomNumericalTextField({
-    @required this.controller,
-    @required this.hintText,
+    required this.controller,
+    required this.hintText,
   });
 
   TextEditingController controller;
@@ -162,7 +162,7 @@ class CustomNumericalTextField extends StatelessWidget {
                   decimal: true,
                 ),
                 validator: (value) {
-                  if (value.isEmpty || value == null) {
+                  if (value!.isEmpty || value == null) {
                     return 'Value cannot be empty!';
                   }
 

@@ -3,19 +3,17 @@ import 'package:gym_project/models/supplementary.dart';
 import 'package:gym_project/services/supplementary-webservice.dart';
 
 import '../all_data.dart';
-import '../widget/global.dart';
 
 class SupplementaryViewModel extends ChangeNotifier {
   Supplementary singleSupplementary = Supplementary();
 
   List<Supplementary> branchSupplementariesList = [];
 
-  int get id => supplementary.id;
-  String get title => supplementary.title;
-  String get description => supplementary.description;
-  int get price => supplementary.price;
-  String get picture => supplementary.picture;
-
+  int get id => supplementary.id!;
+  String get title => supplementary.title!;
+  String get description => supplementary.description!;
+  int get price => supplementary.price!;
+  String get picture => supplementary.picture!;
 
   Future<void> getSupplementaryById(int id, String token) async {
     this.singleSupplementary =

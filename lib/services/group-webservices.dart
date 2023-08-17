@@ -10,7 +10,7 @@ import 'package:pretty_json/pretty_json.dart';
 
 class GroupWebService {
   final String local = Constants.defaultUrl;
-  String token = Global.token;
+  String? token = Global.token;
   Future<Tuple<int, List<Group>>> getGroups(int page, String searchText) async {
     String url = '$local/api/groups';
     if (page == 0) {

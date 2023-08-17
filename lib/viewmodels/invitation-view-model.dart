@@ -3,7 +3,7 @@ import 'package:gym_project/models/invitation.dart';
 import 'package:gym_project/services/invitation-webservice.dart';
 
 class InvitationViewModel extends ChangeNotifier {
-  Invitation invitation;
+  Invitation? invitation;
   List<Invitation> _allInvitations =[];
 
   Future<void> getAllInvitations(token) async

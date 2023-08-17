@@ -5,7 +5,7 @@ import '../../widget/global.dart';
 class ItemsDetailsScreen extends StatefulWidget {
   final Item? item;
 
-  ItemsDetailsScreen({@required this.item});
+  ItemsDetailsScreen({required this.item});
 
   @override
   _ItemsDetailsScreenState createState() => _ItemsDetailsScreenState();
@@ -28,7 +28,8 @@ class _ItemsDetailsScreenState extends State<ItemsDetailsScreen> {
     final isWideScreen = MediaQuery.of(context).size.width > 900;
 
     return Scaffold(
-      floatingActionButton: Global.role == "admin" || Global.role == "nutritionist"
+      floatingActionButton:
+          Global.role == "admin" || Global.role == "nutritionist"
               ? Container(
                   child: FloatingActionButton(
                     onPressed: () {

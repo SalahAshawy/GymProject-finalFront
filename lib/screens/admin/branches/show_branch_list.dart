@@ -11,24 +11,25 @@ import 'create_branch.dart';
 class ShowBranchesList extends StatelessWidget {
   final bar;
   final adminCubit;
-  ShowBranchesList({this.bar=true,@required this.adminCubit});
-
+  ShowBranchesList({this.bar = true, required this.adminCubit});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:bar?AppBar(
-        title: Text(
-          'Branches',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Color(0xff181818),
-        iconTheme: IconThemeData(color: Color(0xFFFFCE2B)),
-      ):PreferredSize(child: Container(), preferredSize: Size(0, 0)),
+      appBar: bar
+          ? AppBar(
+              title: Text(
+                'Branches',
+                style: TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Color(0xff181818),
+              iconTheme: IconThemeData(color: Color(0xFFFFCE2B)),
+            )
+          : PreferredSize(child: Container(), preferredSize: Size(0, 0)),
       body: SafeArea(
         child: ConditionalBuilder(
           condition: adminCubit.branchesList.isNotEmpty,
-          builder: (context)=>Container(
+          builder: (context) => Container(
             color: Colors.black,
             padding: EdgeInsetsDirectional.all(10),
             child: ListView.builder(
@@ -55,15 +56,14 @@ class ShowBranchesList extends StatelessWidget {
                   );
                 }),
           ),
-          fallback: (context)=>Center(
+          fallback: (context) => Center(
             child: Container(
               child: Text(
                 "No Branches Found",
                 style: TextStyle(
                     color: Colors.grey,
                     fontSize: 26,
-                    fontWeight: FontWeight.bold
-                ),
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),

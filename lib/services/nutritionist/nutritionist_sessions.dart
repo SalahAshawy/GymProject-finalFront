@@ -9,55 +9,53 @@ import '../../models/admin-models/nutritionist-Sessions/nutritionistSession-mode
 import '../../widget/global.dart';
 import '../answers-webservice.dart';
 
-class NutritionistSessionsServices{
-  static Future<void> fetchNutritionistSessions() async{
+class NutritionistSessionsServices {
+  static Future<void> fetchNutritionistSessions() async {
     await http.get(Uri.parse('$local/api/nutSessions/getAll'), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${Global.token}'
-    }).then((value){
+    }).then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
-        jsonData['sessions'].forEach((item){
+      if (jsonData['status'] == true) {
+        jsonData['sessions'].forEach((item) {
           nutritionistSessions.add(NutritionistSession.fromJson(item));
         });
-      }
-      else{
-
-      }
-    }).catchError((error){
+      } else {}
+    }).catchError((error) {
       print("Fetch sessions error ${error.toString()}");
     });
-
   }
 
-  NutritionistSession fetchNutritionistSessionById(int id)  {
+  NutritionistSession? fetchNutritionistSessionById(int id) {
     http.get(Uri.parse('$local/api/nutSessions/show/$id'), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer ${Global.token}'
     }).then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
+      if (jsonData['status'] == true) {
         Map<String, Object> sessionJsonData = jsonData['session'];
-        NutritionistSession nutritionistSession = NutritionistSession.fromJson(sessionJsonData);
+        NutritionistSession nutritionistSession =
+            NutritionistSession.fromJson(sessionJsonData);
         return nutritionistSession;
       }
-    }).catchError((error){
+    }).catchError((error) {
       print(error.toString());
     });
     return null;
   }
-  static void addNutritionistSession({
-    @required int nutritionistId,
-    @required int memberId,
-    @required String date,
-    @required BuildContext context,
-    @required CreateCubit createCubit,
-    @required AdminCubit adminCubit
-  }) {
+
+  static void addNutritionistSession(
+      {required int nutritionistId,
+      required int memberId,
+      required String date,
+      required BuildContext context,
+      required CreateCubit createCubit,
+      required AdminCubit adminCubit}) {
     createCubit.loading1();
-    http.post(
+    http
+        .post(
       Uri.parse('$local/api/nutSessions/store'),
       headers: <String, String>{
         'Content-Type': 'application/json',
@@ -69,39 +67,41 @@ class NutritionistSessionsServices{
         'member_id': memberId,
         'date': date,
       }),
-    ).then((value){
+    )
+        .then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
-        nutritionistSessions.add(NutritionistSession.fromJson(jsonData['Session']));
+      if (jsonData['status'] == true) {
+        nutritionistSessions
+            .add(NutritionistSession.fromJson(jsonData['Session']));
         createCubit.finishLoading();
-        myToast(message: "Added Successfully",color: Colors.green);
+        myToast(message: "Added Successfully", color: Colors.green);
         Navigator.pop(context);
         adminCubit.addNutritionistSessionsSuccess();
-      }
-      else{
+      } else {
         createCubit.finishLoading();
-        myToast(message: jsonData['msg'],color: Colors.red);
+        myToast(message: jsonData['msg'], color: Colors.red);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("Add nutritionistSessions Error :${error.toString()}");
       createCubit.finishLoading();
       Navigator.pop(context);
       adminCubit.addNutritionistSessionsError();
     });
   }
+
   //edit NutritionistSession
-  static void editNutritionistSession({
-    @required int id,
-    @required int index,
-    @required int nutritionist_id,
-    @required int member_id,
-    @required String date,
-    @required BuildContext context,
-    @required CreateCubit createCubit,
-    @required AdminCubit adminCubit
-  }) {
+  static void editNutritionistSession(
+      {required int id,
+      required int index,
+      required int nutritionist_id,
+      required int member_id,
+      required String date,
+      required BuildContext context,
+      required CreateCubit createCubit,
+      required AdminCubit adminCubit}) {
     createCubit.loading1();
-    http.put(
+    http
+        .put(
       Uri.parse('$local/api/nutSessions/update/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json',
@@ -113,37 +113,35 @@ class NutritionistSessionsServices{
         'member_id': member_id,
         'date': date,
       }),
-    ).then((value){
+    )
+        .then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
-        nutritionistSessions[index]=NutritionistSession.fromJson(jsonData['session']);
+      if (jsonData['status'] == true) {
+        nutritionistSessions[index] =
+            NutritionistSession.fromJson(jsonData['session']);
         createCubit.finishLoading();
-        myToast(message: "Updated Successfully",color: Colors.green);
+        myToast(message: "Updated Successfully", color: Colors.green);
         Navigator.pop(context);
         adminCubit.editNutritionistSessionsSuccess();
-      }
-      else{
+      } else {
         createCubit.finishLoading();
-        myToast(message: jsonData['msg'],color: Colors.red);
+        myToast(message: jsonData['msg'], color: Colors.red);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("edit nutritionistSessions Error :${error.toString()}");
       createCubit.finishLoading();
       Navigator.pop(context);
-      myToast(message: "Updated Failed",color: Colors.green);
+      myToast(message: "Updated Failed", color: Colors.green);
       adminCubit.editNutritionistSessionsError();
     });
-
   }
+
   //
   //delete NutritionistSession
-  static int deleteIndex=-1;
-  static void deleteNutritionistSession({
-    @required int id,
-    @required int index,
-    @required AdminCubit adminCubit
-  }) {
-    deleteIndex=index;
+  static int deleteIndex = -1;
+  static void deleteNutritionistSession(
+      {required int id, required int index, required AdminCubit adminCubit}) {
+    deleteIndex = index;
     adminCubit.deleteNutritionistSessionsLoading();
     http.delete(
       Uri.parse('$local/api/nutSessions/delete/$id'),
@@ -152,18 +150,18 @@ class NutritionistSessionsServices{
         'Accept': 'application/json',
         'Authorization': 'Bearer ${Global.token}'
       },
-    ).then((value){
+    ).then((value) {
       var jsonData = jsonDecode(value.body);
       print(jsonData);
-      if(jsonData['status']==true){
+      if (jsonData['status'] == true) {
         nutritionistSessions.removeAt(index);
         adminCubit.deleteNutritionistSessionsSuccess();
-        myToast(message: "Deleted Successfully",color: Colors.green);
+        myToast(message: "Deleted Successfully", color: Colors.green);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print(error.toString());
       adminCubit.deleteNutritionistSessionsError();
-      myToast(message: "Deleted Failed",color: Colors.red);
+      myToast(message: "Deleted Failed", color: Colors.red);
     });
   }
 }

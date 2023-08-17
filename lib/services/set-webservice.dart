@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class SetWebService {
   final String local = Constants.defaultUrl;
-  String token = Global.token;
+  String? token = Global.token;
   Future<Tuple<int, List<Set>>> getSets(
     int page,
     String searchText,
@@ -59,13 +59,12 @@ class SetWebService {
 
   Future<Set> getSetDetails(int setId) async {
     print('Am i here??');
-    final response = await http.get(
-        Uri.parse('$local/api/sets/$setId/details'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': 'Bearer $token'
-        });
+    final response =
+        await http.get(Uri.parse('$local/api/sets/$setId/details'), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    });
     print('response obtained!');
     print(response.statusCode);
     final result = json.decode(response.body);

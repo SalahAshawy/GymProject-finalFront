@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 import '../all_data.dart';
 import '../bloc/Admin_cubit/admin_cubit.dart';
 
-String token = Global.token;
+String? token = Global.token;
 final local = Constants.defaultUrl;
 
 class AnswersWebservice {
@@ -33,23 +33,22 @@ class AnswersWebservice {
   }
 
   //get all answers of a certain question
-  static Future<void> fetchAnswers(int question_id,int question_index) async {
-    List<Answer>allAnswers=[];
-    await http.get(
-        Uri.parse('$local/api/questions/$question_id/answers'),
+  static Future<void> fetchAnswers(int question_id, int question_index) async {
+    List<Answer> allAnswers = [];
+    await http.get(Uri.parse('$local/api/questions/$question_id/answers'),
         headers: <String, String>{
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer $token'
-        }).then((value){
+        }).then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
-        jsonData['answers'].forEach((item){
+      if (jsonData['status'] == true) {
+        jsonData['answers'].forEach((item) {
           allAnswers.add(Answer.fromJson(item));
         });
         questionsList[question_index].allAnswers.addAll(allAnswers);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("get Questions Answers error = ${error.toString()}");
     });
   }
@@ -74,12 +73,12 @@ class AnswersWebservice {
   }
 
   //add answer to a question
-  static Future<void> postAnswer({
-    @required Question question,
-    @required String body,
-    @required AdminCubit adminCubit
-}) async {
-    await http.post(
+  static Future<void> postAnswer(
+      {required Question question,
+      required String body,
+      required AdminCubit adminCubit}) async {
+    await http
+        .post(
       Uri.parse('$local/api/answers/create'),
       headers: <String, String>{
         'Content-Type': 'application/json',
@@ -90,14 +89,17 @@ class AnswersWebservice {
         'body': body,
         'question_id': question.id,
       }),
-    ).then((value) {
+    )
+        .then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
-        questionsList[question.index].allAnswers.add(Answer.fromJson(jsonData['newAnswer']));
+      if (jsonData['status'] == true) {
+        questionsList[question.index!]
+            .allAnswers
+            .add(Answer.fromJson(jsonData['newAnswer']));
         adminCubit.updateState();
-        myToast(message: "Added Successfully",color: Colors.green);
+        myToast(message: "Added Successfully", color: Colors.green);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("add answer error = ${error.toString()}");
     });
   }
@@ -105,7 +107,8 @@ class AnswersWebservice {
   //edit answer
   static Future<void> editAnswer(int id, String body) async {
     print('editing answer');
-    final response = await http.post(
+    final response = await http
+        .post(
       Uri.parse('$local/api/answers/edit/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json',
@@ -115,13 +118,13 @@ class AnswersWebservice {
       body: jsonEncode(<String, String>{
         'body': body,
       }),
-    ).then((value) {
+    )
+        .then((value) {
       var jsonData = jsonDecode(value.body);
-      if(jsonData['status']==true){
-
-        myToast(message: "Updated Successfully",color: Colors.green);
+      if (jsonData['status'] == true) {
+        myToast(message: "Updated Successfully", color: Colors.green);
       }
-    }).catchError((error){
+    }).catchError((error) {
       print("add answer error = ${error.toString()}");
     });
   }

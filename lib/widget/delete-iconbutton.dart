@@ -4,10 +4,10 @@ import 'package:gym_project/widget/material-button.dart';
 
 class DeleteIconButton extends StatefulWidget {
   final String text;
-  final Function onDelete;
+  final Function() onDelete;
   final BuildContext context;
 
-  DeleteIconButton({this.context, this.text, this.onDelete});
+  DeleteIconButton({required this.context, required this.text, required this.onDelete});
 
   @override
   _DeleteIconButtonState createState() => _DeleteIconButtonState();

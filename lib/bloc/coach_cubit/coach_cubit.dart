@@ -22,71 +22,69 @@ import '../../viewmodels/event-view-model.dart';
 import '../../widget/global.dart';
 import 'coach_states.dart';
 
-class CoachCubit extends Cubit<CoachStates>{
-  CoachCubit():super(CoachInitState());
-  static CoachCubit get(context)=>BlocProvider.of(context);
-  final String local=Constants.defaultUrl;
+class CoachCubit extends Cubit<CoachStates> {
+  CoachCubit() : super(CoachInitState());
+  static CoachCubit get(context) => BlocProvider.of(context);
+  final String local = Constants.defaultUrl;
   //Bottom Nav Bar Screen (AdminUtil)
-  int bottomNavBarIndex=0;
+  int bottomNavBarIndex = 0;
 
-
-  bool isLoadingCoach=true;
-  Future<void> fetchUserCoach()async {
+  bool isLoadingCoach = true;
+  Future<void> fetchUserCoach() async {
     await MembersWebService.fetchMembers();
     await CoachWebService.fetchCoaches();
     await NutritionistWebservice.fetchNutritionists();
-    for(int i=0;i<coachesUsers.length;i++){
-      if(Global.roleID==coachesUsers[i].id){
-        userCoach=coachesUsers[i];
+    for (int i = 0; i < coachesUsers.length; i++) {
+      if (Global.roleID == coachesUsers[i].id) {
+        userCoach = coachesUsers[i];
         break;
       }
     }
-    isLoadingCoach=false;
+    isLoadingCoach = false;
     emit(Update());
   }
 
-  bool isLoadingAnnouncements=true;
-  Future<void> fetchAllAnnouncements()async {
+  bool isLoadingAnnouncements = true;
+  Future<void> fetchAllAnnouncements() async {
     await AnnouncementsServices.fetchAnnouncements();
-    isLoadingAnnouncements=false;
+    isLoadingAnnouncements = false;
     emit(Update());
   }
 
-  bool isLoadingBranch=true;
-  Future<void> fetchAllBranches()async {
+  bool isLoadingBranch = true;
+  Future<void> fetchAllBranches() async {
     await BranchService.fetchBranches();
-    isLoadingBranch=false;
+    isLoadingBranch = false;
     emit(Update());
   }
 
-
-  bool isLoadingEquipments=true;
-  Future<void> fetchAllEquipments()async {
+  bool isLoadingEquipments = true;
+  Future<void> fetchAllEquipments() async {
     await EquipmentsService.fetchEquipments();
-    isLoadingEquipments=false;
+    isLoadingEquipments = false;
     emit(Update());
   }
-  bool isLoadingClasses=true;
-  Future<void> fetchAllClasses()async {
+
+  bool isLoadingClasses = true;
+  Future<void> fetchAllClasses() async {
     await ClassesServices.fetchClasses();
     print("Classes size = ${allClasses.length}");
-    isLoadingClasses=false;
+    isLoadingClasses = false;
     emit(Update());
   }
 
-
-
-  bool isLoadingQuestions=true;
-  Future<void> fetchAllQuestions()async {
+  bool isLoadingQuestions = true;
+  Future<void> fetchAllQuestions() async {
     await QuestionsWebservice.fetchQuestions();
-    isLoadingQuestions=false;
+    isLoadingQuestions = false;
     emit(Update());
   }
 
-  bool isLoadingEvents=true;
-  Future<void>getEventsList(BuildContext context) async{
-    String token = Global.token;
-    await Provider.of<EventViewModel>(context, listen: false).getAllEvents(token)
+  bool isLoadingEvents = true;
+  Future<void> getEventsList(BuildContext context) async {
+    String? token = Global.token;
+    await Provider.of<EventViewModel>(context, listen: false)
+        .getAllEvents(token)
         .then((value) {
       allEvents = Provider.of<EventViewModel>(context, listen: false).allEvents;
       print("events = ${allEvents.length}");
@@ -94,14 +92,14 @@ class CoachCubit extends Cubit<CoachStates>{
       print('error occured $err');
     });
   }
-  Future<void> fetchAllEvents(BuildContext context)async {
+
+  Future<void> fetchAllEvents(BuildContext context) async {
     await getEventsList(context);
-    isLoadingEvents=false;
+    isLoadingEvents = false;
     emit(Update());
   }
 
-  void update(){emit(Update());}
-
-
-
+  void update() {
+    emit(Update());
+  }
 }

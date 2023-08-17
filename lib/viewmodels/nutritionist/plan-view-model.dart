@@ -10,19 +10,19 @@ class PlanViewModel with ChangeNotifier {
   Plan plan = Plan(title: "Nice");
   LoadingStatus loadingStatus = LoadingStatus.Completed;
 
-  String get title {
+  String? get title {
     return plan.title;
   }
 
-  String get description {
+  String? get description {
     return plan.description;
   }
 
-  int get nutritionistID {
+  int? get nutritionistID {
     return plan.nutritionistID;
   }
 
-  int get id {
+  int? get id {
     return plan.id;
   }
 

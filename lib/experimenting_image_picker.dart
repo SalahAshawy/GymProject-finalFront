@@ -22,7 +22,7 @@ class MyImagePicker extends StatefulWidget {
 }
 
 class _MyImagePickerState extends State<MyImagePicker> {
-  List<XFile> _imageFileList;
+   List<XFile>? _imageFileList;
 
   set _imageFile(XFile value) {
     _imageFileList = value == null ? null : [value];
@@ -31,9 +31,9 @@ class _MyImagePickerState extends State<MyImagePicker> {
   dynamic _pickImageError;
   bool isVideo = false;
 
-  VideoPlayerController _controller;
-  VideoPlayerController _toBeDisposed;
-  String _retrieveDataError;
+  VideoPlayerController? _controller;
+  VideoPlayerController? _toBeDisposed;
+  String? _retrieveDataError;
 
   final ImagePicker _picker = ImagePicker();
   final TextEditingController maxWidthController = TextEditingController();
@@ -65,16 +65,16 @@ class _MyImagePickerState extends State<MyImagePicker> {
   }
 
   void _onImageButtonPressed(ImageSource source,
-      {BuildContext context, bool isMultiImage = false}) async {
+      {BuildContext? context, bool isMultiImage = false}) async {
     if (_controller != null) {
-      await _controller.setVolume(0.0);
+      await _controller!.setVolume(0.0);
     }
     if (isVideo) {
-      final XFile file = await _picker.pickVideo(
+      final XFile? file = await _picker.pickVideo(
           source: source, maxDuration: const Duration(seconds: 10));
-      await _playVideo(file);
+      await _playVideo(file!);
     } else if (isMultiImage) {
-      await _displayPickImageDialog(context,
+      await _displayPickImageDialog(context!,
           (double maxWidth, double maxHeight, int quality) async {
         try {
           final pickedFileList = await _picker.pickMultiImage(
@@ -92,7 +92,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
         }
       });
     } else {
-      await _displayPickImageDialog(context,
+      await _displayPickImageDialog(context!,
           (double maxWidth, double maxHeight, int quality) async {
         try {
           final pickedFile = await _picker.pickImage(
@@ -102,7 +102,7 @@ class _MyImagePickerState extends State<MyImagePicker> {
             imageQuality: quality,
           );
           setState(() {
-            _imageFile = pickedFile;
+            _imageFile = pickedFile!;
           });
         } catch (e) {
           setState(() {
@@ -116,8 +116,8 @@ class _MyImagePickerState extends State<MyImagePicker> {
   @override
   void deactivate() {
     if (_controller != null) {
-      _controller.setVolume(0.0);
-      _controller.pause();
+      _controller!.setVolume(0.0);
+      _controller!.pause();
     }
     super.deactivate();
   }
@@ -133,14 +133,14 @@ class _MyImagePickerState extends State<MyImagePicker> {
 
   Future<void> _disposeVideoController() async {
     if (_toBeDisposed != null) {
-      await _toBeDisposed.dispose();
+      await _toBeDisposed!.dispose();
     }
     _toBeDisposed = _controller;
     _controller = null;
   }
 
   Widget _previewVideo() {
-    final Text retrieveError = _getRetrieveErrorWidget();
+    final Text? retrieveError = _getRetrieveErrorWidget();
     if (retrieveError != null) {
       return retrieveError;
     }
@@ -152,12 +152,12 @@ class _MyImagePickerState extends State<MyImagePicker> {
     }
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: AspectRatioVideo(_controller),
+      child: AspectRatioVideo(_controller!),
     );
   }
 
   Widget _previewImages() {
-    final Text retrieveError = _getRetrieveErrorWidget();
+    final Text? retrieveError = _getRetrieveErrorWidget();
     if (retrieveError != null) {
       return retrieveError;
     }
@@ -171,11 +171,11 @@ class _MyImagePickerState extends State<MyImagePicker> {
               return Semantics(
                 label: 'image_picker_example_picked_image',
                 child: kIsWeb
-                    ? Image.network(_imageFileList[index].path)
-                    : Image.file(File(_imageFileList[index].path)),
+                    ? Image.network(_imageFileList![index].path)
+                    : Image.file(File(_imageFileList![index].path)),
               );
             },
-            itemCount: _imageFileList.length,
+            itemCount: _imageFileList!.length,
           ),
           label: 'image_picker_example_picked_images');
     } else if (_pickImageError != null) {
@@ -207,16 +207,16 @@ class _MyImagePickerState extends State<MyImagePicker> {
     if (response.file != null) {
       if (response.type == RetrieveType.video) {
         isVideo = true;
-        await _playVideo(response.file);
+        await _playVideo(response.file!);
       } else {
         isVideo = false;
         setState(() {
-          _imageFile = response.file;
+          _imageFile = response.file!;
           _imageFileList = response.files;
         });
       }
     } else {
-      _retrieveDataError = response.exception.code;
+      _retrieveDataError = response.exception!.code;
     }
   }
 
@@ -331,9 +331,9 @@ class _MyImagePickerState extends State<MyImagePicker> {
     );
   }
 
-  Text _getRetrieveErrorWidget() {
+  Text? _getRetrieveErrorWidget() {
     if (_retrieveDataError != null) {
-      final Text result = Text(_retrieveDataError);
+      final Text result = Text(_retrieveDataError!);
       _retrieveDataError = null;
       return result;
     }
@@ -381,13 +381,10 @@ class _MyImagePickerState extends State<MyImagePicker> {
                   onPressed: () {
                     double width = maxWidthController.text.isNotEmpty
                         ? double.parse(maxWidthController.text)
-                        : null;
-                    double height = maxHeightController.text.isNotEmpty
-                        ? double.parse(maxHeightController.text)
-                        : null;
-                    int quality = qualityController.text.isNotEmpty
-                        ? int.parse(qualityController.text)
-                        : null;
+                        :0.0;
+                    double height = double.tryParse(maxWidthController.text) ?? 0.0;
+
+                    int quality = int.tryParse(qualityController.text)??0;
                     onPick(width, height, quality);
                     Navigator.of(context).pop();
                   }),

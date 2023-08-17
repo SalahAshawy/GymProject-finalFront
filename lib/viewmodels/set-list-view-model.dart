@@ -14,9 +14,9 @@ class SetListViewModel with ChangeNotifier {
   LoadingStatus loadingStatus = LoadingStatus.Empty;
 
   // ignore: deprecated_member_use
-  List<SetViewModel> sets = List<SetViewModel>();
-  SetViewModel set;
-  int lastPage;
+  List<SetViewModel> sets = [];
+  SetViewModel? set;
+  int? lastPage;
 
   Future<void> fetchListSets(int page, String searchText) async {
     print('currently here!');

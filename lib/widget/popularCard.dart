@@ -5,7 +5,7 @@ import 'package:gym_project/constants.dart';
 class PopularCard extends StatelessWidget {
   final String asset;
   final String title;
-  const PopularCard({Key key, this.asset, this.title}) : super(key: key);
+  const PopularCard({Key? key,required  this.asset,required  this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -35,7 +35,7 @@ class NutritionistHomeScreenState extends State<NutritionistHomeScreen> {
   bool error = false;
 
   getEventsList() {
-    String token = Global.token;
+    String? token = Global.token;
     Provider.of<EventViewModel>(context, listen: false)
         .getAllEvents(token)
         .then((value) {
@@ -281,7 +281,8 @@ class NutritionistHomeScreenState extends State<NutritionistHomeScreen> {
                                                             },
                                                             child: PopularCard(
                                                               asset: "ht2",
-                                                              title: c.title as String,
+                                                              title: c.title
+                                                                  as String,
                                                             ),
                                                           ),
                                                       ],

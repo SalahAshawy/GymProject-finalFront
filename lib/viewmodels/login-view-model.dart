@@ -14,30 +14,30 @@ enum LoadingStatus {
 LoadingStatus loadingStatus = LoadingStatus.Empty;
 
 class LoginViewModel with ChangeNotifier {
-  Login login ;
+  Login? login ;
 
   String get token {
-    return login.token;
+    return login!.token;
   }
 
   String get role {
-    return login.role;
+    return login!.role;
   }
 
   String get name {
-    return login.name;
+    return login!.name;
   }
 
   int get id {
-    return login.id;
+    return login!.id;
   }
 
   int get roleID {
-    return login.roleID;
+    return login!.roleID;
   }
 
   String get username {
-    return login.name;
+    return login!.name;
   }
 
 

@@ -14,10 +14,9 @@ class FitnessSummaryListViewModel with ChangeNotifier {
   LoadingStatus loadingStatus = LoadingStatus.Empty;
 
   // ignore: deprecated_member_use
-  List<FitnessSummaryViewModel> fitnessSummaries =
-      List<FitnessSummaryViewModel>();
+  List<FitnessSummaryViewModel> fitnessSummaries =[];
   FitnessSummaryViewModel fitnessSummary = FitnessSummaryViewModel();
-  int lastPage;
+  int? lastPage;
 
   // methods to fetch news
   Future<void> fetchListFitnessSummaries(
