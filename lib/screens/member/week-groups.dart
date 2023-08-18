@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_project/screens/common/view-group-details-screen.dart';
 import 'package:gym_project/screens/member/training-mode/training_mode_overview_screen.dart';
-import 'package:gym_project/style/datetime.dart';
 import 'package:gym_project/viewmodels/group-list-view-model.dart';
 import 'package:gym_project/viewmodels/groups-view-model.dart';
 import 'package:gym_project/widget/loading-widgets.dart';

@@ -53,10 +53,10 @@ packages:
     dependency: "direct main"
     description:
       name: backdrop
-      sha256: "352176996126e2e935cf4a5ef68a53010fdf84fbe6f7eb9288695a110b6065e4"
+      sha256: "8d1de2db4aca3821bad670c092e3a050bf15aa1dd05ded4d14fdf0a0ae5da9dc"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.2"
+    version: "0.9.0"
   bloc:
     dependency: "direct main"
     description:
@@ -380,18 +380,18 @@ packages:
     dependency: "direct main"
     description:
       name: google_fonts
-      sha256: "8f099045e2f2a30e4d4d0a35f40c6bc941a8f2ca0e10ad9d214ee9edd3f37483"
+      sha256: e20ff62b158b96f392bfc8afe29dee1503c94fbea2cbe8186fd59b756b8ae982
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "5.1.0"
   hexcolor:
     dependency: "direct main"
     description:
       name: hexcolor
-      sha256: e572c3346f4b26422a281dc4c10f83022131f56f7364837671b50f53c7adc5e7
+      sha256: c07f4bbb9095df87eeca87e7c69e8c3d60f70c66102d7b8d61c4af0453add3f6
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.7"
+    version: "3.0.1"
   html:
     dependency: transitive
     description:
@@ -404,10 +404,10 @@ packages:
     dependency: "direct main"
     description:
       name: http
-      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
+      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.6"
+    version: "1.1.0"
   http_parser:
     dependency: "direct main"
     description:

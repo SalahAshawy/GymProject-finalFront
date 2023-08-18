@@ -1,6 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:gym_project/screens/common/view-private-session-details.dart';
 import 'package:gym_project/style/datetime.dart';
 import 'package:gym_project/style/error-pop-up.dart';
@@ -266,22 +265,7 @@ class _ViewPrivateSessionRequestsScreenState extends State<ViewPrivateSessionReq
                                     height: 2,
                                   ),
                                   ElevatedButton(
-                                    onPressed: () async {
-                                      await DatePicker.showDateTimePicker(
-                                        context,
-                                        showTitleActions: true,
-                                        minTime: DateTime(2020, 3, 5),
-                                        maxTime: DateTime(2022, 12, 30),
-                                      ).then((value) {
-                                        setState(() {
-                                          dateTimeChosen = value;
-                                          privateSession.dateTime =
-                                              dateTimeChosen;
-                                          dateTimeStatus = true;
-                                          refresh();
-                                        });
-                                      });
-                                    },
+                                    onPressed: null,
                                     child: Text('Choose',
                                         style: TextStyle(
                                           fontSize: 16,
